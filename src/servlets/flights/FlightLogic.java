@@ -4,7 +4,6 @@ import servlets.dbUtilities;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FlightLogic {
 dbUtilities db;
@@ -26,9 +25,16 @@ dbUtilities db;
             //med den tilsvarende infoen fra databasen.
             while(results.next()){
                 flight.setFlightId(results.getInt("flight_ID"));
+                flight.setFlightNumber(results.getInt("flightNumber"));
                 flight.setPrice(results.getInt("price"));
-                //osv..
-
+                flight.setFlightDate(results.getString("flightDate"));
+                flight.setTo(results.getString("To"));
+                flight.setFrom(results.getString("From"));
+                flight.setFlightClass(results.getString("flightClass"));
+                flight.setDuration(results.getString("duration"));
+                flight.setSeatAmount(results.getInt("seatAmount"));
+                flight.setAirplaneType(results.getString("airplaneType"));
+                flight.setGate(results.getString("gate"));
 
                 //Vi legger til flight i arraylisten flights.
                 flights.add(flight);

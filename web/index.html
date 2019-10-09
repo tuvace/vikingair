@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
 
-  <meta charset="ISO-8859-1">
+  <meta charset="UTF-8">
   <title>Viking Airways</title>
   <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
@@ -11,6 +11,10 @@
   <div id="mainDiv">
     <h1>Viking Airways</h1>
 
+<form action="login.html">
+      <button> Login </button>
+    </form>
+
     <div id="content">
       <div id="rnHolder">
         <form action="Servlet">
@@ -18,7 +22,7 @@
 
 
           <input type="text" placeholder="Enter your RN to find your flight" name="RN" size="87"/>
-          <input type="submit" value="Search" name="searchRNBtn"/>
+          <input type="submit" value="Søk" name="searchRNBtn"/>
           <hr>
         </form>
 
@@ -28,7 +32,7 @@
         Hvor vil du reise fra:  <input type="text" name="sted">
         Til:   <input type="text" name="webUrl">
 
-        <input type="submit" name ="action"   value="Search">
+        <input type="submit" name ="action"   value="Søk">
 
 
 
@@ -39,16 +43,23 @@
 
             <select  name="priceFilter" size="1">
 
-              <option id="sortByPrice" value="sortByPrice">Sort by price</option>
+              <option id="sortByPrice" value="sortByPrice">Sorter etter pris</option>
 
-              <option value="highToLow">High to low</option>
-              <option value="lowToHigh">Low to high</option>
+              <option value="highToLow">Høyeste til laveste</option>
+              <option value="lowToHigh">Laveste til høyeste</option>
             </select>
+            <select  name="timeFilter" size="1">
+
+                          <option id="sortByTime" value="sortByTime">Sort etter tid</option>
+
+                          <option value="highToLow">Kortest tid</option>
+                          <option value="lowToHigh">Lengst tid</option>
+                        </select>
           </form>
 
 
 
-          <input type="Submit" value="Filter"/>
+          <input type="Submit" value="Filtrer"/>
 
 
         </div>
