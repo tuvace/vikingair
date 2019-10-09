@@ -12,33 +12,28 @@ import java.io.IOException;
         private int flightId;
         private int flightNumber;
         private int price;
-        private String flightCompany;
         private String flightDate;
         private String to;
         private String from;
-        private int revenue;
         private String flightClass;
         private String duration;
         private int seatAmount;
-        private String visibleSeatAmount;
         private String airplaneType;
         private String gate;
 
 
-        public Flight(int flightNumber, int price, String flightCompany, String flightDate, String to, String from,
-                      int revenue, String flightClass, String duration, int seatAmount, String visibleSeatAmount, String airplaneType, String gate) {
+        public Flight(int flightId, int flightNumber, int price, String flightDate, String to, String from,
+                      String flightClass, String duration, int seatAmount, String airplaneType, String gate) {
             super();
+            this.flightId = flightId;
             this.flightNumber = flightNumber;
             this.price = price;
-            this.flightCompany = flightCompany;
             this.flightDate = flightDate;
             this.to = to;
             this.from = from;
-            this.revenue = revenue;
             this.flightClass = flightClass;
             this.duration = duration;
             this.seatAmount = seatAmount;
-            this.visibleSeatAmount = visibleSeatAmount;
             this.airplaneType = airplaneType;
             this.gate = gate;
         }
@@ -68,12 +63,6 @@ import java.io.IOException;
         public void setPrice(int price) {
             this.price = price;
         }
-        public String getFlightCompany() {
-            return flightCompany;
-        }
-        public void setFlightCompany(String flightCompany) {
-            this.flightCompany = flightCompany;
-        }
         public String getFlightDate() {
             return flightDate;
         }
@@ -92,12 +81,6 @@ import java.io.IOException;
         public void setFrom(String from) {
             this.from = from;
         }
-        public int getRevenue() {
-            return revenue;
-        }
-        public void setRevenue(int revenue) {
-            this.revenue = revenue;
-        }
         public String getFlightClass() {
             return flightClass;
         }
@@ -115,12 +98,6 @@ import java.io.IOException;
         }
         public void setSeatAmount(int seatAmount) {
             this.seatAmount = seatAmount;
-        }
-        public String getVisibleSeatAmount() {
-            return visibleSeatAmount;
-        }
-        public void setVisibleSeatAmount(String visibleSeatAmount) {
-            this.visibleSeatAmount = visibleSeatAmount;
         }
         public String getAirplaneType() {
             return airplaneType;
