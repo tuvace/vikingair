@@ -1,0 +1,9 @@
+@charset "UTF-8";
+body {
+    background-image: url("https://images.pexels.com/photos/99567/aircraft-holiday-sun-tourism-99567.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-repeat: no-repeat, repeat;
+}
+
+#mainDiv {
+    text-align: center;
+}
