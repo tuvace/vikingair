@@ -68,46 +68,52 @@ public class FlightLogic {
 
 
     public Flight getFlightDetail (String flight_ID) throws Exception {
-        Flight theFlight = null;
+        Flight theFlight = new Flight();
 
-        Connection myConn = null;
-        Statement myStmt = null;
-        ResultSet myRs = null;
+        PreparedStatement myStmt;
+        Connection con = db.connect();
+        ResultSet results = null;
+        Connection con = db.connect();
+
+
+
+        //ResultSet results = myStmt.executeQuery();
 
         try {
             // Step 1: create sql statement
             String sql = "SELECT * FROM flightDetail WHERE flight_ID=" + flight_ID;
 
+            myStmt = con.prepareStatement(sql);
             System.out.println("getFlight is called.");
-            // Step 2: get a connection
-            myConn = dataSource.getConnection();
 
-            myStmt = myConn.createStatement();
+            // Step 2: get a connection
+            con = dataSource.getConnection();
+            myStmt = con.createStatement();
 
             // Step 3: execute query
-            myRs = myStmt.executeQuery(sql);
+            results = myStmt.executeQuery(sql);
 
             // Step 4: process result set
-            while (myRs.next()) {
+            while (results.next()) {
 
                 // Defining the variables
-                /** int flight_ID = myRs.getInt("flight_ID");
-                 int price = myRs.getInt("price");
-                 String departure = myRs.getString("departure");
-                 String arrival = myRs.getString("arrival");
-                 String from = myRs.getString("from");
-                 String to = myRs.getString("to");
+                 int flight_Id = results.getInt("flight_ID");
+                 int price = results.getInt("price");
+                 String departure = results.getString("departure");
+                 String arrival = results.getString("arrival");
+                 String from = results.getString("from");
+                 String to = results.getString("to");
                  //Boolean business = myRs.getBoolean("business_class");
-                 int seatRow = myRs.getInt("seatRow");
-                 int seatNumber = myRs.getInt("seatNumber");
-                 String gate = myRs.getString("gate");
-                 */
+                 int seatRow = results.getInt("seatRow");
+                 int seatNumber = results.getInt("seatNumber");
+                 String gate = results.getString("gate");
+
             }
 
-            return Flight;
+            return theFlight;
         } finally {
             // close JDBC objects
-            close(myConn, myStmt, myRs);
+            close(con, myStmt, results);
         }
     }
 
