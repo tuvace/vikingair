@@ -3,27 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title> Logg inn </title>
+    <link href="css/login.css" rel="stylesheet" type="text/css">
+<style>
+    #loginbox {
+        border-radius: 15px;
+        background: #FF8000;
+        padding: 20px;
+        width: 200px;
+        height: 120px;
+        margin: auto;
+    }
+    #registrerbox {
+        border-radius: 15px;
+        background: #FF8000;
+        padding: 20px;
+        width: 200px;
+        height: 30px;
+        margin: auto;
+    }
+</style>
 </head>
 <div style="text-align: center;">
 <h1> Logg inn </h1>
 <br>
 <body>
+
     <form action="login.java">
         <div class="container">
-            <label>
-                <input type="text" placeholder="Email Adresse:" name="username" required>
-            </label>
+        <p id="loginbox">
+            Email Adresse: <br>
+                <input type="text" placeholder="Email Adresse" name="username" required>
             <br> <br>
-            <label>
-                <input type="password" placeholder="Passord:" name="password" required>
+            Passord: <br>
+                <input type="password" placeholder="Passord" name="password" required>
             </label>
             <br> <br>
             <button type="submit">Logg inn</button>
+        </p>
         </div>
         <br>
     </form>
     <form action="register.html">
+      <p id="registrerbox">
         <button> Registrer ny bruker </button>
+      </p>
     </form>
 
 </body>
