@@ -5,28 +5,33 @@
 <title> Registration </title>
 </head>
 <body>
-
+<div style="text-align: center;">
+<h1> Registrer deg </h1>
+<br>
 
 <form action="ControllerServlet">
-    Fornavn:<br>
+    Fornavn: <br>
         <input type="text" name="first_name"><br>
-    Etternavn <br>
+    Etternavn: <br>
         <input type="text" name="last_name"><br>
-    Adresse <br>
+    Adresse: <br>
         <input type="text" name="customer_address"><br>
     Epost Adresse: <br>
         <input type="text" name="email"><br>
-    Mobilnummer <br>
+    Mobilnummer: <br>
         <input type="number" name="phone"><br>
-    KjÃ¸nn <br>
+    Kjønn: <br>
         <input type="radio" name="gender" value="male"> Mann<br>
         <input type="radio" name="gender" value="female"> Kvinne<br>
-        <input type="radio" name="gender" value="others"> Annet<br>
+        <input type="radio" name="gender" value="others"> Annet<br><br>
+    Passord: <br>
+    <input type="text" name="password"><br><br>
 
     <form action="register.java">
         <button> Registrer </button>
     </form>
 
 </form>
+</div>
 </body>
 </html>

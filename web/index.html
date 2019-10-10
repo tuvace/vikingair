@@ -1,20 +1,35 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="no">
 <head>
 
   <meta charset="UTF-8">
   <title>Viking Airways</title>
+=======
+<html lang="en">
+<head>
+
+  <meta charset="ISO-8859-1">
+  <title>Airline Booking</title>
+>>>>>>> oleDev
   <link href="css/index.css" rel="stylesheet" type="text/css">
 </head>
-<body bgcolor="#cce5ff">
-<center>
+<body>
+<div style="text-align: center;">
   <div id="mainDiv">
+<<<<<<< HEAD
     <h1>Viking Airways</h1>
 
 <form action="login.html">
       <button> Login </button>
     </form>
 
+=======
+    <h1>Airline Booking System</h1>
+    <form action="login.html">
+      <button> Login </button>
+    </form>
+>>>>>>> oleDev
     <div id="content">
       <div id="rnHolder">
         <form action="Servlet">
@@ -29,8 +44,8 @@
       </div>
 
       <form action="flight">
-        Hvor vil du reise fra:  <input type="text" name="sted">
-        Til:   <input type="text" name="webUrl">
+        Where are you travelling from:  <input type="text" name="sted">
+        Your destination:   <input type="text" name="webUrl">
 
         <input type="submit" name ="action"   value="Søk">
 
@@ -41,8 +56,10 @@
 
             <input type="hidden" name="command" value="FILTER"/>
 
-            <select  name="priceFilter" size="1">
+            <label>
+              <select  name="priceFilter" size="1">
 
+<<<<<<< HEAD
               <option id="sortByPrice" value="sortByPrice">Sorter etter pris</option>
 
               <option value="highToLow">Høyeste til laveste</option>
@@ -55,6 +72,14 @@
                           <option value="highToLow">Kortest tid</option>
                           <option value="lowToHigh">Lengst tid</option>
                         </select>
+=======
+                <option id="sortByPrice" value="sortByPrice">Sort by price</option>
+
+                <option value="highToLow">High to low</option>
+                <option value="lowToHigh">Low to high</option>
+              </select>
+            </label>
+>>>>>>> oleDev
           </form>
 
 
@@ -63,24 +88,24 @@
 
 
         </div>
-     </form>
+      </form>
 
-    <div id="flightHolderdiv">
+      <div id="flightHolder">
 
 
-      <div class="flight">
+        <div class="flight">
 
-        <br>
+          <br>
+
+        </div>
 
       </div>
 
     </div>
-
   </div>
-</div>
 
   <form>
 
   </form>
-</center>
+</div>
 </body>
