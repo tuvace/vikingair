@@ -7,3 +7,19 @@ body {
 #mainDiv {
     text-align: center;
 }
+#loginbox {
+    border-radius: 15px;
+    background: #FF8000;
+    padding: 20px;
+    width: 200px;
+    height: 120px;
+    margin: auto;
+}
+#registrerbox {
+    border-radius: 15px;
+    background: #FF8000;
+    padding: 20px;
+    width: 200px;
+    height: 30px;
+    margin: auto;
+}
