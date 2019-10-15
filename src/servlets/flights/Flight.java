@@ -116,6 +116,22 @@ import java.io.IOException;
             this.gate = gate;
         }
 
-
+        @Override
+        public String toString() {
+            return "Flight{" +
+                    "flightId=" + flightId +
+                    ", flightNumber=" + flightNumber +
+                    ", price=" + price +
+                    ", flightDate='" + flightDate + '\'' +
+                    ", to='" + to + '\'' +
+                    ", from='" + from + '\'' +
+                    ", flightClass='" + flightClass + '\'' +
+                    ", duration='" + duration + '\'' +
+                    ", seatRow=" + seatRow +
+                    ", seatAmount=" + seatAmount +
+                    ", airplaneType='" + airplaneType + '\'' +
+                    ", gate='" + gate + '\'' +
+                    '}';
+        }
     }
 

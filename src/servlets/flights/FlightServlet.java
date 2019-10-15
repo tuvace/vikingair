@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 
 
-@WebServlet(name = "FlightServlet", urlPatterns = {"/FlightServlet"})
+@WebServlet("/FlightServlet")
 public class FlightServlet extends HttpServlet {
     FlightLogic fl = new FlightLogic();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,8 +21,11 @@ public class FlightServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<Flight> flights = fl.selectAll();
 
-     System.out.println(fl.selectAll());
+        for(Flight f: flights){
+            System.out.println(f);
+        }
 
 
 

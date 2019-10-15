@@ -15,7 +15,7 @@ import servlets.PNR;
 import servlets.customers.Customer;
 
 public class FlightLogic {
-    dbUtilities db;
+    dbUtilities db = new dbUtilities();
 
     public ArrayList<Flight> selectAll() {
 
@@ -23,7 +23,7 @@ public class FlightLogic {
         ArrayList<Flight> flights = new ArrayList<>();
         PreparedStatement myStmt;
         // Step 1: create sql statement
-        String sql = "SELECT * FROM flightDetail LIMIT 5";
+        String sql = "SELECT * FROM FlightDetail LIMIT 5";
         try {
             // Step 2: get a connection
             Connection con = db.connect();
@@ -36,17 +36,17 @@ public class FlightLogic {
             //med den tilsvarende infoen fra databasen.
             while (results.next()) {
                 flight.setFlightId(results.getInt("flight_ID"));
-                flight.setFlightNumber(results.getInt("flightNumber"));
+             //   flight.setFlightNumber(results.getInt("flightNumber"));
                 flight.setPrice(results.getInt("price"));
-                flight.setFlightDate(results.getString("flightDate"));
-                flight.setTo(results.getString("To"));
-                flight.setFrom(results.getString("From"));
-                flight.setFlightClass(results.getString("flightClass"));
-                flight.setDuration(results.getString("duration"));
+             //   flight.setFlightDate(results.getString("flightDate"));
+             //   flight.setTo(results.getString("To"));
+             //   flight.setFrom(results.getString("From"));
+             //   flight.setFlightClass(results.getString("flightClass"));
+             //   flight.setDuration(results.getString("duration"));
                 flight.setSeatRow(results.getInt("seatRow"));
-                flight.setSeatAmount(results.getInt("seatAmount"));
-                flight.setAirplaneType(results.getString("airplaneType"));
-                flight.setGate(results.getString("gate"));
+             //   flight.setSeatAmount(results.getInt("seatAmount"));
+             //   flight.setAirplaneType(results.getString("airplaneType"));
+             //   flight.setGate(results.getString("gate"));
 
                 //Vi legger til flight i arraylisten flights.
                 flights.add(flight);
@@ -56,12 +56,12 @@ public class FlightLogic {
 
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
-        } finally {
+        }
             // close JDBC objects
             //print ut før skal fungere
             db.close();
             //print ut etter skal ikke fungere
-        }
+
 
         //Når resultset er tomt (arraylisten har blitt fyllt opp) så returnerer vi flights.
         return flights;

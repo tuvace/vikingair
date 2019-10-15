@@ -22,9 +22,7 @@ import servlets.flights.Flight;
      * This servlet establishes a connection to our database.
      * It also contains the functions that send SELECT, UPDATE, DROP queries etc
      */
-    @WebServlet("/dbUtilities")
-    public class dbUtilities extends HttpServlet {
-        private static final long serialVersionUID = 1L;
+    public class dbUtilities {
 
         Connection con;
 
@@ -32,7 +30,7 @@ import servlets.flights.Flight;
             try{
                 Context context = new InitialContext();
 
-                DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/flightbooking/vikingair");
+                DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/Flybooking");
                 con = dataSource.getConnection();
 
 
@@ -50,7 +48,7 @@ import servlets.flights.Flight;
 
             try {
                 con.close();
-            } catch (Exception exc) {
-                exc.printStackTrace();
+            } catch (SQLException exc) {
+                System.out.println(exc);
             }
         }}
