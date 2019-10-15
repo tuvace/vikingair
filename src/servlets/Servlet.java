@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 // In order to preserve low coupling we will sometimes call functions from other servlets.
 // In summary, this servlet calls functions, but it does not define them.
 
-    @WebServlet("/Servlet")
+    @WebServlet("Servlet")
     public class Servlet extends HttpServlet {
         private static final long serialVersionUID = 1L;
 

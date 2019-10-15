@@ -1,8 +1,31 @@
 @charset "UTF-8";
 body {
-    background-image: url("https://images.pexels.com/photos/210199/pexels-photo-210199.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-repeat: no-repeat, repeat;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f9/Raggsteinnuten_buskerud_norway.jpg");
+    background-repeat: no-repeat;
+    background-size: 1800px 900px;
 }
 #mainDiv{
     text-align: center;
+}
+#registerBox {
+    position: relative;
+    border-radius: 15px;
+    background: linear-gradient(white, silver);
+    padding: 10px;
+    width: 200px;
+    height: 440px;
+    margin: auto;
+    border: 6px solid transparent;
+    box-shadow: 0 3px 9px black, inset 0 0 9px white;
+    background-clip: padding-box;
+    font-size: 20px;
+}
+#registerBox::after {
+    position: absolute;
+    top: -6px; bottom: -6px;
+    left: -6px; right: -6px;
+    background: linear-gradient(lightskyblue, white);
+    content: '';
+    z-index: -1;
+    border-radius: 15px;
 }

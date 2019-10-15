@@ -1,16 +1,28 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
-<meta charset="UFT-8">
+  <style>
+    h1 {
+      color: white;
+      text-shadow: 2px 2px 4px black;
+      font-size: 50px;
+    }
+  </style>
+<meta charset="UTF-8">
 <title>FlightRegistration</title>
+<link href="css/flight.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form action="Servlet">
-  Pris: <input type="text" name="price">NOK<br>
+<div style="text-align: center">
+  <h1> Registrer ditt fly</h1>
+</div>
 
-</select><br>
+<form action="Servlet">
+  <p id="flightBox">
+  Pris: <input type="number" name="price"><br>
+
+<br>
 Avgangsdato:
-År:
 <select name="year">
   <option value="2019">2019</option>
   <option value="2020">2020</option>
@@ -19,7 +31,7 @@ Avgangsdato:
   <option value="2023">2023</option>
   <option value="2024">2024</option>
 </select>
- Måned:
+ Mï¿½ned:
 <select name="month">
   <option value="01">Januar</option>
   <option value="02">Februar</option>
@@ -67,56 +79,49 @@ Avgangsdato:
   <option value="29">29</option>
   <option value="30">30</option>
   <option value="31">31</option>
-</select><br>
+</select> <br> <br>
+
  Fra:
 <select name="from">
   <option value="France">Frankrike</option>
   <option value="USA">USA</option>
   <option value="Germany">Tyskland</option>
   <option value="India">India</option>
-</select><br>
+</select><br><br>
 Til:
 <select name="to">
   <option value="Norway">Norge</option>
   <option value="England">England</option>
-  <option value="Italy">Italia</option>
-  <option value="Sweden">Sverige</option>
-</select><br>
-Klasse:
-<select name="class">
-  <option value="true">Business</option>
-  <option value="false">Økonomi</option>
-</select><br>
-Varighet:
- <input type="text" name="duration"><br>
+  <option value="Italy">Italy</option>
+  <option value="Sweden">Sweden</option>
+</select><br><br>
+Duration:
+ <input type="text" name="duration"><br><br>
  Sete mengde:
  <select name="seats">
   <option value="50">50</option>
   <option value="75">75</option>
   <option value="100">100</option>
   <option value="200">200</option>
-</select><br>
+</select><br><br>
 Flymodell:
 <select name="airplaneType">
   <option value="Air Canada Boeing 787-9">Air Canada Boeing 787-9</option>
   <option value="Airbus A380 House Livery">Airbus A380 House Livery</option>
   <option value="Alaska Airlines Boeing 737-700">Alaska Airlines Boeing 737-700</option>
   <option value="Alaska/Horizon Q400">Alaska/Horizon Q400</option>
-</select><br>
+</select><br><br>
 Gate:
- <input type="text" name="gate" maxlength=5><br>
- Bagasje tillatelse:
+ <input type="text" name="gate" maxlength=5><br><br>
+ Baggasje tillatelse:
  <select name="baggage">
   <option value="true">Yes</option>
   <option value="false">No</option>
-</select><br>
+</select><br><br>
  <input type="hidden" name="command" value="NEWFLIGHT">
- <input type="submit" value="Bekreft">
+ <input type="submit" value="Legg til">
+  </p>
 </form>
-
-
-
-
 
 </body>
 </html>
