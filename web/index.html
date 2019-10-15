@@ -1,35 +1,29 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="no">
 <head>
-
-  <meta charset="UTF-8">
-  <title>Viking Airways</title>
-=======
+    <style>
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            font-size: 50px;
+            font-variant: small-caps;
+        }
+        p.small {
+            font-variant: small-caps;
+            font-size: 20px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Viking Airways</title>
 <html lang="en">
-<head>
-
-  <meta charset="UTF-8">
-  <title>Airline Booking</title>
->>>>>>> oleDev
-  <link href="css/index.css" rel="stylesheet" type="text/css">
-</head>
 <body>
 <div style="text-align: center;">
   <div id="mainDiv">
-<<<<<<< HEAD
     <h1>Viking Airways</h1>
 
 <form action="login.html">
       <button> Login </button>
-    </form>
-
-=======
-    <h1>Airline Booking System</h1>
-    <form action="login.html">
-      <button> Login </button>
-    </form>
->>>>>>> oleDev
+    </form> <br>
     <div id="content">
       <div id="rnHolder">
         <form action="Servlet">
@@ -51,42 +45,28 @@
 </form>
 
       <form action="flight">
-        Where are you travelling from:  <input type="text" name="sted">
-        Your destination:   <input type="text" name="webUrl">
+          <p class="small">Where are you travelling from: </p> <input type="text" name="sted">
+          <p class="small">Your destination: </p>  <input type="text" name="webUrl">
 
         <input type="submit" name ="action"   value="Søk">
-
-
-
+          <br>
         <div id="sortHolder">
           <form action="ControllerServlet">
 
             <input type="hidden" name="command" value="FILTER"/>
-
+            <br>
             <label>
               <select  name="priceFilter" size="1">
-
-<<<<<<< HEAD
-              <option id="sortByPrice" value="sortByPrice">Sorter etter pris</option>
-
-              <option value="highToLow">Høyeste til laveste</option>
-              <option value="lowToHigh">Laveste til høyeste</option>
-            </select>
+                <option id="sortByPrice" value="sortByPrice">Sorter etter pris</option>
+                <option value="highToLow">Høyeste til laveste</option>
+                <option value="lowToHigh">Laveste til høyeste</option>
+            </select> <br>
             <select  name="timeFilter" size="1">
-
-                          <option id="sortByTime" value="sortByTime">Sort etter tid</option>
-
-                          <option value="highToLow">Kortest tid</option>
-                          <option value="lowToHigh">Lengst tid</option>
-                        </select>
-=======
-                <option id="sortByPrice" value="sortByPrice">Sort by price</option>
-
-                <option value="highToLow">High to low</option>
-                <option value="lowToHigh">Low to high</option>
-              </select>
+                <option id="sortByTime" value="sortByTime">Sort etter tid</option>
+                <option value="highToLow">Kortest tid</option>
+                <option value="lowToHigh">Lengst tid</option>
+            </select> <br>
             </label>
->>>>>>> oleDev
           </form>
 
 
