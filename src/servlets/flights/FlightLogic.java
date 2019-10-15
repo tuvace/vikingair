@@ -17,7 +17,7 @@ import servlets.customers.Customer;
 public class FlightLogic {
     dbUtilities db;
 
-    public ArrayList<Flight> selectAll() throws Exception {
+    public ArrayList<Flight> selectAll() {
 
         Flight flight = new Flight();
         ArrayList<Flight> flights = new ArrayList<>();
@@ -27,6 +27,7 @@ public class FlightLogic {
         try {
             // Step 2: get a connection
             Connection con = db.connect();
+
 
             myStmt = con.prepareStatement(sql);
 
@@ -42,6 +43,7 @@ public class FlightLogic {
                 flight.setFrom(results.getString("From"));
                 flight.setFlightClass(results.getString("flightClass"));
                 flight.setDuration(results.getString("duration"));
+                flight.setSeatRow(results.getInt("seatRow"));
                 flight.setSeatAmount(results.getInt("seatAmount"));
                 flight.setAirplaneType(results.getString("airplaneType"));
                 flight.setGate(results.getString("gate"));
@@ -56,7 +58,9 @@ public class FlightLogic {
             sqlEx.printStackTrace();
         } finally {
             // close JDBC objects
+            //print ut før skal fungere
             db.close();
+            //print ut etter skal ikke fungere
         }
 
         //Når resultset er tomt (arraylisten har blitt fyllt opp) så returnerer vi flights.

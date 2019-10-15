@@ -17,13 +17,14 @@ import java.io.IOException;
         private String from;
         private String flightClass;
         private String duration;
+        private int seatRow;
         private int seatAmount;
         private String airplaneType;
         private String gate;
 
 
         public Flight(int flightId, int flightNumber, int price, String flightDate, String to, String from,
-                      String flightClass, String duration, int seatAmount, String airplaneType, String gate) {
+                      String flightClass, String duration, int seatRow, int seatAmount, String airplaneType, String gate) {
             super();
             this.flightId = flightId;
             this.flightNumber = flightNumber;
@@ -33,6 +34,7 @@ import java.io.IOException;
             this.from = from;
             this.flightClass = flightClass;
             this.duration = duration;
+            this.seatRow = seatRow;
             this.seatAmount = seatAmount;
             this.airplaneType = airplaneType;
             this.gate = gate;
@@ -93,6 +95,8 @@ import java.io.IOException;
         public void setDuration(String duration) {
             this.duration = duration;
         }
+        public int getSeatRow() { return seatRow;}
+        public void setSeatRow(int seatRow) { this.seatRow = seatRow;}
         public int getSeatAmount() {
             return seatAmount;
         }

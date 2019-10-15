@@ -32,7 +32,7 @@ import servlets.flights.Flight;
             try{
                 Context context = new InitialContext();
 
-                DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/flightbooking");
+                DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/flightbooking/vikingair");
                 con = dataSource.getConnection();
 
 
