@@ -16,6 +16,7 @@ import servlets.customers.Customer;
 
 public class FlightLogic {
     dbUtilities db;
+
     public ArrayList<Flight> selectAll() throws Exception {
 
         Flight flight = new Flight();
@@ -32,7 +33,7 @@ public class FlightLogic {
             ResultSet results = myStmt.executeQuery();
             //For hvert element i results (hver rad i databasen) så lager vi et nytt flight objekt og fyller ut feltene
             //med den tilsvarende infoen fra databasen.
-            while(results.next()){
+            while (results.next()) {
                 flight.setFlightId(results.getInt("flight_ID"));
                 flight.setFlightNumber(results.getInt("flightNumber"));
                 flight.setPrice(results.getInt("price"));
@@ -51,10 +52,9 @@ public class FlightLogic {
             }
 
 
-        }catch(SQLException sqlEx){
+        } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
-        }
-        finally {
+        } finally {
             // close JDBC objects
             db.close();
         }
@@ -63,11 +63,12 @@ public class FlightLogic {
         return flights;
 
     }
+}
 
-    // SE GJENNOM
 
+/**
+ SE GJENNOM
 
-<<<<<<< HEAD
         public Flight getFlightDetail (String flight_ID) throws Exception {
             Flight theFlight = null;
 
@@ -102,7 +103,7 @@ public class FlightLogic {
                     int seatRow = myRs.getInt("seatRow");
                     int seatNumber = myRs.getInt("seatNumber");
                     String gate = myRs.getString("gate");
-                    */
+
                 }
 
                 return Flight;
@@ -296,7 +297,7 @@ public class FlightLogic {
 
                     // add it to the list of flights
                     flights.add(tempFlight);
-                 */
+
                 }
 
                 return flights;
@@ -307,7 +308,7 @@ public class FlightLogic {
 
         }
     }
-=======
+
     public Flight getFlightDetail (String flight_ID) throws Exception {
         Flight theFlight = new Flight();
 
@@ -542,7 +543,7 @@ public class FlightLogic {
 
                  // add it to the list of flights
                  flights.add(tempFlight);
-                 */
+
             }
 
             return flights;
@@ -553,4 +554,4 @@ public class FlightLogic {
 
     }
 }
->>>>>>> TuvaDev
+*/

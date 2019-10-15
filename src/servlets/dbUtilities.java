@@ -1,4 +1,4 @@
-package dbcode;
+//package dbcode;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,7 +22,10 @@ import servlets.flights.Flight;
  * This servlet establishes a connection to our database.
  * It also contains the functions that send SELECT, UPDATE, DROP queries etc
  */
-@WebServlet("/dbUtilities")
+
+/**
+ *
+//@WebServlet("/dbUtilities")
 public class dbUtilities extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -55,3 +58,4 @@ public class dbUtilities extends HttpServlet {
         }
     }
 }
+ */
