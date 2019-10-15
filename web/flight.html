@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    h1 {
+      color: white;
+      text-shadow: 2px 2px 4px black;
+      font-size: 50px;
+    }
+  </style>
 <meta charset="UTF-8">
 <title>FlightRegistration</title>
 <link href="css/flight.css" rel="stylesheet" type="text/css">
@@ -11,7 +18,7 @@
 </div>
 
 <form action="Servlet">
-  <p id="flightbox">
+  <p id="flightBox">
   Pris: <input type="number" name="price"><br>
 
 <br>
@@ -87,11 +94,6 @@ Til:
   <option value="Italy">Italy</option>
   <option value="Sweden">Sweden</option>
 </select><br><br>
-Klasse:
-<select name="class">
-  <option value="true">Business</option>
-  <option value="false">Økonomi</option>
-</select><br><br>
 Duration:
  <input type="text" name="duration"><br><br>
  Sete mengde:
@@ -116,7 +118,7 @@ Gate:
   <option value="false">No</option>
 </select><br><br>
  <input type="hidden" name="command" value="NEWFLIGHT">
- <input type="submit" value="Submit">
+ <input type="submit" value="Legg til">
   </p>
 </form>
 
