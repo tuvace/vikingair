@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import java.sql.SQLException;
 import servlets.PNR;
 import servlets.customers.Customer;
+import servlets.flights.Flight;
 
 public class FlightLogic {
     dbUtilities db = new dbUtilities();
@@ -36,17 +37,15 @@ public class FlightLogic {
             //med den tilsvarende infoen fra databasen.
             while (results.next()) {
                 flight.setFlightId(results.getInt("flight_ID"));
-             //   flight.setFlightNumber(results.getInt("flightNumber"));
+                flight.setFlightDate(results.getDate("flightDate"));
                 flight.setPrice(results.getInt("price"));
-             //   flight.setFlightDate(results.getString("flightDate"));
-             //   flight.setTo(results.getString("To"));
-             //   flight.setFrom(results.getString("From"));
-             //   flight.setFlightClass(results.getString("flightClass"));
-             //   flight.setDuration(results.getString("duration"));
+                flight.setFlightTo(results.getString("flightTo"));
+                flight.setFlightFrom(results.getString("flightFrom"));
+                flight.setAirplaneType(results.getString("airplaneType"));
+                flight.setDuration(results.getInt("duration"));
+                flight.setSeatAmount(results.getInt("seatAmount"));
                 flight.setSeatRow(results.getInt("seatRow"));
-             //   flight.setSeatAmount(results.getInt("seatAmount"));
-             //   flight.setAirplaneType(results.getString("airplaneType"));
-             //   flight.setGate(results.getString("gate"));
+                flight.setSeatLetter(results.getString("seatLetter"));
 
                 //Vi legger til flight i arraylisten flights.
                 flights.add(flight);
@@ -67,11 +66,10 @@ public class FlightLogic {
         return flights;
 
     }
-}
 
 
-/**
- SE GJENNOM
+
+ //SE GJENNOM
 
         public Flight getFlightDetail (String flight_ID) throws Exception {
             Flight theFlight = null;
@@ -97,27 +95,30 @@ public class FlightLogic {
                 while (myRs.next()) {
 
                     // Defining the variables
-                   /** int flight_ID = myRs.getInt("flight_ID");
+                    int flightId = myRs.getInt("flight_ID");
+                    Date flightDate = myRs.getDate("flightDate");
                     int price = myRs.getInt("price");
-                    String departure = myRs.getString("departure");
-                    String arrival = myRs.getString("arrival");
-                    String from = myRs.getString("from");
-                    String to = myRs.getString("to");
+                    String flightFrom = myRs.getString("from");
+                    String flightTo = myRs.getString("to");
+                    String airplaneType = myRs.getString("airplaneType");
+                    int duration = myRs.getInt("duration");
                     //Boolean business = myRs.getBoolean("business_class");
+                    int seatAmount = myRs.getInt("seatAmount");
                     int seatRow = myRs.getInt("seatRow");
-                    int seatNumber = myRs.getInt("seatNumber");
-                    String gate = myRs.getString("gate");
-
+                    String seatLetter = myRs.getString("seatLetter");
                 }
 
-                return Flight;
-            } finally {
-                // close JDBC objects
-                close(myConn, myStmt, myRs);
-            }
-        }
+                } finally {
+                    // close JDBC objects
+                    close(myConn, myStmt, myRs);
+                }
+            return Flight;
 
-        public boolean bookFlight (String flightNumber){
+
+            }
+
+
+        public boolean bookFlight() {
             // Get flightID
             // Get costumerID
             return false;
@@ -295,7 +296,7 @@ public class FlightLogic {
 
 
                     // create new flight object
-                /**    Flight tempFlight = new Flight(flightID, price,
+                    Flight tempFlight = new Flight(flightID, price,
                             airline, date, from, to, revenue,
                             flightClass, duration, seatAmount, visibleSeatAmount, airplaneType, gate);
 
@@ -541,7 +542,7 @@ public class FlightLogic {
 
 
                 // create new flight object
-                /**    Flight tempFlight = new Flight(flightID, price,
+                 Flight tempFlight = new Flight(flightID, price,
                  airline, date, from, to, revenue,
                  flightClass, duration, seatAmount, visibleSeatAmount, airplaneType, gate);
 
@@ -557,5 +558,3 @@ public class FlightLogic {
         }
 
     }
-}
-*/
