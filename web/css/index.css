@@ -1,53 +1,36 @@
 @charset "UTF-8";
-#mainDiv{
-    text-align: center;
+body {
+    background-image: url("https://www.goodfreephotos.com/albums/other-landscapes/ocean-with-rock-formation-under-the-sky.jpg");
+    background-repeat: no-repeat;
+    background-size: 1800px 900px;
 }
-#content{
-    width: 1200px;
-    margin: 0 auto;
-    background: #e6f2ff;
-    color: #000;
-    padding: 100px;
-}
-#sortHolder{
-    width: 1000px;
-    margin: 0 auto;
-    color: #000;
-    padding: 50px;
+#søkBox {
     position: relative;
+    border-radius: 15px;
+    background: linear-gradient(white, silver);
+    padding: 10px;
+    width: 550px;
+    height: 40px;
+    margin: auto;
+    border: 6px solid transparent;
+    box-shadow: 0 3px 9px black, inset 0 0 9px white;
+    background-clip: padding-box;
+    font-size: 20px;
+    font-variant: small-caps;
 }
-#flightHolderdiv{
-    width: 1000px;
-    height:600px;
-    margin: 0 auto;
-    background-color: rgba(230, 242, 255);
-    color: #000;
-    padding-top:20px;
-    text-align: center;
-    overflow: auto;
+#søkBox::after {
+    position: absolute;
+    top: -6px; bottom: -6px;
+    left: -6px; right: -6px;
+    background: linear-gradient(pink, lightskyblue);
+    content: '';
+    z-index: -1;
+    border-radius: 15px;
 }
-select{
-    width: 200px !important;
-    min-width: 200px;
-    max-width: 200px;
-    margin: 0 auto;
-}
-.flight {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    width: 100%-40px;
-    height: 160px;
+#skriftStørrelse{
+    font-size: 15px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
     position: relative;
-    padding: 20px;
-    overflow: auto;
-    border: 1px solid;
-    font: normal 16px/1 "Times New Roman", Times, serif;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    background: rgba(255,255,255,1);
-}
-
-.viewButton {
-    color:pink;
+    font-variant: small-caps;
 }

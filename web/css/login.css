@@ -14,7 +14,7 @@ body {
     background: linear-gradient(white, silver);
     padding: 10px;
     width: 200px;
-    height: 170px;
+    height: 190px;
     margin: auto;
     border: 6px solid transparent;
     box-shadow: 0 3px 9px black, inset 0 0 9px white;
@@ -37,7 +37,7 @@ body {
     background: linear-gradient(white, silver);
     padding: 10px;
     width: 200px;
-    height: 55px;
+    height: 100px;
     margin: auto;
     border: 6px solid transparent;
     box-shadow: 0 3px 9px black, inset 0 0 9px white;
