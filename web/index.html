@@ -49,84 +49,29 @@
     </style>
     <meta charset="UTF-8">
     <title>Viking Airways</title>
-        <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
 <body>
 <div style="text-align: center;">
-<form action="index.html">
-    <button class="button button2"> Viking Airways </button>
-</form>
-<br><br><br>
-<form action="login.html">
-      <button class="button button3"> Logg inn </button>
-</form> <br>
+    <form action="index.html">
+        <button class="button button2"> Viking Airways </button>
+    </form>
+    <br><br><br>
+    <form action="login.html">
+        <button class="button button3"> Logg inn </button>
+    </form> <br>
     <form action="/FlightServlet">
         <p id="søkBox">
-        <input type="text" placeholder="Til*" name="to" >
-        <input type="text" placeholder="Fra*" name="from">
-        <input type="date" placeholder="Dato*" name="date">
+            <input type="text" placeholder="Til*" name="to" >
+            <input type="text" placeholder="Fra*" name="from">
+            <input type="date" placeholder="Dato*" name="date">
         <form action="results">
             <button class="button"> Søk </button>
         </form>
-<<<<<<< HEAD
         <p id="skriftStørrelse">
-        *Påkrevd informasjon
+            *Påkrevd informasjon
         </p>
         </p>
     </form>
-=======
-
-
-      <form action="flight">
-          <p class="small">Where are you travelling from: </p> <input type="text" name="sted">
-          <p class="small">Your destination: </p>  <input type="text" name="webUrl">
-
-        <input type="submit" name ="action"   value="Søk">
-          <br>
-        <div id="sortHolder">
-          <form action="ControllerServlet">
-
-            <input type="hidden" name="command" value="FILTER"/>
-            <br>
-            <label>
-              <select  name="priceFilter" size="1">
-                <option id="sortByPrice" value="sortByPrice">Sorter etter pris</option>
-                <option value="highToLow">Høyeste til laveste</option>
-                <option value="lowToHigh">Laveste til høyeste</option>
-            </select> <br>
-            <select  name="timeFilter" size="1">
-                <option id="sortByTime" value="sortByTime">Sort etter tid</option>
-                <option value="highToLow">Kortest tid</option>
-                <option value="lowToHigh">Lengst tid</option>
-            </select> <br>
-            </label>
-          </form>
-
-
-
-          <input type="Submit" value="Filtrer"/>
-
-
-        </div>
-      </form>
-
-      <div id="flightHolder">
-
-
-        <div class="flight">
-
-          <br>
-
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <form>
-
-  </form>
->>>>>>> master
 </div>
 </body>
 </html>
