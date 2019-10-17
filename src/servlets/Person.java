@@ -1,14 +1,11 @@
 package servlets;
 
-import sun.util.calendar.LocalGregorianCalendar;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet(name = "Person")
 public class Person extends HttpServlet {
@@ -20,16 +17,13 @@ public class Person extends HttpServlet {
 
     }
 
-// Personalia
+// navn, tlf, addresse
 
-        private String firstName;
-        private String middleName;
-        private String lastName;
-        private static Date DOB;
+        private String Name;
         private int phoneNumber;
-        private String address;}
+        private String address;
 
-        /**public Person(String n, int pn, String ad) {
+        public Person(String n, int pn, String ad) {
             Name = n;
             phoneNumber = pn;
             address = ad;
@@ -60,4 +54,4 @@ public class Person extends HttpServlet {
             return address;
         }
     }
-*/
+

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import servlets.PNR;
 import servlets.customers.Customer;
 
-/**
+
 public class CustomerLogic {
     dbUtilities db = new dbUtilities();
 
@@ -69,4 +69,3 @@ public class CustomerLogic {
         return customers;
     }
 }
-*/
