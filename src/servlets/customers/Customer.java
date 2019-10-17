@@ -18,68 +18,33 @@ public class Customer extends HttpServlet {
     }
 
         private int customerID;
-        private String firstName;
-        private String middleName;
-        private String lastName;
-        private String customerAddress;
-        private int disabilities;
+        private String name;
+        private String gender;
         private String email;
 
-
-        public Customer() {
+        public Customer(int customerID, String name, String gender, String email) {
             super();
-            this.email = email;
+            this.name = name;
+            this.gender = gender;
             this.customerID = customerID;
-            this.firstName = firstName;
-            this.middleName = middleName;
-            this.lastName = lastName;
-            this.customerAddress = customerAddress;
-            this.disabilities = disabilities;
-
-
+            this.email = email;
         }
 
-
-        public String fullName(String fullName) {
-            fullName = (firstName+lastName);
-            return fullName;
+        public String getName() {
+            return name;
         }
-
-        public String setFirstName(String firstName) {
-            return firstName;
+        public void setName(String name) {
+            this.name = name;
         }
-
-        public String setLastName(String lastName) {
-            return lastName;
-        }
-
-        public String setMiddleName (String middleName) {
-            return middleName;
-        }
-
-        public String setCustomerAddress (String customerAddress) {
-            return customerAddress;
-        }
-
-        public int setDisabilities (int disabilities) {
-            return disabilities;
-        }
-
-
-
-
         public int getCustomerID() {
             return customerID;
         }
-
         public void setCustomerID(int customerID) {
             this.customerID = customerID;
         }
-
         public String getEmail() {
             return email;
         }
-
         public void setEmail(String email) {
             this.email = email;
         }
