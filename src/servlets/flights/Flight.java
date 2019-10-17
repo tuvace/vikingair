@@ -6,34 +6,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.format.DateTimeFormatter;
 
 
-    public class Flight {
+public class Flight {
         private int flightId;
+        private Date flightDate;
         private int price;
-        private String flightDate;
         private String flightTo;
         private String flightFrom;
-        private int duration;
-        private int seatRow;
-        private int seatAmount;
-        private String seatLetter;
         private String airplaneType;
+        private int duration;
+        private int seatAmount;
+        private int seatRow;
+        private String seatLetter;
 
 
-        public Flight(int flightId, int price, String flightDate, String flightTo, String flightFrom,
-                      int duration, int seatRow, int seatAmount, String seatLetter, String airplaneType) {
+
+        public Flight(int flightId, Date flightDate, int price, String flightTo, String flightFrom, String airplaneType,
+                      int duration, int seatAmount, int seatRow, String seatLetter) {
             super();
             this.flightId = flightId;
-            this.price = price;
             this.flightDate = flightDate;
+            this.price = price;
             this.flightTo = flightTo;
             this.flightFrom = flightFrom;
-            this.duration = duration;
-            this.seatRow = seatRow;
-            this.seatAmount = seatAmount;
-            this.seatLetter = seatLetter;
             this.airplaneType = airplaneType;
+            this.duration = duration;
+            this.seatAmount = seatAmount;
+            this.seatRow = seatRow;
+            this.seatLetter = seatLetter;
         }
 
         public Flight(){
@@ -44,22 +48,20 @@ import java.io.IOException;
         public int getFlightId() {
             return flightId;
         }
-
         public void setFlightId(int flightId) {
             this.flightId = flightId;
         }
-
+        public Date getFlightDate() {
+        return flightDate;
+    }
+        public void setFlightDate(Date flightDate) {
+        this.flightDate = flightDate;
+    }
         public int getPrice() {
             return price;
         }
         public void setPrice(int price) {
             this.price = price;
-        }
-        public String getFlightDate() {
-            return flightDate;
-        }
-        public void setFlightDate(String flightDate) {
-            this.flightDate = flightDate;
         }
         public String getFlightTo() {
             return flightTo;
@@ -73,36 +75,20 @@ import java.io.IOException;
         public void setFlightFrom(String flightFrom) {
             this.flightFrom = flightFrom;
         }
+        public String getAirplaneType() { return airplaneType; }
+        public void setAirplaneType(String airplaneType) { this.airplaneType = airplaneType; }
         public int getDuration() {
             return duration;
         }
         public void setDuration(int duration) {
             this.duration = duration;
         }
-        public int getSeatRow() {
-            return seatRow;
-        }
-        public void setSeatRow(int seatRow) {
-            this.seatRow = seatRow;
-        }
-        public int getSeatAmount() {
-            return seatAmount;
-        }
-        public void setSeatAmount(int seatAmount) {
-            this.seatAmount = seatAmount;
-        }
-        public String getSeatLetter() {
-            return seatLetter;
-        }
-        public void setSeatLetter(String seatLetter){
-            this.seatLetter = seatLetter;
-        }
-        public String getAirplaneType() {
-            return airplaneType;
-        }
-        public void setAirplaneType(String airplaneType) {
-            this.airplaneType = airplaneType;
-        }
+        public int getSeatAmount() { return seatAmount; }
+        public void setSeatAmount(int seatAmount) { this.seatAmount = seatAmount; }
+        public int getSeatRow() { return seatRow; }
+        public void setSeatRow(int seatRow) { this.seatRow = seatRow; }
+        public String getSeatLetter() { return seatLetter; }
+        public void setSeatLetter(String seatLetter){ this.seatLetter = seatLetter; }
 
         @Override
         public String toString() {
