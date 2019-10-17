@@ -18,13 +18,17 @@ import servlets.customers.Customer;
 public class CustomerLogic {
     dbUtilities db = new dbUtilities();
 
-    public ArrayList<Customer> selectAll(){
-        PreparedStatement myStmt;
+    public ArrayList<Customer> selectAll() {
+
         //  Creating a customer
         Customer customer = new Customer();
 
         //  Creating the Arraylist to be  containing customers
         ArrayList<Customer> customers = new ArrayList<>();
+
+        PreparedStatement myStmt;
+
+
 
         // Step 1: Create sql statements
         String sql = "SELECT* FROM Customer LIMIT 5";
