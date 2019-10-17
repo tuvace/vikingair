@@ -10,34 +10,30 @@ import java.io.IOException;
 
     public class Flight {
         private int flightId;
-        private int flightNumber;
         private int price;
         private String flightDate;
-        private String to;
-        private String from;
-        private String flightClass;
-        private String duration;
+        private String flightTo;
+        private String flightFrom;
+        private int duration;
         private int seatRow;
         private int seatAmount;
+        private String seatLetter;
         private String airplaneType;
-        private String gate;
 
 
-        public Flight(int flightId, int flightNumber, int price, String flightDate, String to, String from,
-                      String flightClass, String duration, int seatRow, int seatAmount, String airplaneType, String gate) {
+        public Flight(int flightId, int price, String flightDate, String flightTo, String flightFrom,
+                      int duration, int seatRow, int seatAmount, String seatLetter, String airplaneType) {
             super();
             this.flightId = flightId;
-            this.flightNumber = flightNumber;
             this.price = price;
             this.flightDate = flightDate;
-            this.to = to;
-            this.from = from;
-            this.flightClass = flightClass;
+            this.flightTo = flightTo;
+            this.flightFrom = flightFrom;
             this.duration = duration;
             this.seatRow = seatRow;
             this.seatAmount = seatAmount;
+            this.seatLetter = seatLetter;
             this.airplaneType = airplaneType;
-            this.gate = gate;
         }
 
         public Flight(){
@@ -53,12 +49,6 @@ import java.io.IOException;
             this.flightId = flightId;
         }
 
-        public int getFlightNumber() {
-            return flightNumber;
-        }
-        public void setFlightNumber(int flightNumber) {
-            this.flightNumber = flightNumber;
-        }
         public int getPrice() {
             return price;
         }
@@ -71,37 +61,41 @@ import java.io.IOException;
         public void setFlightDate(String flightDate) {
             this.flightDate = flightDate;
         }
-        public String getTo() {
-            return to;
+        public String getFlightTo() {
+            return flightTo;
         }
-        public void setTo(String to) {
-            this.to = to;
+        public void setFlightTo(String flightTo) {
+            this.flightTo = flightTo;
         }
-        public String getFrom() {
-            return from;
+        public String getFlightFrom() {
+            return flightFrom;
         }
-        public void setFrom(String from) {
-            this.from = from;
+        public void setFlightFrom(String flightFrom) {
+            this.flightFrom = flightFrom;
         }
-        public String getFlightClass() {
-            return flightClass;
-        }
-        public void setFlightClass(String flightClass) {
-            this.flightClass = flightClass;
-        }
-        public String getDuration() {
+        public int getDuration() {
             return duration;
         }
-        public void setDuration(String duration) {
+        public void setDuration(int duration) {
             this.duration = duration;
         }
-        public int getSeatRow() { return seatRow;}
-        public void setSeatRow(int seatRow) { this.seatRow = seatRow;}
+        public int getSeatRow() {
+            return seatRow;
+        }
+        public void setSeatRow(int seatRow) {
+            this.seatRow = seatRow;
+        }
         public int getSeatAmount() {
             return seatAmount;
         }
         public void setSeatAmount(int seatAmount) {
             this.seatAmount = seatAmount;
+        }
+        public String getSeatLetter() {
+            return seatLetter;
+        }
+        public void setSeatLetter(String seatLetter){
+            this.seatLetter = seatLetter;
         }
         public String getAirplaneType() {
             return airplaneType;
@@ -109,28 +103,20 @@ import java.io.IOException;
         public void setAirplaneType(String airplaneType) {
             this.airplaneType = airplaneType;
         }
-        public String getGate() {
-            return gate;
-        }
-        public void setGate(String gate) {
-            this.gate = gate;
-        }
 
         @Override
         public String toString() {
             return "Flight{" +
                     "flightId=" + flightId +
-                    ", flightNumber=" + flightNumber +
                     ", price=" + price +
                     ", flightDate='" + flightDate + '\'' +
-                    ", to='" + to + '\'' +
-                    ", from='" + from + '\'' +
-                    ", flightClass='" + flightClass + '\'' +
+                    ", flightTo='" + flightTo + '\'' +
+                    ", flightFrom='" + flightFrom + '\'' +
                     ", duration='" + duration + '\'' +
                     ", seatRow=" + seatRow +
                     ", seatAmount=" + seatAmount +
+                    ", seatLetter='" + seatLetter + '\'' +
                     ", airplaneType='" + airplaneType + '\'' +
-                    ", gate='" + gate + '\'' +
                     '}';
         }
     }

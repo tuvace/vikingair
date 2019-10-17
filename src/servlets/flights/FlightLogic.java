@@ -36,17 +36,15 @@ public class FlightLogic {
             //med den tilsvarende infoen fra databasen.
             while (results.next()) {
                 flight.setFlightId(results.getInt("flight_ID"));
-             //   flight.setFlightNumber(results.getInt("flightNumber"));
                 flight.setPrice(results.getInt("price"));
-             //   flight.setFlightDate(results.getString("flightDate"));
-             //   flight.setTo(results.getString("To"));
-             //   flight.setFrom(results.getString("From"));
-             //   flight.setFlightClass(results.getString("flightClass"));
-             //   flight.setDuration(results.getString("duration"));
+                flight.setFlightDate(results.getString("flightDate"));
+                flight.setFlightTo(results.getString("flightTo"));
+                flight.setFlightFrom(results.getString("flightFrom"));
+                flight.setDuration(results.getInt("duration"));
                 flight.setSeatRow(results.getInt("seatRow"));
-             //   flight.setSeatAmount(results.getInt("seatAmount"));
-             //   flight.setAirplaneType(results.getString("airplaneType"));
-             //   flight.setGate(results.getString("gate"));
+                flight.setSeatAmount(results.getInt("seatAmount"));
+                flight.setSeatLetter(results.getString("seatLetter"));
+                flight.setAirplaneType(results.getString("airplaneType"));
 
                 //Vi legger til flight i arraylisten flights.
                 flights.add(flight);
