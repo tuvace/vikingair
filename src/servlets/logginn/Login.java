@@ -1,4 +1,4 @@
-package servlets.customers;
+package servlets.logginn;
 
 import java.io.Serializable;
 import java.util.Scanner;
