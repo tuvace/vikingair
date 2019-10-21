@@ -1,3 +1,5 @@
+package servlets.flights;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +10,8 @@ import dbcode.dbUtilities;
 import servlets.PNR;
 import servlets.customers.Customer;
 import servlets.flights.Flight;
-
+import javax.sql.DataSource;
+import java.sql.*;
 
 
 public class FlightLogic {
@@ -59,14 +62,14 @@ public class FlightLogic {
 
 
         //Når resultset er tomt (arraylisten har blitt fyllt opp) så returnerer vi flights.
-        return flights;
+          return flights;
 
-    }
+    }}
 
 
 
     //SE GJENNOM
-
+/**
     public Flight getFlightDetail (String flight_ID) throws Exception {
         Flight theFlight = null;
 
@@ -80,7 +83,7 @@ public class FlightLogic {
 
             System.out.println("getFlight is called.");
             // Step 2: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             myStmt = myConn.createStatement();
 
@@ -106,11 +109,16 @@ public class FlightLogic {
 
         } finally {
             // close JDBC objects
-            close(myConn, myStmt, myRs);
-        }
+            public final void close_single(myConn, myStmt, myRs);
+            {
+                try
+                {
+                    if (myConn != null && !myConn.isClosed()) {
+                        myConn.close();
+                    }
         return Flight;
 
-
+//HER?
     }
 
 
@@ -131,7 +139,7 @@ public class FlightLogic {
         try {
             System.out.println("getFlight is called.");
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             // Step 2: create sql statement
             String sql = "SELECT * FROM pnr WHERE rn=" + RN;
@@ -149,21 +157,20 @@ public class FlightLogic {
                 int customerID = myRs.getInt("customerID");
                 int flightID = myRs.getInt("flightID");
                 String seatNumber = myRs.getString("seatNumber");
-                String specialNeeds = myRs.getString("specialNeeds");
 
                 // create new PNR object
                 thePNR = new PNR(rn, customerID,
-                        flightID, seatNumber, specialNeeds);
+                        flightID, seatNumber);
 
-                System.out.println("PNR:" + rn + customerID + flightID + seatNumber + specialNeeds);
+                System.out.println("PNR:" + rn + customerID + flightID + seatNumber);
             }
 
             return thePNR;
         } finally {
             // close JDBC objects
-            close(myConn, myStmt, myRs);
-        }
-    }
+         //   close(myConn, myStmt, myRs);
+
+
     public Customer getCustomer ( int CID) throws Exception {
         Customer theCustomer = null;
 
@@ -174,7 +181,7 @@ public class FlightLogic {
         try {
             System.out.println("getFlight is called.");
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             // Step 2: create sql statement
             String sql = "SELECT * FROM customer WHERE customerID=" + CID;
@@ -213,7 +220,7 @@ public class FlightLogic {
 
         try {
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             st = myConn.prepareStatement("insert into customer(name, gender, email) values(?, ?, ?)");
 
@@ -259,7 +266,7 @@ public class FlightLogic {
         try {
             System.out.println("Filtering flights as requested.");
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             // Step 2: create sql statement
             String sql = querryString;
@@ -283,9 +290,7 @@ public class FlightLogic {
                 Boolean business = myRs.getBoolean("business_class");
                 String duration = myRs.getString("duration");
                 int seatAmount = myRs.getInt("seat_amount");
-                String visibleSeatAmount = VisibleSeatAmount(seatAmount);
                 String airplaneType = myRs.getString("airplane_type");
-                String gate = myRs.getString("gate");
 
                 //very fancy code below
                 String flightClass = business ? "Business" : "Economy";
@@ -294,7 +299,7 @@ public class FlightLogic {
                 // create new flight object
                 Flight tempFlight = new Flight(flightID, price,
                         airline, date, from, to, revenue,
-                        flightClass, duration, seatAmount, visibleSeatAmount, airplaneType, gate);
+                        flightClass, duration, seatAmount, airplaneType);
 
                 // add it to the list of flights
                 flights.add(tempFlight);
@@ -330,7 +335,7 @@ public class FlightLogic {
             System.out.println("getFlight is called.");
 
             // Step 2: get a connection
-            con = dataSource.getConnection();
+            con = DataSource.getConnection();
             myStmt = con.createStatement();
 
             // Step 3: execute query
@@ -349,7 +354,6 @@ public class FlightLogic {
                 //Boolean business = myRs.getBoolean("business_class");
                 int seatRow = results.getInt("seatRow");
                 int seatNumber = results.getInt("seatNumber");
-                String gate = results.getString("gate");
 
             }
 
@@ -377,7 +381,7 @@ public class FlightLogic {
         try {
             System.out.println("getFlight is called.");
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             // Step 2: create sql statement
             String sql = "SELECT * FROM pnr WHERE rn=" + RN;
@@ -420,7 +424,7 @@ public class FlightLogic {
         try {
             System.out.println("getFlight is called.");
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             // Step 2: create sql statement
             String sql = "SELECT * FROM customer WHERE customerID=" + CID;
@@ -459,7 +463,7 @@ public class FlightLogic {
 
         try {
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             st = myConn.prepareStatement("insert into customer(name, gender, email) values(?, ?, ?)");
 
@@ -505,7 +509,7 @@ public class FlightLogic {
         try {
             System.out.println("Filtering flights as requested.");
             // Step 1: get a connection
-            myConn = dataSource.getConnection();
+            myConn = DataSource.getConnection();
 
             // Step 2: create sql statement
             String sql = querryString;
@@ -529,9 +533,7 @@ public class FlightLogic {
                 Boolean business = myRs.getBoolean("business_class");
                 String duration = myRs.getString("duration");
                 int seatAmount = myRs.getInt("seat_amount");
-                String visibleSeatAmount = VisibleSeatAmount(seatAmount);
                 String airplaneType = myRs.getString("airplane_type");
-                String gate = myRs.getString("gate");
 
                 //very fancy code below
                 String flightClass = business ? "Business" : "Economy";
@@ -540,7 +542,7 @@ public class FlightLogic {
                 // create new flight object
                 Flight tempFlight = new Flight(flightID, price,
                         airline, date, from, to, revenue,
-                        flightClass, duration, seatAmount, visibleSeatAmount, airplaneType, gate);
+                        flightClass, duration, seatAmount, airplaneType);
 
                 // add it to the list of flights
                 flights.add(tempFlight);
@@ -554,3 +556,5 @@ public class FlightLogic {
         }
 
     }
+}
+ */

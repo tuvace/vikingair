@@ -21,7 +21,6 @@ public class Flight {
     private String seatLetter;
 
 
-
     public Flight(int flightId, Date flightDate, int price, String flightTo, String flightFrom, String airplaneType,
                   int duration, int seatAmount, int seatRow, String seatLetter) {
         super();
@@ -37,7 +36,7 @@ public class Flight {
         this.seatLetter = seatLetter;
     }
 
-    public Flight(){
+    public Flight() {
 
     }
     // Getters and Setters
@@ -45,47 +44,96 @@ public class Flight {
     public int getFlightId() {
         return flightId;
     }
+
     public void setFlightId(int flightId) {
         this.flightId = flightId;
     }
+
     public Date getFlightDate() {
         return flightDate;
     }
+
     public void setFlightDate(Date flightDate) {
         this.flightDate = flightDate;
     }
+
     public int getPrice() {
         return price;
     }
+
     public void setPrice(int price) {
         this.price = price;
     }
+
     public String getFlightTo() {
         return flightTo;
     }
+
     public void setFlightTo(String flightTo) {
         this.flightTo = flightTo;
     }
+
     public String getFlightFrom() {
         return flightFrom;
     }
+
     public void setFlightFrom(String flightFrom) {
         this.flightFrom = flightFrom;
     }
-    public String getAirplaneType() { return airplaneType; }
-    public void setAirplaneType(String airplaneType) { this.airplaneType = airplaneType; }
+
+    public String getAirplaneType() {
+        return airplaneType;
+    }
+
+    public void setAirplaneType(String airplaneType) {
+        this.airplaneType = airplaneType;
+    }
+
     public int getDuration() {
         return duration;
     }
+
     public void setDuration(int duration) {
         this.duration = duration;
     }
-    public int getSeatAmount() { return seatAmount; }
-    public void setSeatAmount(int seatAmount) { this.seatAmount = seatAmount; }
-    public int getSeatRow() { return seatRow; }
-    public void setSeatRow(int seatRow) { this.seatRow = seatRow; }
-    public String getSeatLetter() { return seatLetter; }
-    public void setSeatLetter(String seatLetter){ this.seatLetter = seatLetter; }
+
+    public int getSeatAmount() {
+        return seatAmount;
+    }
+
+    public void setSeatAmount(int seatAmount) {
+        this.seatAmount = seatAmount;
+    }
+
+    public int getSeatRow() {
+        return seatRow;
+    }
+
+    public void setSeatRow(int seatRow) {
+        this.seatRow = seatRow;
+    }
+
+    public String getSeatLetter() {
+        return seatLetter;
+    }
+
+    public void setSeatLetter(String seatLetter) {
+        this.seatLetter = seatLetter;
+    }
 
     @Override
     public String toString() {
+        return "Flight{" +
+                "flightId=" + flightId +
+                ", flightDate=" + flightDate +
+                ", price=" + price +
+                ", flightTo='" + flightTo + '\'' +
+                ", flightFrom='" + flightFrom + '\'' +
+                ", airplaneType='" + airplaneType + '\'' +
+                ", duration=" + duration +
+                ", seatAmount=" + seatAmount +
+                ", seatRow=" + seatRow +
+                ", seatLetter='" + seatLetter + '\'' +
+                '}';
+    }
+}
