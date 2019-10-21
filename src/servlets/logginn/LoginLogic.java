@@ -1,13 +1,12 @@
-package servlets.customers;
+package servlets.logginn;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import servlets.customers.Login;
 
-    public class LoginLogic {
+public class LoginLogic {
 
         public boolean validate(Login login) throws ClassNotFoundException {
             boolean status = false;
