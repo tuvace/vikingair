@@ -27,6 +27,7 @@
             cursor: pointer;
             box-shadow: 2px 2px 4px black;
             text-shadow: 2px 2px 2px black;
+            position: center ;
         }
         .button2 {
             background-color: lightskyblue;
@@ -44,6 +45,10 @@
             font-size: 30px;
             box-shadow: 2px 2px 4px black;
             text-shadow: 2px 2px 4px black;
+        }
+        .button4 {
+            width: 200px;
+            height: 30px;
         }
 
     </style>
@@ -65,11 +70,27 @@
             <input type="text" placeholder="Fra*" name="from">
             <input type="date" placeholder="Dato*" name="date">
         <form action="results">
-            <button class="button"> Søk </button>
+            <button class="button"> Søk </button> <br>
+        *Påkrevd informasjon
         </form>
-        <p id="skriftStørrelse">
-            *Påkrevd informasjon
         </p>
+    </form>
+
+    <form action="lavpris.html">
+        <p id="lavprisBox">
+            <button class="button button4"> Lavpriskalender </button>
+            <br>
+            <form action="klima.html">
+                <button class="button button4"> Bærekraft </button>
+                <br>
+                <form action="Kontaktoss.html">
+                    <button class="button button4"> Kontakt Oss </button>
+                    <br>
+                    <form action="minebestillinger.html">
+                        <button class="button button4"> Mine bestillinger </button>
+                    </form>
+                </form>
+            </form>
         </p>
     </form>
 </div>
