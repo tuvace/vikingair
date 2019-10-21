@@ -3,9 +3,9 @@ package servlets.customers;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class Login implements Serializable {
+public class Login<L> implements Serializable {
 
-    private static final long serialVersionUID = 1 L;
+    private static final long serialVersionUID = 1L;
     private String username;
     private String password;
 
@@ -26,4 +26,3 @@ public class Login implements Serializable {
     }
 }
 
-https://www.javaguides.net/2019/01/jsp-login-form-jdbc-mysql-example.html
