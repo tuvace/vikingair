@@ -7,11 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 public class LoginLogic {
+    public boolean validate(Login login) throws ClassNotFoundException {
+        boolean status = false;
 
-        public boolean validate(Login login) throws ClassNotFoundException {
-            boolean status = false;
-
-            Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver");
 
             try (Connection connection = DriverManager
                     .getConnection("jdbc:mysql://localhost:3306/mysql_database?useSSL=false", "root", "Solbriller");
