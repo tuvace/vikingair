@@ -1,11 +1,11 @@
 package servlets.logginn;
 
+import javax.servlet.annotation.WebServlet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 public class LoginLogic {
 
         public boolean validate(Login login) throws ClassNotFoundException {
@@ -17,8 +17,7 @@ public class LoginLogic {
                     .getConnection("jdbc:mysql://localhost:3306/mysql_database?useSSL=false", "root", "Solbriller");
 
                  // Step 2:Create a statement using connection object
-                 PreparedStatement preparedStatement = connection
-                         .prepareStatement("select * from login where username = ? and password = ? ")) {
+                 PreparedStatement preparedStatement = connection.prepareStatement("select * from login where username = ? and password = ? ")) {
                 preparedStatement.setString(1, login.getUsername());
                 preparedStatement.setString(2, login.getPassword());
 
