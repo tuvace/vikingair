@@ -19,10 +19,11 @@ public class Flight {
     private int seatAmount;
     private int seatRow;
     private String seatLetter;
+    private int baggage_limit;
 
 
     public Flight(int flightId, Date flightDate, int price, String flightTo, String flightFrom, String airplaneType,
-                  int duration, int seatAmount, int seatRow, String seatLetter) {
+                  int duration, int seatAmount, int seatRow, String seatLetter, int baggage_limit) {
         super();
         this.flightId = flightId;
         this.flightDate = flightDate;
@@ -34,6 +35,7 @@ public class Flight {
         this.seatAmount = seatAmount;
         this.seatRow = seatRow;
         this.seatLetter = seatLetter;
+        this.baggage_limit = baggage_limit;
     }
 
     public Flight() {
@@ -120,6 +122,13 @@ public class Flight {
     public void setSeatLetter(String seatLetter) {
         this.seatLetter = seatLetter;
     }
+    public int getBaggage_limit(){
+        return baggage_limit;
+    }
+
+    public void setBaggage_limit(int baggage_limit) {
+        this.baggage_limit = baggage_limit;
+    }
 
     @Override
     public String toString() {
@@ -134,6 +143,7 @@ public class Flight {
                 ", seatAmount=" + seatAmount +
                 ", seatRow=" + seatRow +
                 ", seatLetter='" + seatLetter + '\'' +
+                ", baggage_limit=" + baggage_limit +
                 '}';
     }
 }

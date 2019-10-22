@@ -45,6 +45,7 @@ public class FlightLogic {
                 flight.setSeatAmount(results.getInt("seatAmount"));
                 flight.setSeatRow(results.getInt("seatRow"));
                 flight.setSeatLetter(results.getString("seatLetter"));
+                flight.setBaggage_limit(results.getInt("baggage_limit"));
 
                 //Vi legger til flight i arraylisten flights.
                 flights.add(flight);

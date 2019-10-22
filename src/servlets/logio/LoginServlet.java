@@ -1,4 +1,4 @@
-package servlets.logginn;
+package servlets.logio;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

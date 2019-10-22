@@ -1,6 +1,5 @@
-package servlets.logginn;
+package servlets.logio;
 
-import javax.servlet.annotation.WebServlet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
