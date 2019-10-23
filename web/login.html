@@ -46,7 +46,7 @@
     <form action="index.html">
         <button class="button button3"> Viking Airways </button>
     </form>
-    <form action="login.java">
+    <form name="LoginForm" method="post" action="/LoginServlet">
         <div class="container">
         <p id="loginBox">
             Email Adresse: <br>
@@ -54,9 +54,8 @@
             <br> <br>
             Passord: <br>
                 <input type="password" placeholder="Passord" name="password" required>
-            </label>
             <br> <br>
-            <button class="button" type="submit">Logg inn</button>
+            <button class="button" type="submit" value="login"> Logg inn </button>
         </p>
         </div>
         <br>
