@@ -6,7 +6,16 @@ public class Login implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String username;
-    private String password;
+    private String user_password;
+
+    public Login(String username, String user_password) {
+        this.username = username;
+        this.user_password = user_password;
+    }
+
+    public Login() {
+
+    }
 
     public String getUsername() {
         return username;
@@ -16,11 +25,11 @@ public class Login implements Serializable {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUser_password() {
+        return user_password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUser_password(String user_password) {
+        this.user_password = user_password;
     }
 }
