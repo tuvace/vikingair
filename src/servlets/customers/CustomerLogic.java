@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import java.sql.SQLException;
 import servlets.PNR;
-import servlets.customers.Customer;
+
 
 
 public class CustomerLogic {

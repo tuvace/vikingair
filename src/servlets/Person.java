@@ -1,57 +1,42 @@
-package servlets;
+/**package servlets;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-@WebServlet(name = "Person")
-public class Person extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class Person
+    /** {
+        void setCustomerID();
 
-    }
+        void setFirstName();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        void setMiddleName();
 
-    }
+        void setLastName();
 
-// navn, tlf, addresse
+        void setCustomerAddress();
 
-        private String Name;
-        private int phoneNumber;
-        private String address;
+        void setDisabilities();
 
-        public Person(String n, int pn, String ad) {
-            Name = n;
-            phoneNumber = pn;
-            address = ad;
-            System.out.println(n + " " + pn + " " + ad);
-        }
+        void setEmail();
 
-        public void setName(String n) {
-            this.Name = n;
-        }
+        void setPhoneNumber();
 
-        public void setPhoneNumber(int pn) {
-            phoneNumber = pn;
-        }
+    {
 
-        public void setAddress(String ad) {
-            address = ad;
-        }
 
-        public String getName() {
-            return Name;
-        }
 
-        public int getPhoneNumber() {
-            return phoneNumber;
-        }
+        // Identification
+        private int customerID;
+        private String firstName;
+        private String middleName;
+        private String lastName;
+        private String customerAddress;
+        private int disabilities;
+        private String email;
+        private String phoneNumber;
 
-        public String getAddress() {
-            return address;
+
+
         }
     }
+*/
+
 
