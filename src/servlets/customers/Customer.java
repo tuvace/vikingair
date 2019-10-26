@@ -102,6 +102,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    @Override
     public String toString(){
         return "Full Name" + firstName + "" + middleName + "" + lastName + "/n"
         + "Address =" + customerAddress + "/n" +

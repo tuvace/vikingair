@@ -51,6 +51,8 @@ public class CustomerLogic {
                 customer.setLastName(results.getString("lastName"));
                 customer.setCustomerAddress(results.getString("customerAddress"));
                 customer.setDisabilities(results.getInt("disabilities"));
+                customer.setEmail(results.getString("email"));
+                customer.setPhoneNumber(results.getString("phoneNumber"));
 
                 //  Legger til customer i arraylisten Customer.
                 customers.add(customer);
