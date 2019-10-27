@@ -14,14 +14,27 @@ import servlets.logio.LoginLogic;
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
+        
+        try{
+            if (status = false)
+            {
+                String htmlRespone = "<html>";
+                htmlRespone += "<h2>Welcome " + username + "<br/>";
+                htmlRespone += "Travel safe </h2>";
+                htmlRespone += "</html>";
+            }
+            else {
 
-        // read form fields
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        /** read form fields
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = request.getParameter("password");*/
 
-        System.out.println("username: " + username);
-        System.out.println("password: " + password);
-
+        System.out.println("Username: " + username);
         // get response writer
         PrintWriter writer = response.getWriter();
 
