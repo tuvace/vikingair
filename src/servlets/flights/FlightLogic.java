@@ -59,9 +59,7 @@ public class FlightLogic {
                 sqlEx.printStackTrace();
             }
         // close JDBC objects
-        //print ut før skal fungere
         db.close();
-        //print ut etter skal ikke fungere
 
 
         //Når resultset er tomt (arraylisten har blitt fyllt opp) så returnerer vi flights.

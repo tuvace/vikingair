@@ -7,10 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-
+@WebServlet(name = "Customer")
 public class Customer {
-
 
     private int customerID;
     private String firstName;

@@ -42,7 +42,7 @@ public class CustomerServlet extends HttpServlet {
         //cus.setPassword(request.getParameter("password"));
 
         //Trenger både en create og update metode i CustomerLogic for å fungere.
-        if (customerID == null || customerID.isEmpty()) {
+        /**if (customerID == null || customerID.isEmpty()) {
 
             cusLog.create(cus);
         } else {
@@ -60,7 +60,7 @@ public class CustomerServlet extends HttpServlet {
 
     /** This doGet method is responsible for getting information from the server, in this case the actions printall, delete and update already
      * existing customers.  */
-    @Override
+    /**@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ServletContext sc = this.getServletContext();
@@ -77,18 +77,18 @@ public class CustomerServlet extends HttpServlet {
             }
             //Trenger en delete metode i CustomerLogic for å fungere.
         } else if(action.equalsIgnoreCase("delete")){
-            int id = Integer.parseInt(request.getParameter("cus_id"));
-            cusLog.delete(id);
+            int customerID = Integer.parseInt(request.getParameter("cus_customerID"));
+            cusLog.delete(customerID);
             forward = "/printCustomers.jsp";
             request.setAttribute("customers", cusLog.showAll());
 
         } else if(action.equalsIgnoreCase("update")){
             forward = "/signup.jsp";
-            int id = Integer.parseInt(request.getParameter("cus_id"));
+            int customerID = Integer.parseInt(request.getParameter("cus_id"));
 
          //Trenger en showOne metode i CustomerLogic for å fungere.
             try {
-                Customer cus = cusLog.showOne(id);
+                Customer cus = cusLog.showOne(customerID);
                 request.setAttribute("customer", cus);
 
             } catch (Exception ex) {
@@ -101,5 +101,9 @@ public class CustomerServlet extends HttpServlet {
         }
         RequestDispatcher view = sc.getRequestDispatcher(forward);
         view.forward(request, response);
+    }
+
+    }
+     */
     }
 }
