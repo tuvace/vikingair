@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 
 @WebServlet("/LoginServlet")
@@ -32,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 RequestDispatcher rd=request.getRequestDispatcher("index.html");
                 rd.include(request,response);
             }
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
