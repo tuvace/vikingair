@@ -31,7 +31,7 @@ public class LoginLogic {
                 status = rs.next();
                 }
              db.close();
-            return status;
+                return status;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
