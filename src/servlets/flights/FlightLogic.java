@@ -53,9 +53,11 @@ public class FlightLogic {
             }
 
 
-        } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
         }
+        catch (SQLException sqlEx)
+            {
+                sqlEx.printStackTrace();
+            }
         // close JDBC objects
         //print ut før skal fungere
         db.close();
