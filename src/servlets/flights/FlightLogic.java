@@ -23,7 +23,7 @@ public class FlightLogic {
         ArrayList<Flight> flights = new ArrayList<>();
         PreparedStatement myStmt;
         // Step 1: create sql statement
-        String sql = "SELECT * FROM FlightDetail LIMIT 5";
+        String sql = "{CALL add_flight(p_flightDate, p_price, p_flightTo, p_flightFrom, p_airplaneType, p_duration, p_baggage_limit)}";
         try {
             // Step 2: get a connection
             Connection con = db.connect();
@@ -42,9 +42,6 @@ public class FlightLogic {
                 flight.setFlightFrom(results.getString("flightFrom"));
                 flight.setAirplaneType(results.getString("airplaneType"));
                 flight.setDuration(results.getInt("duration"));
-                flight.setSeatAmount(results.getInt("seatAmount"));
-                flight.setSeatRow(results.getInt("seatRow"));
-                flight.setSeatLetter(results.getString("seatLetter"));
                 flight.setBaggage_limit(results.getInt("baggage_limit"));
 
                 //Vi legger til flight i arraylisten flights.
