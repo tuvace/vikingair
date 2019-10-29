@@ -13,7 +13,7 @@ public class TicketLogic implements VikingAir<Ticket> {
     dbUtilities db = new dbUtilities();
 
     @Override
-    public void create(Ticket tic) {
+    public void create(Ticket tic) throws SQLException {
 
         PreparedStatement ps;
         //Makes an connection to the db.
@@ -44,7 +44,10 @@ public class TicketLogic implements VikingAir<Ticket> {
 
             //Closes the connection to the db.
         } finally {
-            db.close();
+            if(con != null)
+            {
+                con.close();
+            }
         }
     }
 

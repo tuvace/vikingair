@@ -19,25 +19,18 @@ public class CustomerLogic {
     dbUtilities db = new dbUtilities();
     Customer customer = new Customer();
 
-    public ArrayList<Customer> selectAll() {
+    public ArrayList<Customer> selectAll() throws SQLException {
 
         //  Creating a customer
-
-
         //  Creating the Arraylist to be  containing customers
         ArrayList<Customer> customers = new ArrayList<>();
-
         PreparedStatement myStmt;
-
-
         // Step 1: Create sql statements
         String sql = "SELECT* FROM Customer LIMIT 5";
-
+        Connection con = db.connect();
         try {
             //  Step 2: get a connection
             // Work in progress, have not added the DB
-            Connection con = db.connect();
-
             myStmt = con.prepareStatement(sql);
 
             ResultSet results = myStmt.executeQuery();
@@ -62,9 +55,14 @@ public class CustomerLogic {
         } catch (SQLException sqlEX) {
             sqlEX.printStackTrace();
         }
+        finally {
+            if(con != null)
+            {
+                //  close JDBC
+                con.close();
+            }
+        }
 
-        //  close JDBC
-        db.close();
 
         //  Returnerer liste customers når den er full for å bruke
         //  den et annet sted
@@ -112,16 +110,17 @@ public class CustomerLogic {
         }
             //Denne metoden oppretter en ArrayList for kunders basert på de eksisterende kundene i databasen.
 
-            public ArrayList<Customer> showAll(){
+            public ArrayList<Customer> showAll() throws SQLException {
 
                 PreparedStatement ps;
                 ArrayList<Customer> customers = new ArrayList<>();
 
                 //A SQL query that lists all existing customers.
                 String query = "select * from Customer";
+                Connection con = db.connect(); //Kobler til databasen.
                 try {
 
-                    Connection con = db.connect(); //Kobler til databasen.
+
                     ps = con.prepareStatement(query); //Sender kommandoen sikkert.
                     ResultSet results = ps.executeQuery(); //Etter å sende kommandoen, får vi et resultat fra databasen.
 
@@ -140,7 +139,10 @@ public class CustomerLogic {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } finally {
-                    db.close(); //Lukker forbindelsen til databasen.
+                    if(con !=null){
+                        con.close();
+                    }
+                    //Lukker forbindelsen til databasen.
                 }
 
                 return customers; //Returnerer alle eksisterende kunder i ArrayListen.

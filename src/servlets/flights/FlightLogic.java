@@ -17,18 +17,16 @@ import java.sql.*;
 public class FlightLogic {
     dbUtilities db = new dbUtilities();
 
-    public ArrayList<Flight> selectAll() {
+    public ArrayList<Flight> selectAll() throws SQLException {
 
         Flight flight = new Flight();
         ArrayList<Flight> flights = new ArrayList<>();
         PreparedStatement myStmt;
         // Step 1: create sql statement
         String sql = "SELECT * FROM FlightDetail LIMIT 5";
+        Connection con = db.connect();
         try {
             // Step 2: get a connection
-            Connection con = db.connect();
-
-
             myStmt = con.prepareStatement(sql);
 
             ResultSet results = myStmt.executeQuery();
@@ -59,7 +57,12 @@ public class FlightLogic {
                 sqlEx.printStackTrace();
             }
         // close JDBC objects
-        db.close();
+        finally {
+            if(con != null)
+            {
+                con.close();
+            }
+        }
 
 
         //Når resultset er tomt (arraylisten har blitt fyllt opp) så returnerer vi flights.

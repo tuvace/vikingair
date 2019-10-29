@@ -12,21 +12,21 @@ import java.sql.SQLException;
 public class LoginLogic {
     static dbUtilities db = new dbUtilities();
 
-    public static boolean validate(PrintWriter out, String username , String user_password) throws SQLException {
+    public static boolean validate(String username, String userPassword) throws SQLException {
         boolean status = false;
 
         PreparedStatement myStmt;
+        Connection con = db.connect();
 
 
         try {
-            Connection con = db.connect();
 
             // Step 2:Create a statement using connection object
 
-            myStmt = con.prepareStatement("select * from UserLogin where username = ? and password = ? ");
+            myStmt = con.prepareStatement("{CALL log_in_user(?, ?)}");
             {
                 myStmt.setString(1, username);
-                myStmt.setString(2, user_password);
+                myStmt.setString(2, userPassword);
 
                 System.out.println(myStmt);
                 ResultSet rs = myStmt.executeQuery();
@@ -54,9 +54,9 @@ public class LoginLogic {
         }
         finally
         {
-            if(db != null)
+            if(con != null)
             {
-                db.close();
+                con.close();
             }
         }
         return status;

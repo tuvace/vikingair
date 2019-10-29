@@ -1,6 +1,6 @@
-package servlets.flights;
+//package servlets.flights;
 
-import dbcode.dbUtilities;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,8 +13,8 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 
 //Denne servletten er en kontroller.
-@WebServlet("/FlightServlet")
-public class FlightServlet extends HttpServlet {
+//@WebServlet("/FlightServlet")
+/** public class FlightServlet extends HttpServlet {
     FlightLogic fl = new FlightLogic();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,3 +37,4 @@ public class FlightServlet extends HttpServlet {
 
     }
 
+*/

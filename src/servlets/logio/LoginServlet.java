@@ -10,7 +10,8 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 
-@WebServlet("/LoginServlet")
+@WebServlet(
+        urlPatterns = {"/servlets.logio.LoginServlet"})
 
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
@@ -22,10 +23,11 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         try{
+            boolean validate = LoginLogic.validate(username,user_password);
 
-            if (LoginLogic.validate(out,username,user_password))
+            if (validate)
             {
-                out.print("Welcome " + username);
+                out.print("<h1>Welcome " + username + "</h1>");
             }
             else {
                 out.print("Sorry username or password error");

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class EmployeeLogic {
     dbUtilities db = new dbUtilities();
 
-    public ArrayList<Employee> selectAll() {
+    public ArrayList<Employee> selectAll() throws SQLException {
 
         Employee employee = new Employee();
 
@@ -20,9 +20,10 @@ public class EmployeeLogic {
 
 
         String sql = "SELECT* FROM Employee LIMIT 5";
+        Connection con = db.connect();
 
         try{
-            Connection con = db.connect();
+
 
             myStmt = con.prepareStatement(sql);
 
@@ -41,9 +42,11 @@ public class EmployeeLogic {
 
         catch (SQLException sqlEX) {
             sqlEX.printStackTrace();
+        } finally {
+            if(con != null){ con.close();}
         }
 
-        db.close();
+
 
         return employees;
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 //Denne servletten er en kontroller.
 @WebServlet(name = "TicketServlet", urlPatterns = {"/TicketServlet"})
@@ -32,7 +33,11 @@ public class TicketServlet extends HttpServlet {
 
         if (TicketID == null || TicketID.isEmpty()) {
 
-            ticLog.create(tic);
+            try {
+                ticLog.create(tic);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } else {
             int tic_TicketID = Integer.parseInt(TicketID.trim());
             tic.setTicketID(tic_TicketID);

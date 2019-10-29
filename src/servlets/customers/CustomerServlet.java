@@ -1,3 +1,4 @@
+/**
 package servlets.customers;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +13,8 @@ import java.io.IOException;
 //Denne servletten er en kontroller.
 
 /** This class functions as the servlet class for Customer and works as a mediator between the user of
- * our system and the system. */
-@WebServlet(name = "CustomerServlet", urlPatterns = {"/CustomerServlet"})
+ * our system and the system.*/
+/**@WebServlet(name = "CustomerServlet", urlPatterns = {"/CustomerServlet"})
 public class CustomerServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -26,9 +27,9 @@ public class CustomerServlet extends HttpServlet {
     }
 
     /** This doPost method is responsible for updating and posting/sending information to the server according to what the input from the user is.
-     * The method is responsible for receiving information from new customers when they are signing up. */
+     * The method is responsible for receiving information from new customers when they are signing up.*/
 
-    @Override
+    /**@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Customer cus = new Customer();
@@ -42,7 +43,7 @@ public class CustomerServlet extends HttpServlet {
         //cus.setPassword(request.getParameter("password"));
 
         //Trenger både en create og update metode i CustomerLogic for å fungere.
-        /**if (customerID == null || customerID.isEmpty()) {
+        if (customerID == null || customerID.isEmpty()) {
 
             cusLog.create(cus);
         } else {
@@ -104,6 +105,7 @@ public class CustomerServlet extends HttpServlet {
     }
 
     }
-     */
+
     }
 }
+     */
