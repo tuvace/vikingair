@@ -19,12 +19,11 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String user_password = request.getParameter("user_password");
 
-        Login Login = new Login(username, user_password);
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         try{
-            LoginLogic.validate(Login);
-            if (LoginLogic.validate(Login))
+
+            if (LoginLogic.validate(out,username,user_password))
             {
                 out.print("Welcome " + username);
             }

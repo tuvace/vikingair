@@ -17,11 +17,12 @@ import servlets.customers.Customer;
 
 public class CustomerLogic {
     dbUtilities db = new dbUtilities();
+    Customer customer = new Customer();
 
     public ArrayList<Customer> selectAll() {
 
         //  Creating a customer
-        Customer customer = new Customer();
+
 
         //  Creating the Arraylist to be  containing customers
         ArrayList<Customer> customers = new ArrayList<>();
@@ -69,9 +70,9 @@ public class CustomerLogic {
         //  den et annet sted
         return customers;
     }
-}
+
     //En metode som sletter en eksisterenede kunde fra databasen.
-    @Override
+
     public void delete(int customerID) {
 
         // Denne SQL kommandoen kjøres hver gang en kunde blir slettet,
@@ -83,12 +84,12 @@ public class CustomerLogic {
             ps.setInt(1, customerID);
             ps.execute(); //Oppdaterer databasen.
 
-        } catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex);
         }
         //Denne metoden oppdaterer informasjonen om en kunde.
-        @Override
-        public void update(Customer customer) {
+    }
+        public void update (Customer customer){
 
             //Denne SQL kommandoen kjøres når noe informasjon om kunde blir oppdatert.
             String query = "update Customer set cus_fname = ?, cus_lname = ?, cus_email = ?, cus_dateOfBirth = ?, cus_pw = ? where cus_id = ?";
@@ -96,20 +97,22 @@ public class CustomerLogic {
 
             try {
                 PreparedStatement ps = con.prepareStatement(query); ////Sends the query to the db safely.
-                ps.setString(1, customer.getFirstname());
-                ps.setString(2, customer.getLastname());
+                ps.setString(1, customer.getFirstName());
+                ps.setString(2, customer.getLastName());
                 ps.setString(3, customer.getEmail());
-               // ps.setString(4, customer.getDateOfBirth());
-               // ps.setString(5, customer.getPassword());
+                // ps.setString(4, customer.getDateOfBirth());
+                // ps.setString(5, customer.getPassword());
                 ps.setInt(6, customer.getCustomerID());
                 ps.executeUpdate(); //Oppdaterer databasen.
 
-            } catch(SQLException ex){
+            } catch (SQLException ex) {
                 System.out.println(ex);
             }
+
+        }
             //Denne metoden oppretter en ArrayList for kunders basert på de eksisterende kundene i databasen.
-            @Override
-            public ArrayList<Customer> showAll() {
+
+            public ArrayList<Customer> showAll(){
 
                 PreparedStatement ps;
                 ArrayList<Customer> customers = new ArrayList<>();
@@ -125,8 +128,8 @@ public class CustomerLogic {
                     while (results.next()) { //This loop iterates through each element of the list. For every new element it returns a new value.
                         Customer cus = new Customer();
                         cus.setCustomerID(results.getInt("cus_CustomerID"));
-                        cus.setFirstname(results.getString("cus_firstName"));
-                        cus.setLastname(results.getString("cus_lastName"));
+                        cus.setFirstName(results.getString("cus_firstName"));
+                        cus.setLastName(results.getString("cus_lastName"));
                         cus.setEmail(results.getString("cus_email"));
                        // cus.setDateOfBirth(results.getString("cus_dateOfBirth"));
                        // cus.setPassword(results.getString("cus_pw"));
@@ -143,6 +146,6 @@ public class CustomerLogic {
                 return customers; //Returnerer alle eksisterende kunder i ArrayListen.
             }
         }
-    }
 
-}
+
+
