@@ -54,10 +54,8 @@ public class CustomerLogic {
 
         } catch (SQLException sqlEX) {
             sqlEX.printStackTrace();
-        }
-        finally {
-            if(con != null)
-            {
+        } finally {
+            if (con != null) {
                 //  close JDBC
                 con.close();
             }
@@ -87,66 +85,106 @@ public class CustomerLogic {
         }
         //Denne metoden oppdaterer informasjonen om en kunde.
     }
-        public void update (Customer customer){
 
-            //Denne SQL kommandoen kjøres når noe informasjon om kunde blir oppdatert.
-            String query = "update Customer set cus_fname = ?, cus_lname = ?, cus_email = ?, cus_dateOfBirth = ?, cus_pw = ? where cus_id = ?";
-            Connection con = db.connect();
+    public void update(Customer customer) {
 
-            try {
-                PreparedStatement ps = con.prepareStatement(query); ////Sends the query to the db safely.
-                ps.setString(1, customer.getFirstName());
-                ps.setString(2, customer.getLastName());
-                ps.setString(3, customer.getEmail());
-                // ps.setString(4, customer.getDateOfBirth());
-                // ps.setString(5, customer.getPassword());
-                ps.setInt(6, customer.getCustomerID());
-                ps.executeUpdate(); //Oppdaterer databasen.
+        //Denne SQL kommandoen kjøres når noe informasjon om kunde blir oppdatert.
+        String query = "update Customer set cus_fname = ?, cus_lname = ?, cus_email = ?, cus_dateOfBirth = ?, cus_pw = ? where cus_id = ?";
+        Connection con = db.connect();
 
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            }
+        try {
+            PreparedStatement ps = con.prepareStatement(query); ////Sends the query to the db safely.
+            ps.setString(1, customer.getFirstName());
+            ps.setString(2, customer.getLastName());
+            ps.setString(3, customer.getEmail());
+            // ps.setString(4, customer.getDateOfBirth());
+            // ps.setString(5, customer.getPassword());
+            ps.setInt(6, customer.getCustomerID());
+            ps.executeUpdate(); //Oppdaterer databasen.
 
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
-            //Denne metoden oppretter en ArrayList for kunders basert på de eksisterende kundene i databasen.
 
-            public ArrayList<Customer> showAll() throws SQLException {
+    }
+    //Denne metoden oppretter en ArrayList for kunders basert på de eksisterende kundene i databasen.
 
-                PreparedStatement ps;
-                ArrayList<Customer> customers = new ArrayList<>();
+    public ArrayList<Customer> showAll() throws SQLException {
 
-                //A SQL query that lists all existing customers.
-                String query = "select * from Customer";
-                Connection con = db.connect(); //Kobler til databasen.
-                try {
+        PreparedStatement ps;
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        //A SQL query that lists all existing customers.
+        String query = "select * from Customer";
+        Connection con = db.connect(); //Kobler til databasen.
+        try {
 
 
-                    ps = con.prepareStatement(query); //Sender kommandoen sikkert.
-                    ResultSet results = ps.executeQuery(); //Etter å sende kommandoen, får vi et resultat fra databasen.
+            ps = con.prepareStatement(query); //Sender kommandoen sikkert.
+            ResultSet results = ps.executeQuery(); //Etter å sende kommandoen, får vi et resultat fra databasen.
 
-                    while (results.next()) { //This loop iterates through each element of the list. For every new element it returns a new value.
-                        Customer cus = new Customer();
-                        cus.setCustomerID(results.getInt("cus_CustomerID"));
-                        cus.setFirstName(results.getString("cus_firstName"));
-                        cus.setLastName(results.getString("cus_lastName"));
-                        cus.setEmail(results.getString("cus_email"));
-                       // cus.setDateOfBirth(results.getString("cus_dateOfBirth"));
-                       // cus.setPassword(results.getString("cus_pw"));
+            while (results.next()) { //This loop iterates through each element of the list. For every new element it returns a new value.
+                Customer cus = new Customer();
+                cus.setCustomerID(results.getInt("cus_CustomerID"));
+                cus.setFirstName(results.getString("cus_firstName"));
+                cus.setLastName(results.getString("cus_lastName"));
+                cus.setEmail(results.getString("cus_email"));
+                // cus.setDateOfBirth(results.getString("cus_dateOfBirth"));
+                // cus.setPassword(results.getString("cus_pw"));
 
-                        customers.add(cus); //For every new iteration in the db a new customer is added to the list.
-                    }
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } finally {
-                    if(con !=null){
-                        con.close();
-                    }
-                    //Lukker forbindelsen til databasen.
-                }
-
-                return customers; //Returnerer alle eksisterende kunder i ArrayListen.
+                customers.add(cus); //For every new iteration in the db a new customer is added to the list.
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+            //Lukker forbindelsen til databasen.
+        }
+
+        return customers; //Returnerer alle eksisterende kunder i ArrayListen.
+    }
+
+    public Customer login(String brukernavn, String passord) {
+        Customer cus = new Customer();
+        Connection con = db.connect();
+        PreparedStatement ps;
+
+        String query = "{CALL log_in_user(?, ?)}";
+
+       try{
+           ps = con.prepareStatement(query);
+           ps.setString(1,brukernavn);
+           ps.setString(2,passord);
+
+           ResultSet results = ps.executeQuery();
+
+           if(
+                   results.next()
+           ){
+               customer.setCustomerID(results.getInt("customerID"));
+               customer.setFirstName(results.getString("firstName"));
+               customer.setMiddleName(results.getString("middleName"));
+               customer.setLastName(results.getString("lastName"));
+               customer.setCustomerAddress(results.getString("customerAddress"));
+               customer.setDisabilities(results.getInt("disabilities"));
+               customer.setEmail(results.getString("email"));
+               customer.setPhoneNumber(results.getString("phoneNumber"));
+
+               System.out.println("user is logged in");
+
+           }else{
+               System.out.println("User is not found");
+           }
+       }catch(SQLException ex){
+           System.out.println(ex);
+       }
+
+       return cus;
+    }
+
         }
 
 

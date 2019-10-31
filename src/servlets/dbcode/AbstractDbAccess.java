@@ -15,12 +15,12 @@ import javax.sql.DataSource;
  */
 public abstract class AbstractDbAccess {
 
-    private static final String DATASOURCE_NAME = "comp:env/jdbc/localDS";
-
+    private static final String DATASOURCE_NAME = "jdbc:mysql://localhost:3306/FlightBooking";
+    /**comp:env/jdbc/FlightBooking*/
     protected Connection con;
 
     /** This method runs one query */
-    public void accesDb() {
+    public void accessDb() {
         // getting the connection from a try-with-resources
         // will close it automatically at the end of
         // the try block
@@ -48,3 +48,5 @@ public abstract class AbstractDbAccess {
     }
 
 }
+
+

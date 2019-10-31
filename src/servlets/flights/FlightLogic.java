@@ -19,13 +19,14 @@ public class FlightLogic {
 
     public ArrayList<Flight> selectAll() throws SQLException {
 
-        Flight flight = new Flight();
+
         ArrayList<Flight> flights = new ArrayList<>();
         PreparedStatement myStmt;
         // Step 1: create sql statement
-        String sql = "SELECT * FROM FlightDetail LIMIT 5";
-        Connection con = db.connect();
+        String sql = "SELECT * FROM FlightDetails";
+
         try {
+            Connection con = db.connect();
             // Step 2: get a connection
             myStmt = con.prepareStatement(sql);
 
@@ -33,18 +34,16 @@ public class FlightLogic {
             //For hvert element i results (hver rad i databasen) så lager vi et nytt flight objekt og fyller ut feltene
             //med den tilsvarende infoen fra databasen.
             while (results.next()) {
-                flight.setFlightId(results.getInt("flight_ID"));
+                Flight flight = new Flight();
+                flight.setFlightId(results.getInt("flightID"));
                 flight.setFlightDate(results.getDate("flightDate"));
                 flight.setPrice(results.getInt("price"));
                 flight.setFlightTo(results.getString("flightTo"));
                 flight.setFlightFrom(results.getString("flightFrom"));
                 flight.setAirplaneType(results.getString("airplaneType"));
                 flight.setDuration(results.getInt("duration"));
-                flight.setSeatAmount(results.getInt("seatAmount"));
-                flight.setSeatRow(results.getInt("seatRow"));
-                flight.setSeatLetter(results.getString("seatLetter"));
-                flight.setBaggage_limit(results.getInt("baggage_limit"));
 
+                flight.setBaggage_limit(results.getInt("baggage_limit"));
                 //Vi legger til flight i arraylisten flights.
                 flights.add(flight);
 
@@ -57,12 +56,6 @@ public class FlightLogic {
                 sqlEx.printStackTrace();
             }
         // close JDBC objects
-        finally {
-            if(con != null)
-            {
-                con.close();
-            }
-        }
 
 
         //Når resultset er tomt (arraylisten har blitt fyllt opp) så returnerer vi flights.

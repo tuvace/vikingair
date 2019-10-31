@@ -3,11 +3,7 @@ package servlets.logio;
 import dbcode.dbUtilities;
 
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class LoginLogic {
     static dbUtilities db = new dbUtilities();
@@ -15,15 +11,13 @@ public class LoginLogic {
     public static boolean validate(String username, String userPassword) throws SQLException {
         boolean status = false;
 
-        PreparedStatement myStmt;
+        CallableStatement myStmt;
         Connection con = db.connect();
 
-
         try {
-
             // Step 2:Create a statement using connection object
-
-            myStmt = con.prepareStatement("{CALL log_in_user(?, ?)}");
+            String query = "{CALL log_in_user(?, ?)}";
+            myStmt = con.prepareCall(query);
             {
                 myStmt.setString(1, username);
                 myStmt.setString(2, userPassword);
