@@ -51,15 +51,8 @@ import servlets.flights.Flight;
             System.out.println(ex);
         }
 
-        public void close(){
-            try{
-                con.close();
-            }
-            catch(SQLException ex){
-                System.out.println("<br>Cannor close Connection " + ex);
-            }
         }
     }
-}
+
 
 
