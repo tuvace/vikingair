@@ -13,11 +13,6 @@ public class Login implements Serializable {
         this.user_password = user_password;
     }
 
-    public Login() {
-
-    }
-
-
     public String getUsername() {
         return username;
     }
