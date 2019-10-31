@@ -13,72 +13,57 @@ import javax.servlet.http.HttpServlet;
 import java.sql.SQLException;
 import servlets.PNR;
 import servlets.customers.Customer;
+import servlets.tickets.Ticket;
 
 
 public class CustomerLogic {
     dbUtilities db = new dbUtilities();
-    Customer customer = new Customer();
 
-    public ArrayList<Customer> selectAll() throws SQLException {
 
-        //  Creating a customer
-        //  Creating the Arraylist to be  containing customers
-        ArrayList<Customer> customers = new ArrayList<>();
-        PreparedStatement myStmt;
-        // Step 1: Create sql statements
-        String sql = "SELECT* FROM Customer LIMIT 5";
-        Connection con = db.connect();
-        try {
-            //  Step 2: get a connection
-            // Work in progress, have not added the DB
-            myStmt = con.prepareStatement(sql);
+        //Denne metoden oppretter en ny kunde og sender informasjon til databasen.
+        public void create(Customer cus) {
 
-            ResultSet results = myStmt.executeQuery();
+            PreparedStatement ps;
 
-            //  For hvert element i databasen (results) blir det lagd et nytt objekt
-            //  og alle feltene blir fylt opp med tilsvarende info fra DB
-            while (results.next()) {
-                customer.setCustomerID(results.getInt("customerID"));
-                customer.setFirstName(results.getString("firstName"));
-                customer.setMiddleName(results.getString("middleName"));
-                customer.setLastName(results.getString("lastName"));
-                customer.setCustomerAddress(results.getString("customerAddress"));
-                customer.setDisabilities(results.getInt("disabilities"));
-                customer.setEmail(results.getString("email"));
-                customer.setPhoneNumber(results.getString("phoneNumber"));
+            //Lager en connection til databasen.
+            Connection con = db.connect();
 
-                //  Legger til customer i arraylisten Customer.
-                customers.add(customer);
-            }
+            //Denne SQL queryen kjører hver gang en ny kunde registrerer seg.
+            String query = ("insert into Customer(cus_firstName, cus_lastName, cus_email"
+                    + "values (?,?,?,?,?);");
+
+            try {
+                ps = con.prepareStatement(query); //Sender queryen til databasen sikkert.
+
+                //Setter navn og mail
+                ps.setString(1, cus.getFirstName());
+                ps.setString(2, cus.getLastName());
+                ps.setString(3, cus.getEmail());
+               // ps.setString(4, cus.getDateOfBirth());
+               // ps.setString(5, cus.getPassword());
+
+                ps.execute(); //Oppdaterer databasen.
 
 
         } catch (SQLException sqlEX) {
             sqlEX.printStackTrace();
         }
         finally {
-            if(con != null)
-            {
-                //  close JDBC
-                con.close();
+             //  close JDBC
+                db.close();
             }
         }
-
-
-        //  Returnerer liste customers når den er full for å bruke
-        //  den et annet sted
-        return customers;
-    }
 
     //En metode som sletter en eksisterenede kunde fra databasen.
 
     public void delete(int customerID) {
 
-        // Denne SQL kommandoen kjøres hver gang en kunde blir slettet,
+        // Denne SQL queryen kjøres hver gang en kunde blir slettet,
         // slik at kunden også blir slettet fra databasen.
         String query = "delete from customer where cus_customerID =?";
         Connection con = db.connect();
         try {
-            PreparedStatement ps = con.prepareStatement(query); //Sender kommandoen til databasen.
+            PreparedStatement ps = con.prepareStatement(query); //Sender queryen til databasen.
             ps.setInt(1, customerID);
             ps.execute(); //Oppdaterer databasen.
 
@@ -89,12 +74,12 @@ public class CustomerLogic {
     }
         public void update (Customer customer){
 
-            //Denne SQL kommandoen kjøres når noe informasjon om kunde blir oppdatert.
+            //Denne SQL queryen kjøres når noe informasjon om kunde blir oppdatert.
             String query = "update Customer set cus_fname = ?, cus_lname = ?, cus_email = ?, cus_dateOfBirth = ?, cus_pw = ? where cus_id = ?";
             Connection con = db.connect();
 
             try {
-                PreparedStatement ps = con.prepareStatement(query); ////Sends the query to the db safely.
+                PreparedStatement ps = con.prepareStatement(query); //Sender queryen til db sikkert.
                 ps.setString(1, customer.getFirstName());
                 ps.setString(2, customer.getLastName());
                 ps.setString(3, customer.getEmail());
@@ -115,14 +100,14 @@ public class CustomerLogic {
                 PreparedStatement ps;
                 ArrayList<Customer> customers = new ArrayList<>();
 
-                //A SQL query that lists all existing customers.
+                //E SQL query som lister alle eksisterende kunder.
                 String query = "select * from Customer";
                 Connection con = db.connect(); //Kobler til databasen.
                 try {
 
 
-                    ps = con.prepareStatement(query); //Sender kommandoen sikkert.
-                    ResultSet results = ps.executeQuery(); //Etter å sende kommandoen, får vi et resultat fra databasen.
+                    ps = con.prepareStatement(query); //Sender queryen sikkert.
+                    ResultSet results = ps.executeQuery(); //Etter å sende queryen, får vi et resultat fra databasen.
 
                     while (results.next()) { //This loop iterates through each element of the list. For every new element it returns a new value.
                         Customer cus = new Customer();
@@ -147,7 +132,69 @@ public class CustomerLogic {
 
                 return customers; //Returnerer alle eksisterende kunder i ArrayListen.
             }
+
+            //Denne metoden skal gjøre det mulig å hente ut elementer fra 1 kunde fra databasen.
+        public Customer showOne(int customerID) {
+            Customer cus = new Customer();
+            String query = "SELECT * from CUSTOMER where cus_customerID = ?";
+
+            try {
+                Connection con = db.connect();
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.setInt(1, customerID);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    cus.setCustomerID(rs.getInt("cus_customerID"));
+                    cus.setFirstName(rs.getString("cus_firstName"));
+                    cus.setLastName((rs.getString("cus_lastName")));
+                    cus.setEmail(rs.getString("cus_email"));
+                    //cus.setDateOfBirth(rs.getString("cus_dateOfBirth"));
+                    //cus.setPassword(rs.getString("cus_pw"));
+                }
+
+            } catch (SQLException ex) {
+                System.out.println(ex);
+
+            }
+            return cus;
         }
+
+    //Denne metoden sjekker om brukernavnet og passordet matcher kunden soom er registrert i databasen
+    //Hvis det er en match vil man bli logget inn - skal bli mulig gjennom LoginServlet.
+    public Customer Login(String email, String password){
+
+        Customer cus = new Customer();
+        PreparedStatement ps;
+        Connection con = db.connect();
+
+        String query = "select * from Customer where cus_email = ? and cus_pw = ?";
+
+        try{
+            ps = con.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, password);
+
+            ResultSet results = ps.executeQuery();
+
+            if (results.next()) {
+                cus.setCustomerID(results.getInt(1));
+                cus.setFirstName(results.getString( 2));
+                cus.setLastName(results.getString(3));
+                cus.setEmail(results.getString(4));
+                //cus.setPassword(results.getString(5));
+                System.out.println("User is logged in");
+            } else {
+                System.out.println("User is not found");
+
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+
+        } return cus;
+    }
+}
 
 
 
