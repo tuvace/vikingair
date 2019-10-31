@@ -17,7 +17,6 @@ public class TicketServlet extends HttpServlet {
     private TicketLogic ticLog;
 
     public TicketServlet(){
-        super();
         ticLog = new TicketLogic();
     }
 

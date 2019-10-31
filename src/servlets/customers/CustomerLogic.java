@@ -13,43 +13,36 @@ import javax.servlet.http.HttpServlet;
 import java.sql.SQLException;
 import servlets.PNR;
 import servlets.customers.Customer;
+import servlets.tickets.Ticket;
 
 
 public class CustomerLogic {
     dbUtilities db = new dbUtilities();
-    Customer customer = new Customer();
 
-    public ArrayList<Customer> selectAll() throws SQLException {
 
-        //  Creating a customer
-        //  Creating the Arraylist to be  containing customers
-        ArrayList<Customer> customers = new ArrayList<>();
-        PreparedStatement myStmt;
-        // Step 1: Create sql statements
-        String sql = "SELECT* FROM Customer LIMIT 5";
-        Connection con = db.connect();
-        try {
-            //  Step 2: get a connection
-            // Work in progress, have not added the DB
-            myStmt = con.prepareStatement(sql);
+        //Denne metoden oppretter en ny kunde og sender informasjon til databasen.
+        public void create(Customer cus) {
 
-            ResultSet results = myStmt.executeQuery();
+            PreparedStatement ps;
 
-            //  For hvert element i databasen (results) blir det lagd et nytt objekt
-            //  og alle feltene blir fylt opp med tilsvarende info fra DB
-            while (results.next()) {
-                customer.setCustomerID(results.getInt("customerID"));
-                customer.setFirstName(results.getString("firstName"));
-                customer.setMiddleName(results.getString("middleName"));
-                customer.setLastName(results.getString("lastName"));
-                customer.setCustomerAddress(results.getString("customerAddress"));
-                customer.setDisabilities(results.getInt("disabilities"));
-                customer.setEmail(results.getString("email"));
-                customer.setPhoneNumber(results.getString("phoneNumber"));
+            //Lager en connection til databasen.
+            Connection con = db.connect();
 
-                //  Legger til customer i arraylisten Customer.
-                customers.add(customer);
-            }
+            //Denne SQL queryen kjører hver gang en ny kunde registrerer seg.
+            String query = ("insert into Customer(cus_firstName, cus_lastName, cus_email"
+                    + "values (?,?,?,?,?);");
+
+            try {
+                ps = con.prepareStatement(query); //Sender queryen til databasen sikkert.
+
+                //Setter navn og mail
+                ps.setString(1, cus.getFirstName());
+                ps.setString(2, cus.getLastName());
+                ps.setString(3, cus.getEmail());
+               // ps.setString(4, cus.getDateOfBirth());
+               // ps.setString(5, cus.getPassword());
+
+                ps.execute(); //Oppdaterer databasen.
 
 
         } catch (SQLException sqlEX) {
@@ -61,22 +54,16 @@ public class CustomerLogic {
             }
         }
 
-
-        //  Returnerer liste customers når den er full for å bruke
-        //  den et annet sted
-        return customers;
-    }
-
     //En metode som sletter en eksisterenede kunde fra databasen.
 
     public void delete(int customerID) {
 
-        // Denne SQL kommandoen kjøres hver gang en kunde blir slettet,
+        // Denne SQL queryen kjøres hver gang en kunde blir slettet,
         // slik at kunden også blir slettet fra databasen.
         String query = "delete from customer where cus_customerID =?";
         Connection con = db.connect();
         try {
-            PreparedStatement ps = con.prepareStatement(query); //Sender kommandoen til databasen.
+            PreparedStatement ps = con.prepareStatement(query); //Sender queryen til databasen.
             ps.setInt(1, customerID);
             ps.execute(); //Oppdaterer databasen.
 

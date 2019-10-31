@@ -39,7 +39,7 @@
 <link href="css/flight.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<script src="FlightServlet"></script>
+<script src="/servlets.adminFlight.adminFlightServlet"></script>
 <form action="index.html">
     <button class="button button2"> Viking Airways </button>
 </form>
@@ -47,9 +47,9 @@
   <h1> Registrer ditt fly</h1>
 </div>
 
-<form action="Servlet">
+<form action="adminFlight">
   <p id="flightBox">
-  Pris: <input type="number" name="price"><br>
+Flynummer: <input type="number" name="flight_ID"><br>
 
 <br>
 Avgangsdato:
@@ -125,9 +125,9 @@ Til:
   <option value="Italy">Italy</option>
   <option value="Sweden">Sweden</option>
 </select><br><br>
-Duration:
- <input type="text" name="duration"><br><br>
- Sete mengde:
+Duration (in minutes):
+ <input type="number" name="duration"><br><br>
+Sete mengde:
  <select name="seats">
   <option value="50">50</option>
   <option value="75">75</option>
@@ -145,12 +145,16 @@ Gate:
  <input type="text" name="gate" maxlength=5><br><br>
  Baggasje tillatelse:
  <select name="baggage">
-  <option value="true">Yes</option>
-  <option value="false">No</option>
+   <option value="3000kg">3000kg</option>
+   <option value="3500kg">3500kg</option>
+   <option value="4000kg">4000kg</option>
+   <option value="4500kg">4500kg</option>
+   <option value="5000kg">5000kg</option>
+   <option value="5500kg">5500kg</option>
+   <option value="6000kg">6000kg</option>
+   <option value="6500kg">6500kg</option>
 </select><br><br>
- <form action="registrer">
-    <button class="button"> Legg til </button>
-</form>
+ <button class ="button" type="submit" value="adminFlight"> Registrer fly </button>
   </p>
 </form>
 
