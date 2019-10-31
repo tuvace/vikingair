@@ -35,7 +35,11 @@ public class adminFlightServlet extends HttpServlet {
         adminFlight flight = new adminFlight(to, from, year, month, day, duration, flight_ID, airplaneType, seatAmount, baggage_limit);
 
 
-        flightLogic.addFlight(flight);
+        try {
+            flightLogic.addFlight(flight);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
