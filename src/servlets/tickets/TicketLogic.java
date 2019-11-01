@@ -51,22 +51,18 @@ public class TicketLogic implements VikingAir<Ticket> {
         }
     }
 
-    @Override
     public void delete(int id) {
 
     }
 
-    @Override
     public void update(Ticket ticket) {
 
     }
 
-    @Override
     public ArrayList<Ticket> showAll() {
         return null;
     }
 
-    @Override
     public Ticket showOne(int id) {
         return null;
     }
