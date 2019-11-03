@@ -49,7 +49,7 @@ public class CustomerServlet extends HttpServlet {
         //Hvis det ikke eksisterer noen kunder vil det bli opprettet en.
         if (customerID == null || customerID.isEmpty()) {
 
-            cusLog.create(cus);
+            //cusLog.create(cus);
 
         //
         } else {
@@ -58,7 +58,7 @@ public class CustomerServlet extends HttpServlet {
             cusLog.update(cus);
 
         }
-        //Printer ut kunde. Burde ha i jsp heller?
+        //Printer ut kunder. Burde ha i jsp heller?
         System.out.println(cus);
 
         //response.sendRedirect("customerRedirect.jsp");
@@ -77,7 +77,7 @@ public class CustomerServlet extends HttpServlet {
 
         //Skal kunne vise alle kunder.
         if(action.equalsIgnoreCase("printall")) {
-            forward = "/printCustomers.jsp"; //Trenger en printCustomers i jsp format.
+            forward = "/printCustomers.jsp";
             try {
                 request.setAttribute("customers", cusLog.showAll());
             } catch (Exception e) {
@@ -88,7 +88,7 @@ public class CustomerServlet extends HttpServlet {
         } else if(action.equalsIgnoreCase("delete")){
             int customerID = Integer.parseInt(request.getParameter("cus_customerID"));
             cusLog.delete(customerID);
-            forward = "/printCustomers.jsp"; //Trenger en printCustomer i jsp format.
+            forward = "/printCustomers.jsp";
             try {
                 request.setAttribute("customers", cusLog.showAll());
             } catch (SQLException e) {
@@ -100,14 +100,6 @@ public class CustomerServlet extends HttpServlet {
             forward = "/signup.jsp"; //Trenger en signup i jsp format.
             int customerID = Integer.parseInt(request.getParameter("cus_customerID"));
 
-         //Metode som viser informasjon om kun en kunde.
-            try {
-                Customer cus = cusLog.showOne(customerID);
-                request.setAttribute("customer", cus);
-
-            } catch (Exception ex) {
-                System.out.println(ex);
-            }
         }
 
         else{
