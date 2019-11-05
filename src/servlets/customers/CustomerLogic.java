@@ -94,7 +94,7 @@ public class CustomerLogic {
         Connection con = db.connect();
 
         try {
-            PreparedStatement ps = con.prepareStatement(query); ////Sends the query to the db safely.
+            PreparedStatement ps = con.prepareStatement(query); //Sender queryen til db sikkert.
             ps.setString(1, customer.getFirstName());
             ps.setString(2, customer.getLastName());
             ps.setString(3, customer.getEmail());
@@ -115,7 +115,7 @@ public class CustomerLogic {
         PreparedStatement ps;
         ArrayList<Customer> customers = new ArrayList<>();
 
-        //A SQL query that lists all existing customers.
+        //EN SQL query som lister alle eksisterende kunder.
         String query = "select * from Customer";
         Connection con = db.connect(); //Kobler til databasen.
         try {
