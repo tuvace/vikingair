@@ -18,7 +18,7 @@ import servlets.FlightSearch.FlightSearchLogic;
 import servlets.FlightSearch.FlightSearch;
 
 //Denne servletten er en kontroller.
-@WebServlet(name="FlightSearchServlet", urlPatterns ={"/FlightSearchServlet"})
+@WebServlet(name = "FlightSearchServlet", urlPatterns = {"/FlightSearchServlet"})
 public class FlightSearchServlet extends HttpServlet {
 
     FlightSearchLogic fls = new FlightSearchLogic();

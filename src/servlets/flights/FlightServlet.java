@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 //Denne servletten er en kontroller.
-@WebServlet("/FlightServlet")
+@WebServlet(name = "/FlightServlet", urlPatterns = {"/FlightServlet"})
 public class FlightServlet extends HttpServlet {
     FlightLogic fl = new FlightLogic();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
