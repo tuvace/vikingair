@@ -157,24 +157,27 @@ public class CustomerLogic {
 
         try{
             ps = con.prepareStatement(query);
-            ps.setString(1,brukernavn);
-            ps.setString(2,passord);
+            ps.setString(1, brukernavn);
+            ps.setString(2, passord);
 
-            ResultSet results = ps.executeQuery();
+            ResultSet results  = ps.executeQuery();
 
-            if(
-                    results.next()
-            ){
-                customer.setCustomerID(results.getInt("customerID"));
-                customer.setFirstName(results.getString("firstName"));
-                customer.setMiddleName(results.getString("middleName"));
-                customer.setLastName(results.getString("lastName"));
-                customer.setCustomerAddress(results.getString("customerAddress"));
-                customer.setDisabilities(results.getInt("disabilities"));
-                customer.setEmail(results.getString("email"));
-                customer.setPhoneNumber(results.getString("phoneNumber"));
+            if(results.next()){
+                int id = results.getInt(1);
+                String firstname = results.getString(2);
+
+
+                cus.setCustomerID(results.getInt(1));
+                cus.setFirstName(results.getString(2));
+                cus.setMiddleName(results.getString(3));
+                cus.setLastName(results.getString(4));
+                cus.setCustomerAddress(results.getString(5));
+                cus.setDisabilities(results.getInt(6));
+                cus.setEmail(results.getString(7));
+                cus.setPhoneNumber(results.getString(8));
 
                 System.out.println("user is logged in");
+
 
             }else{
                 System.out.println("User is not found");
@@ -182,7 +185,7 @@ public class CustomerLogic {
         }catch(SQLException ex){
             System.out.println(ex);
         }
-
+        System.out.println(cus);
         return cus;
     }
 
