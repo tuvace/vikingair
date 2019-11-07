@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import servlets.logio.LoginLogic;
 
 
-@WebServlet(name="LoginServlet", urlPatterns ={"/LoginServlet"})
+@WebServlet("/LoginServlet")
 
 public class LoginServlet extends HttpServlet {
     CustomerLogic login = new CustomerLogic();
@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-            session.setAttribute("customer", customer);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        session.setAttribute("customer", customer);
+        request.getRequestDispatcher("index.html").forward(request, response);
         }
     }
