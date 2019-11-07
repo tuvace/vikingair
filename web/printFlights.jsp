@@ -65,6 +65,10 @@
 
                 </tr>
 
+        <form action="booking.jsp">
+                <INPUT TYPE="button" value="Bestill" onclick="Bestill()">
+        </form>
+
             </c:forEach>
     </table>
     </div>

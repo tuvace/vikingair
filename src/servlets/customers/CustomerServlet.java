@@ -103,7 +103,7 @@ public class CustomerServlet extends HttpServlet {
         }
 
         else{
-            forward="/index.jsp"; //Index.jsp må oppdateres.
+            forward="/index.jsp";
         }
         RequestDispatcher view = sc.getRequestDispatcher(forward);
         view.forward(request, response);
