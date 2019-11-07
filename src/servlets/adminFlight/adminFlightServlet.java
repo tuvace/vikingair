@@ -1,7 +1,5 @@
 package servlets.adminFlight;
 
-import servlets.flights.Flight;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet(name = "/servlets.adminFlight.adminFlightServlet", urlPatterns = {"adminFlight"})
+@WebServlet(name = "adminFlightServlet", urlPatterns = {"/adminFlight"})
 public class adminFlightServlet extends HttpServlet {
     adminFlightLogic flightLogic = new adminFlightLogic();
 

@@ -12,9 +12,6 @@
         <thead>
         <tr>
             <th>
-                FlightID
-            </th>
-            <th>
                 flightDate
             </th>
             <th>
@@ -30,20 +27,19 @@
                 airplaneType
             </th>
             <th>
-                duartion
+                bookedSeat
             </th>
             <th>
-            baggage limit(tonn)
+                totalSeat
             </th>
+
         </tr>
 
         </thead>
         <jsp:useBean id="flights" scope="request" type="java.util.List"/>
             <c:forEach items="${flights}" var="flight">
                 <tr>
-                    <td>
-                        <c:out value="${flight.flightId}"/>
-                    </td>
+
                     <td>
                         <c:out value="${flight.flightDate}"/>
                     </td>
@@ -57,16 +53,21 @@
                         <c:out value="${flight.flightFrom}"/>
                     </td>
                     <td>
-                        <c:out value="${flight.airplaneType}"/>
-                    </td>
-                    <td>
                         <c:out value="${flight.duration}"/>
                     </td>
                     <td>
-                        <c:out value="${flight.baggage_limit}"/>
+                        <c:out value="${flight.bookedSeat}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flight.totalSeat}"/>
                     </td>
 
+
                 </tr>
+
+        <form action="booking.jsp">
+                <INPUT TYPE="button" value="Bestill" onclick="Bestill()">
+        </form>
 
             </c:forEach>
     </table>
