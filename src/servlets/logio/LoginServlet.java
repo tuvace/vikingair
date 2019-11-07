@@ -14,12 +14,14 @@ import java.security.AuthProvider;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
+import servlets.logio.LoginLogic;
 
 
 @WebServlet(name="LoginServlet", urlPatterns ={"/LoginServlet"})
 
 public class LoginServlet extends HttpServlet {
     CustomerLogic login = new CustomerLogic();
+
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
 
@@ -30,17 +32,15 @@ public class LoginServlet extends HttpServlet {
         String userPassword = request.getParameter("userPassword");
         System.out.print(userPassword);
 
-        try{
+        try {
             boolean validate = LoginLogic.validate(username, userPassword);
 
-            if (validate)
-            {
+            if (validate) {
                 out.print("<h1>Welcome " + username + "</h1>");
-            }
-            else {
+            } else {
                 out.print("Sorry username or password error");
-                RequestDispatcher rd=request.getRequestDispatcher("index.html");
-                rd.include(request,response);
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.include(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        session.setAttribute("customer", customer);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-    }
+            session.setAttribute("customer", customer);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }

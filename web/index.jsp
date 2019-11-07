@@ -9,7 +9,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<!DOCTYPE html>
 <html lang="no">
 <head>
   <style>
@@ -68,20 +67,19 @@
   <link href="css/index.css" rel="stylesheet" type="text/css">
 <body>
 <div style="text-align: center;">
-  <form action="index.html">
+  <form action="index.jsp">
     <button class="button button2"> Viking Airways </button>
   </form>
   <br><br><br>
   <c:if test="${sessionScope.customer == null}">
 
-    <a href = "login.html" class = "button button3"> Logg inn </a>
+    <a href = "login.jsp" class = "button button3"> Logg inn </a>
 
       </c:if>
   <c:if test="${sessionScope.customer != null}">
 
    <p> Bruker: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
      ><c:out value="${customer.firstName}"></c:out> </p>
-
 
   </c:if>
    <br>

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html lang="no">
 <head>
     <style>
@@ -40,35 +42,34 @@
 
 </head>
 <div style="text-align: center;">
-<h1> Logg inn </h1>
-<br>
-<body>
-    <form action="index.html">
+    <h1> Logg inn </h1>
+    <br>
+    <body>
+    <form action="index.jsp">
         <button class="button button3"> Viking Airways </button>
     </form>
     <form name="LoginForm" method="get" action="LoginServlet">
         <div class="container">
-        <p id="loginBox">
-            Email Adresse: <br>
+            <p id="loginBox">
+                Email Adresse: <br>
                 <input type="text" placeholder="Email Adresse" name="username" required>
-            <br> <br>
-            Passord: <br>
+                <br> <br>
+                Passord: <br>
                 <input type="password" placeholder="Passord" name="userPassword" required>
-            <br> <br>
-           <button class="button" type="submit"  value="login"> Logg inn </button>
+                <br> <br>
+                <button class="button" type="submit"  value="login"> Logg inn </button>
 
-        </p>
+            </p>
         </div>
         <br>
     </form>
     <form action="register.html">
-      <p id="registrerBox">
-          Har du ikke bruker?
-          <br> <br>
-        <button class="button button2"> Registrer ny bruker </button>
-      </p>
+        <p id="registrerBox">
+            Har du ikke bruker?
+            <br> <br>
+            <button class="button button2"> Registrer ny bruker </button>
+        </p>
     </form>
 
-</body>
+    </body>
 </div>
-</html>
