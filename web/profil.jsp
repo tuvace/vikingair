@@ -66,8 +66,8 @@
 	<form action="registrer.html">
 			<button class="button"> Endre passord </button>
 		</form>
-		<form action="index.jsp">
-			<button class="button"> Logg ut</button>
+	<form action="index.jsp">
+		<button class="button"> Logg ut</button>
 	</p>
 </form>
 </div>

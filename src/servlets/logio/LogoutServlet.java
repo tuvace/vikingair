@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out =response.getWriter();
 
-        request.getRequestDispatcher("index.html").include(request, response);
+        request.getRequestDispatcher("index.jsp").include(request, response);
 
         HttpSession session = request.getSession();
         session.invalidate();
@@ -29,4 +29,5 @@ public class LogoutServlet extends HttpServlet {
 
         out.close();
     }
+
 }
