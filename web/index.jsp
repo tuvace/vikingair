@@ -78,7 +78,7 @@
       </c:if>
   <c:if test="${sessionScope.customer != null}">
 
-   <p id="skriftStørrelse"> Bruker: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+   <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
      <c:out value="${customer.firstName}"> </c:out> <p>
 
   </c:if>
