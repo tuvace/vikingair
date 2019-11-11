@@ -96,7 +96,7 @@
     </form>
     </p>
   </form>
-  <form action="profil.html">
+  <form action="profil.jsp">
     <p id="lavprisBox">
       <button class="button button4"> Lavpriskalender </button>
       <br>
@@ -106,7 +106,7 @@
       <form action="kontaktoss.html">
         <button class="button button4"> Kontakt Oss </button>
         <br>
-        <form action="profil.html">
+        <form action="profil.jsp">
           <button class="button button4"> Min side </button>
         </form>
       </form>
