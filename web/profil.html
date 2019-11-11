@@ -38,7 +38,7 @@
 	<link href="css/profil.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="index.html">
+	<form action="index.jsp">
 		<button class="button button2"> Viking Airways </button>
 	</form>
 <div style="text-align: center;">
@@ -66,7 +66,7 @@
 	<form action="registrer.html">
 			<button class="button"> Endre passord </button>
 		</form>
-		<form action="index.html">
+		<form action="index.jsp">
 			<button class="button"> Logg ut</button>
 	</p>
 </form>
