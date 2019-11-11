@@ -42,13 +42,10 @@ public class FlightLogic {
                 flight.setFlightFrom(results.getString("flightFrom"));
                 flight.setAirplaneType(results.getString("airplaneType"));
                 flight.setDuration(results.getInt("duration"));
-
                 flight.setBaggage_limit(results.getInt("baggage_limit"));
                 //Vi legger til flight i arraylisten flights.
                 flights.add(flight);
-
             }
-
 
         }
         catch (SQLException sqlEx)

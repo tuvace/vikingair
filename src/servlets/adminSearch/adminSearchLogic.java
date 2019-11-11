@@ -1,16 +1,17 @@
 package servlets.adminSearch;
 
 import dbcode.dbUtilities;
+import servlets.flights.Flight;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class adminSearchLogic
 {
     dbUtilities db = new dbUtilities();
-    adminSearch adminSearch = new adminSearch();
-    public void getTickets(adminSearch adminSearch) throws SQLException
+    public ArrayList<adminSearch> selectAll() throws SQLException
     {
-        adminSearch.getFlight_ID();
+        ArrayList<adminSearch> searches = new ArrayList<>();
         try
         {
             String sql = "SELECT Customer FROM Ticket";
@@ -19,14 +20,16 @@ public class adminSearchLogic
 
             PreparedStatement myStmt = con.prepareStatement(sql);
 
-            ResultSet rs = myStmt.executeQuery(sql);
+            ResultSet rs = myStmt.executeQuery();
 
             while (rs.next())
             {
-                String firstName =rs.getString("firstName");
-                String middleName = rs.getString("middleName");
-                String lastName =rs.getString("lastName");
-                System.out.format("%s, %s, %s", firstName, middleName, lastName);
+                adminSearch search = new adminSearch();
+                search.setFlight_ID(rs.getString("flight_ID"));
+                search.setFirstName(rs.getString("firstName"));
+                search.setMiddleName(rs.getString("middleName"));
+                search.setLastName(rs.getString("lastName"));
+                searches.add(search);
             }
             con.close();
         }
@@ -34,5 +37,6 @@ public class adminSearchLogic
             {
                 e.printStackTrace();
             }
+        return searches;
     }
 }
