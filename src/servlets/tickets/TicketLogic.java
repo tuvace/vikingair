@@ -52,8 +52,17 @@ public class TicketLogic {
         }
     }
 
-    public void delete(int id) {
+    public void delete() throws SQLException {
 
+        String sql = "DELETE FROM ticket WHERE gate=?";
+        Connection con = db.connect();
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, "4C");
+
+        int rowsDeleted = statement.executeUpdate();
+        if (rowsDeleted > 0) {
+            System.out.println("A user was deleted successfully!");
+        }
     }
 
     public void update(Ticket ticket) {

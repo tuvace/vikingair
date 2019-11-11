@@ -101,4 +101,9 @@ public class TicketServlet extends HttpServlet {
             RequestDispatcher view = sc.getRequestDispatcher("/printTicket.jsp");
             view.forward(request, response);
         }
+
+/**
+        public void funkjon1(){
+            TicketLogic.delete();
+        }*/
 }
