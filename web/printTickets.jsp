@@ -21,31 +21,19 @@
                     flight_ID
                 </th>
                 <th>
-                    firstName
+                    customerID
                 </th>
-                <th>
-                    middleName
-                </th>
-                <th>
-                    lastName
-                </th>
-            </tr>
+
             </thead>
     <jsp:useBean id="searches" scope="request" type="java.util.List"/>
     <c:forEach items="${searches}" var="search">
         <tr>
 
         <td>
-        <c:out value="${search.flight_ID}"/>
+        <c:out value="${search.flightID}"/>
         </td>
         <td>
-        <c:out value="${search.firstName}"/>
-        </td>
-        <td>
-        <c:out value="${search.middleName}"/>
-        </td>
-        <td>
-        <c:out value="${search.lastName}"/>
+        <c:out value="${search.customerID}"/>
         </td>
     </tr>
      </c:forEach>

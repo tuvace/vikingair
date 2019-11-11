@@ -69,6 +69,9 @@
 	<form action="index.jsp">
 		<button class="button"> Logg ut</button>
 	</p>
+			<form action="/TicketServlet" method="get">
+				<button class="button"> billett </button>
+			</form>
 </form>
 </div>
 </body>
