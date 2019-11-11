@@ -96,9 +96,6 @@
     </form>
     </p>
   </form>
-  <form action="servlets.Test" method="get">
-    <input type="submit" value="create">
-  </form>
   <form action="lavpris.html">
     <p id="lavprisBox">
       <button class="button button4"> Lavpriskalender </button>
