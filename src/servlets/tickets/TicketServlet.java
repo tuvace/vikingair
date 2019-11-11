@@ -98,7 +98,7 @@ public class TicketServlet extends HttpServlet {
 
             }
 
-            RequestDispatcher view = sc.getRequestDispatcher("/printTicket.jsp");
+            RequestDispatcher view = sc.getRequestDispatcher("/cusTicket.jsp");
             view.forward(request, response);
         }
 
