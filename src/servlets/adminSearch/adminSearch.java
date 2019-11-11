@@ -1,16 +1,12 @@
 package servlets.adminSearch;
 
 public class adminSearch {
-    private String flight_ID;
-    private String firstName;
-    private String middleName;
-    private String lastName;
+    private String flightID;
+    private String customerID;
 
-    public adminSearch(String flight_ID, String firstName, String middleName, String lastName){
-        this.flight_ID = flight_ID;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
+    public adminSearch(String flight_ID, String customerID){
+        this.flightID = flightID;
+        this.customerID = customerID;
     }
 
     public adminSearch()
@@ -19,22 +15,15 @@ public class adminSearch {
 
     public String getFlight_ID()
     {
-        return flight_ID;
+        return flightID;
     }
-    public void setFlight_ID(String flight_ID)
+    public void setFlightID(String flightID)
     {
-        this.flight_ID = flight_ID;
+        this.flightID = flightID;
     }
-    public void setFirstName(String firstName)
+    public void setCustomerID(String customerID)
     {
-        this.firstName = firstName;
+        this.customerID = customerID;
     }
-    public void setMiddleName(String middleName)
-    {
-        this.middleName = middleName;
-    }
-    public void setLastName(String lastName)
-    {
-        this.lastName = lastName;
-    }
+
 }

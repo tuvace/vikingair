@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>printer ut navn og flyet deres</title>
+    <title>printer ut navn ogc flyet deres</title>
 </head>
 <body>
 <div class="wrap">
