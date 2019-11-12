@@ -68,9 +68,8 @@
 			<button class="button"> Endre passord </button>
 		</form>
 	<form action="${pageContext.request.contextPath}/logout" method="post">
-		<input type="submit" value="Logout" />
+		<input type="submit" class="button" value="Logout" />
 	</form>
-	</p>
 			<form action="/TicketServlet" method="get">
 				<button class="button"> billett </button>
 
