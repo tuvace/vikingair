@@ -9,25 +9,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-//Denne servletten er en kontroller.
-@WebServlet(name = "LogoutServlet", urlPatterns ={"/LogoutServlet"})
-public class LogoutServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
+ @WebServlet("/logout")
+ public class LogoutServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out =response.getWriter();
-
-        request.getRequestDispatcher("index.jsp").include(request, response);
-
-        HttpSession session = request.getSession();
-        session.invalidate();
-
-        out.print("You are logged out!");
-
-        out.close();
-    }
-
+ @Override
+ protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ request.getSession().invalidate();
+ response.sendRedirect(request.getContextPath() + "/index.jsp");
+ }
 }

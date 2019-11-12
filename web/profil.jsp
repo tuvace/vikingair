@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -66,11 +67,13 @@
 	<form action="registrer.html">
 			<button class="button"> Endre passord </button>
 		</form>
-	<form action="index.jsp">
-		<button class="button"> Logg ut</button>
+	<form action="${pageContext.request.contextPath}/logout" method="post">
+		<input type="submit" value="Logout" />
+	</form>
 	</p>
 			<form action="/TicketServlet" method="get">
 				<button class="button"> billett </button>
+
 			</form>
 </form>
 </div>
