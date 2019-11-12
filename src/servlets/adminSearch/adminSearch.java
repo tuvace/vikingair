@@ -4,7 +4,7 @@ public class adminSearch {
     private String flightID;
     private String customerID;
 
-    public adminSearch(String flight_ID, String customerID){
+    public adminSearch(String flightID, String customerID){
         this.flightID = flightID;
         this.customerID = customerID;
     }
@@ -12,8 +12,11 @@ public class adminSearch {
     public adminSearch()
     {
     }
-
-    public String getFlight_ID()
+    public String getCustomerID()
+    {
+        return customerID;
+    }
+    public String getFlightID()
     {
         return flightID;
     }
