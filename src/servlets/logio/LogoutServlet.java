@@ -17,5 +17,7 @@ import java.io.PrintWriter;
  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  request.getSession().invalidate();
  response.sendRedirect(request.getContextPath() + "/index.jsp");
+
+     System.out.println("You are logged out!");
  }
 }
