@@ -18,7 +18,7 @@
             <thead>
             <tr>
                 <th>
-                    flight_ID
+                    flightID
                 </th>
                 <th>
                     customerID
