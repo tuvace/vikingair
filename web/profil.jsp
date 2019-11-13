@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -38,27 +39,38 @@
 	<link href="css/profil.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="index.html">
+	<form action="index.jsp">
 		<button class="button button2"> Viking Airways </button>
 	</form>
 <div style="text-align: center;">
 <h1> Din profil </h1>
 <br>
 
-   <p id="profileBox">
-	Fornavn: <br>
-		<input type="text" name="first_name"><br>
-	Etternavn: <br>
-		<input type="text" name="last_name"><br>
-	Adresse: <br>
-		<input type="text" name="customer_address"><br>
-	Epost Adresse: <br>
-		<input type="text" name="email"><br>
-	Mobilnummer: <br>
-		<input type="number" name="phone"><br>
-	Kjønn: <br>
-		<input>
-		
+	<c:if test="${sessionScope.customer == null}">
+
+		<a href = "login.jsp" class = "button button3"> Logg inn </a>
+
+	</c:if>
+	<c:if test="${sessionScope.customer != null}">
+
+
+	<p id="profileBox">
+		<br>
+		<jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+		Navn: <br>
+		<c:out value="${customer.firstName}"> </c:out>
+		<c:out value="${customer.middleName}"> </c:out>
+		<c:out value="${customer.lastName}"> </c:out><br><br>
+		Adresse:<br>
+		<c:out value="${customer.customerAddress}"> </c:out><br><br>
+		Mobilnummer:<br>
+		<c:out value="${customer.phoneNumber}"> </c:out><br><br>
+		Email: <br>
+		<c:out value="${customer.email}"> </c:out>
+	</p>
+
+	</c:if>
+		<br>
 	<form action="registrer.html">
 		<button class="button"> Endre profilinfomasjon </button>
 	</form>
@@ -66,9 +78,14 @@
 	<form action="registrer.html">
 			<button class="button"> Endre passord </button>
 		</form>
-		<form action="index.html">
-			<button class="button"> Logg ut</button>
-	</p>
+
+			<form action="/TicketServlet" method="get">
+				<button class="button"> billett </button>
+			</form>
+	<br>
+	<form action="${pageContext.request.contextPath}/logout" method="post">
+		<input type="submit" class="button" value="Logout" />
+	</form>
 </form>
 </div>
 </body>

@@ -78,8 +78,8 @@
       </c:if>
   <c:if test="${sessionScope.customer != null}">
 
-   <p> Bruker: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
-     ><c:out value="${customer.firstName}"></c:out> </p>
+   <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+     <c:out value="${customer.firstName}"> </c:out> <p>
 
   </c:if>
    <br>
@@ -89,17 +89,11 @@
       <input type="text" placeholder="Til*" name="flightTo" >
       <br>
       <input type="date" placeholder="Dato" name="flightDate">
-
-    <form action="results">
-      <button class="button"> Søk </button> <br>
+      <button class="button" type="submit"> Søk </button> <br>
       *Påkrevd informasjon
-    </form>
     </p>
   </form>
-  <form action="servlets.Test" method="get">
-    <input type="submit" value="create">
-  </form>
-  <form action="lavpris.html">
+  <form action="profil.jsp">
     <p id="lavprisBox">
       <button class="button button4"> Lavpriskalender </button>
       <br>
@@ -109,13 +103,14 @@
       <form action="kontaktoss.html">
         <button class="button button4"> Kontakt Oss </button>
         <br>
-        <form action="minebestillinger.html">
-          <button class="button button4"> Mine bestillinger </button>
+        <form action="profil.jsp">
+          <button class="button button4"> Min side </button>
         </form>
       </form>
-    </form>
+  </form>
     </p>
   </form>
+
 </div>
 </body>
 </html>
