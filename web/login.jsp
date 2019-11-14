@@ -48,7 +48,7 @@
     <form action="index.jsp">
         <button class="button button3"> Viking Airways </button>
     </form>
-    <form name="LoginForm" method="get" action="/LoginServlet">
+    <form name="LoginForm" method="get" action="LoginServlet">
         <div class="container">
             <p id="loginBox">
                 Email Adresse: <br>

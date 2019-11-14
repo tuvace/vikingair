@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import servlets.logio.LoginLogic;
 
 
-@WebServlet("/LoginServlet")
+@WebServlet(name="LoginServlet", urlPatterns ={"/LoginServlet"})
 
 public class LoginServlet extends HttpServlet {
     CustomerLogic login = new CustomerLogic();
@@ -67,12 +67,20 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("userPassword");
 
-        Customer customer = login.login(username, password);
+        if (login != null) {
+            Customer customer = login.login(username, password);
 
-        HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
 
         session.setAttribute("customer", customer);
         request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+        else {
+            request.getSession().invalidate();
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            System.out.println("Username or password is wrong");
+
+        }
         }
     }
 
