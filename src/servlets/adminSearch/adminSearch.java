@@ -1,13 +1,32 @@
 package servlets.adminSearch;
 
 public class adminSearch {
-    private String flight_ID;
+    private String flightID;
+    private String customerID;
+
+    public adminSearch(String flightID, String customerID){
+        this.flightID = flightID;
+        this.customerID = customerID;
+    }
+
     public adminSearch()
     {
     }
-
-    public String getFlight_ID()
+    public String getCustomerID()
     {
-        return flight_ID;
+        return customerID;
     }
+    public String getFlightID()
+    {
+        return flightID;
+    }
+    public void setFlightID(String flightID)
+    {
+        this.flightID = flightID;
+    }
+    public void setCustomerID(String customerID)
+    {
+        this.customerID = customerID;
+    }
+
 }

@@ -4,15 +4,16 @@ import dbcode.dbUtilities;
 import servlets.interfaces.VikingAir;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class TicketLogic implements VikingAir<Ticket> {
+public class TicketLogic {
 
 
     dbUtilities db = new dbUtilities();
 
-    @Override
+
     public void create(Ticket tic) throws SQLException {
 
         PreparedStatement ps;
@@ -51,16 +52,54 @@ public class TicketLogic implements VikingAir<Ticket> {
         }
     }
 
-    public void delete(int id) {
+    public void delete() throws SQLException {
 
+        String sql = "DELETE FROM ticket WHERE gate=?";
+        Connection con = db.connect();
+        PreparedStatement statement = con.prepareStatement(sql);
+        statement.setString(1, "4C");
+
+        int rowsDeleted = statement.executeUpdate();
+        if (rowsDeleted > 0) {
+            System.out.println("A user was deleted successfully!");
+        }
     }
 
     public void update(Ticket ticket) {
 
     }
 
-    public ArrayList<Ticket> showAll() {
-        return null;
+    public ArrayList<Ticket> showAll(String gate) throws SQLException {
+
+        ArrayList<Ticket> tickets = new ArrayList<>();
+        PreparedStatement myStmt;
+
+        String sql = "SELECT * FROM TICKET LIMIT 1";
+
+        Connection con = db.connect();
+
+        try{
+            myStmt = con.prepareStatement(sql);
+            ResultSet results = myStmt.executeQuery();
+
+            while (results.next()){
+            Ticket tic = new Ticket();
+
+            tic.setGate(results.getString("gate"));
+
+            tickets.add(tic);
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+
+        }
+
+        return tickets;
     }
 
     public Ticket showOne(int id) {

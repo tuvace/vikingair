@@ -11,7 +11,7 @@ public interface VikingAir <V> {
 
     void update(V v);
 
-    ArrayList<V> showAll();
+    ArrayList<V> showAll() throws SQLException;
 
     V showOne(int id);
 }
