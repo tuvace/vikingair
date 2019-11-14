@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.sql.SQLException;
 import servlets.FlightSearch.FlightSearchLogic;
 import servlets.FlightSearch.FlightSearch;
@@ -22,7 +18,7 @@ import servlets.FlightSearch.FlightSearch;
 public class FlightSearchServlet extends HttpServlet {
 
     FlightSearchLogic fls = new FlightSearchLogic();
-
+/**
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
 
@@ -30,7 +26,7 @@ public class FlightSearchServlet extends HttpServlet {
         String flightFrom = request.getParameter("flightFrom");
         String flightTo = request.getParameter("flightTo");
         String flightDate = request.getParameter("flightDate");
-       // Date flightDate = (Date) request.getAttribute("flightDate");
+        // Date flightDate = (Date) request.getAttribute("flightDate");
         try {
             request.setAttribute("flights", fls.showAllFlights(flightFrom, flightTo, flightDate));
 
@@ -39,10 +35,11 @@ public class FlightSearchServlet extends HttpServlet {
 
 
         }
-        
+
 
 
     }
+ */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -52,7 +49,7 @@ public class FlightSearchServlet extends HttpServlet {
         String flightTo = request.getParameter("flightTo");
         String flightDate = request.getParameter("flightDate");
         try {
-            request.setAttribute("flights", fls.showAllFlights(flightFrom, flightTo, flightDate));
+            request.setAttribute("flsResults", fls.showAllFlights(flightFrom, flightTo, flightDate));
 
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -64,46 +61,3 @@ public class FlightSearchServlet extends HttpServlet {
         view.forward(request, response);
     }
 }
-
-
-
-
-/**
-    FlightSearchLogic fsl = new FlightSearchLogic();
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
-       response.setContentType("text//html");
-        PrintWriter out = response.getWriter();
-
-        String flightFrom = request.getParameter("flightFrom");
-        String flightTo = request.getParameter("flightTo");
-        Date flightDate = (Date) request.getAttribute("flightDate");
-        ServletContext sc = this.getServletContext();
-
-        try {
-            request.setAttribute("flights", fsl.showAllFlights(flightFrom, flightTo, flightDate));
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        RequestDispatcher view = sc.getRequestDispatcher("/printFlights.jsp");
-        view.forward(request, response);
-    }
-
-
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        ServletContext sc = this.getServletContext();
-       RequestDispatcher view = sc.getRequestDispatcher("/printFlights.jsp");
-       view.forward(request, response);
-
-
-
-    }
-}
-
-*/

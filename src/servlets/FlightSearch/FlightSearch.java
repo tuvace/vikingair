@@ -1,6 +1,5 @@
 package servlets.FlightSearch;
 
-import java.sql.Date;
 
 public class FlightSearch {
     private String flightDate;
@@ -21,9 +20,9 @@ public class FlightSearch {
         this.totalSeat = totalSeat;
     }
 
-public FlightSearch(){
+    public FlightSearch(){
 
-}
+    }
 
     public String getFlightDate() {
         return flightDate;
