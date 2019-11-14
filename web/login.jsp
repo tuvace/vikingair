@@ -63,7 +63,7 @@
         </div>
         <br>
     </form>
-    <form action="register.html">
+    <form action="register.jsp">
         <p id="registrerBox">
             Har du ikke bruker?
             <br> <br>

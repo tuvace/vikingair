@@ -18,8 +18,6 @@ public class adminFlightServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-
-
         String to = request.getParameter("flightTo");
         String from = request.getParameter("flightFrom");
         int year =  Integer.parseInt(request.getParameter("flightYear"));
@@ -31,7 +29,6 @@ public class adminFlightServlet extends HttpServlet {
         int seatAmount = Integer.parseInt(request.getParameter("seatAmount"));
         int baggage_limit = Integer.parseInt(request.getParameter("baggage_limit"));
         adminFlight flight = new adminFlight(to, from, year, month, day, duration, flight_ID, airplaneType, seatAmount, baggage_limit);
-
 
         try {
             flightLogic.addFlight(flight);
