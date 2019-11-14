@@ -18,28 +18,7 @@ import servlets.FlightSearch.FlightSearch;
 public class FlightSearchServlet extends HttpServlet {
 
     FlightSearchLogic fls = new FlightSearchLogic();
-/**
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response) throws ServletException, IOException {
 
-
-        String flightFrom = request.getParameter("flightFrom");
-        String flightTo = request.getParameter("flightTo");
-        String flightDate = request.getParameter("flightDate");
-        // Date flightDate = (Date) request.getAttribute("flightDate");
-        try {
-            request.setAttribute("flights", fls.showAllFlights(flightFrom, flightTo, flightDate));
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-
-
-        }
-
-
-
-    }
- */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

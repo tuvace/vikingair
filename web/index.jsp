@@ -83,7 +83,7 @@
 
   </c:if>
    <br>
-  <form action="FlightSearchServlet" method="Post">
+  <form action="FlightSearchServlet" method="Get">
     <p id="søkBox">
       <input type="text" placeholder="Fra*" name="flightFrom">
       <input type="text" placeholder="Til*" name="flightTo" >
