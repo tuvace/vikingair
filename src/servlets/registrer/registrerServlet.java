@@ -2,6 +2,8 @@ package servlets.registrer;
 
 import servlets.customers.Customer;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,23 +19,23 @@ import servlets.logio.Login;
 public class registrerServlet extends HttpServlet
 {
     registrerLogic registrerLogic = new registrerLogic();
-    CustomerLogic logic = new CustomerLogic();
+    //CustomerLogic logic = new CustomerLogic();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String first = request.getParameter("firstName");
-        String last = request.getParameter("lastName");
-        String address = request.getParameter("customer_address");
+        ServletContext sc = this.getServletContext();
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String customerAddress = request.getParameter("customerAddress");
         String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
+        String phoneNumber = request.getParameter("phoneNumber");
         String gender = request.getParameter("gender");
-        String disabilities = request.getParameter("disabilities");
         String password = request.getParameter("password");
-        registrer regi = new registrer(first, last, address, email, phone, gender, disabilities, password);
+        Registrer regi = new Registrer(firstName, lastName, customerAddress, email, phoneNumber, gender, password);
 
         try
         {
             registrerLogic.addKunde(regi);
-            if(logic != null)
+           /** if(logic != null)
             {
                 Customer customer = logic.login(email,password);
                 HttpSession session = request.getSession();
@@ -45,12 +47,14 @@ public class registrerServlet extends HttpServlet
                 request.getSession().invalidate();
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
                 System.out.println("Username or password is wrong");
-            }
+            }*/
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+        RequestDispatcher view = sc.getRequestDispatcher("/login.jsp");
+        view.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

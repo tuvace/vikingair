@@ -1,29 +1,29 @@
 package servlets.registrer;
 
-public class registrer
+public class Registrer
 {
     private String firstName;
     private String lastName;
-    private String customer_address;
+    private String customerAddress;
     private String email;
-    private String phone;
+    private String phoneNumber;
     private String gender;
     private String password;
-    private String disabilities;
 
-    public registrer()
+
+    public Registrer()
     {
     }
-    public registrer(String firstName, String lastName, String customer_address, String email, String phone, String gender, String password, String disabilities)
+    public Registrer(String firstName, String lastName, String customerAddress, String email, String phoneNumber, String gender, String password)
     {
         this.firstName=firstName;
         this.lastName=lastName;
-        this.customer_address=customer_address;
+        this.customerAddress=customerAddress;
         this.email=email;
-        this.phone=phone;
+        this.phoneNumber=phoneNumber;
         this.gender=gender;
         this.password=password;
-        this.disabilities=disabilities;
+
     }
 
     public String getFirstName()
@@ -34,17 +34,17 @@ public class registrer
     {
         return lastName;
     }
-    public String getCustomer_address()
+    public String getCustomerAddress()
     {
-        return customer_address;
+        return customerAddress;
     }
     public String getEmail()
     {
         return email;
     }
-    public String getPhone()
+    public String getPhoneNumber()
     {
-        return phone;
+        return phoneNumber;
     }
     public String getGender()
     {
@@ -54,33 +54,25 @@ public class registrer
     {
         return password;
     }
-    public String getDisabilities()
-    {
-        return disabilities;
-    }
-    public void setDisabilities(String disabilities)
-    {
-        this.disabilities = disabilities;
-    }
     public void setFirstName(String firstName)
     {
         this.firstName = firstName;
     }
-    public void setLast_name(String last_name)
+    public void setLastName(String last_name)
     {
         this.lastName = lastName;
     }
-    public void setCustomer_address(String customer_address)
+    public void setCustomerAddress(String customerAddress)
     {
-        this.customer_address = customer_address;
+        this.customerAddress = customerAddress;
     }
     public void setEmail(String email)
     {
         this.email = email;
     }
-    public void setPhone(String phone)
+    public void setPhoneNumber(String phoneNumber)
     {
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
     }
     public void setGender(String gender)
     {

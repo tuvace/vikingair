@@ -52,11 +52,11 @@
     Etternavn: <br>
         <input type="text" name="lastName"><br>
     Adresse: <br>
-        <input type="text" name="customer_address"><br>
+        <input type="text" name="customerAddress"><br>
     Epost Adresse: <br>
         <input type="text" name="email"><br>
     Mobilnummer: <br>
-        <input type="number" name="phone"><br>
+        <input type="number" name="phoneNumber"><br>
     Kj&oslashnn: <br>
         <input type="radio" name="gender" value="male"> Mann <br>
         <input type="radio" name="gender" value="female"> Kvinne <br>
