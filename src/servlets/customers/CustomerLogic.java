@@ -181,6 +181,7 @@ public class CustomerLogic {
 
             }else{
                 System.out.println("User is not found");
+                return null;
             }
         }catch(SQLException ex){
             System.out.println(ex);

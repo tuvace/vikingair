@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("text/html");
+       /** response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
         String username = request.getParameter("username");
@@ -59,29 +59,32 @@ public class LoginServlet extends HttpServlet {
         // return response
         writer.println(htmlRespone);
 
-
+*/
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String username = request.getParameter("username");
+       String username = request.getParameter("username");
         String password = request.getParameter("userPassword");
 
-        if (login != null) {
-            Customer customer = login.login(username, password);
 
+        Customer customer = login.login(username, password);
+            if (customer != null) {
             HttpSession session = request.getSession();
 
         session.setAttribute("customer", customer);
         request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         else {
-            request.getSession().invalidate();
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
-            System.out.println("Username or password is wrong");
+           // request.getSession().invalidate();
+            request.setAttribute("errormsg", "Username or password is wrong.");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
 
         }
         }
     }
+
+
+
 
 

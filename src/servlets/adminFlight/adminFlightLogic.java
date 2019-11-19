@@ -15,7 +15,7 @@ public class adminFlightLogic
 
         PreparedStatement myStmt;
         // Step 1: create sql statement
-        String sql = "INSERT into Flightdetail(flightFrom, flightTo, flightYear, flightMonth, flightDay, flightID, airplaneType, duration, seatAmount, baggage_limit)"+ "values (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT into Flightdetail(flightFrom, flightTo, flightDate, flightID, airplaneType, duration, seatAmount, baggage_limit)"+ "values (?,?,?,?,?,?,?,?)";
         Connection con = db.connect();
 
        try {
@@ -23,14 +23,12 @@ public class adminFlightLogic
 
            myStmt.setString(1, adminFlight.getFrom());
            myStmt.setString(2, adminFlight.getTo());
-           myStmt.setInt(3, adminFlight.getYear());
-           myStmt.setInt(4, adminFlight.getMonth());
-           myStmt.setInt(5, adminFlight.getDay());
-           myStmt.setString(6, adminFlight.getFlightID());
-           myStmt.setString(7, adminFlight.getAirplaneType());
-           myStmt.setInt(8, adminFlight.getDuration());
-           myStmt.setInt(9, adminFlight.getSeatAmount());
-           myStmt.setInt(10, adminFlight.getBaggagelimit());
+           myStmt.setString(3, adminFlight.getFlightDate());
+           myStmt.setString(4, adminFlight.getFlightID());
+           myStmt.setString(5, adminFlight.getAirplaneType());
+           myStmt.setInt(6, adminFlight.getDuration());
+           myStmt.setInt(7, adminFlight.getSeatAmount());
+           myStmt.setInt(8, adminFlight.getBaggagelimit());
 
            /*
            ResultSet results = myStmt.executeQuery();

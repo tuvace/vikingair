@@ -71,17 +71,22 @@
     <button class="button button2"> Viking Airways </button>
   </form>
   <br><br><br>
-  <c:if test="${sessionScope.customer == null}">
 
-    <a href = "login.jsp" class = "button button3"> Logg inn </a>
+    <c:if test="${sessionScope.customer == null}">
 
-      </c:if>
-  <c:if test="${sessionScope.customer != null}">
+        <a href = "login.jsp" class = "button button3"> Logg inn </a>
 
-   <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
-     <c:out value="${customer.firstName}"> </c:out> <p>
+    </c:if>
 
-  </c:if>
+    <c:if test="${sessionScope.customer != null}">
+
+    <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+        <c:out value="${customer.firstName}"> </c:out> <p>
+
+    </c:if>
+
+
+
    <br>
   <form action="FlightSearchServlet" method="Get">
     <p id="søkBox">

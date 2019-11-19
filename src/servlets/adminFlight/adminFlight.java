@@ -7,22 +7,18 @@ public class adminFlight implements Serializable
 {
     private String from;
     private String to;
-    private int year;
-    private int month;
-    private int day;
+    private String flightDate;
     private int duration;
     private String flightID;
     private String airplaneType;
     private int seatAmount;
     private int baggage_limit;
 
-    public adminFlight(String from, String to, int year, int month, int day, int duration, String flightID, String airplaneType, int seatAmount, int baggage_limit)
+    public adminFlight(String from, String to, String flightDate, int duration, String flightID, String airplaneType, int seatAmount, int baggage_limit)
     {
         this.from = from;
         this.to = to;
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        this.flightDate = flightDate;
         this.duration = duration;
         this.flightID = flightID;
         this.airplaneType = airplaneType;
@@ -47,29 +43,10 @@ public class adminFlight implements Serializable
     public void setTo(String to) {
         this.to = to;
     }
-    public int getYear() {
-        return year;
-    }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+    public void setFlightDate(String flightDate){this.flightDate = flightDate;}
 
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int Month) {
-        this.month = month;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int Day) {
-        this.day = day;
-    }
+    public String getFlightDate() {return flightDate;}
 
     public void setDuration(int duration) {
         this.duration = duration;
