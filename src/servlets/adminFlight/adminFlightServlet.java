@@ -1,5 +1,7 @@
 package servlets.adminFlight;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,24 +17,25 @@ public class adminFlightServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+        ServletContext sc = this.getServletContext();
 
         String to = request.getParameter("flightTo");
         String from = request.getParameter("flightFrom");
         String flightDate = request.getParameter("flightDate");
-        String flight_ID = request.getParameter("flight_ID");
+        String flightID = request.getParameter("flightID");
         String airplaneType = request.getParameter("airplaneType");
         int duration = Integer.parseInt(request.getParameter("duration"));
-        int seatAmount = Integer.parseInt(request.getParameter("seatAmount"));
+        int price = Integer.parseInt(request.getParameter("price"));
         int baggage_limit = Integer.parseInt(request.getParameter("baggage_limit"));
-        adminFlight flight = new adminFlight(to, from, flightDate, duration, flight_ID, airplaneType, seatAmount, baggage_limit);
+        adminFlight flight = new adminFlight(to, from, flightDate, duration, flightID, airplaneType, price, baggage_limit);
 
         try {
             flightLogic.addFlight(flight);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        RequestDispatcher view = sc.getRequestDispatcher("/adminHovedside.jsp");
+        view.forward(request, response);
 
     }
 

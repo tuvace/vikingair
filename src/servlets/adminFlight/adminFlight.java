@@ -13,8 +13,9 @@ public class adminFlight implements Serializable
     private String airplaneType;
     private int seatAmount;
     private int baggage_limit;
+    private int price;
 
-    public adminFlight(String from, String to, String flightDate, int duration, String flightID, String airplaneType, int seatAmount, int baggage_limit)
+    public adminFlight(String from, String to, String flightDate, int duration, String flightID, String airplaneType, int baggage_limit, int price)
     {
         this.from = from;
         this.to = to;
@@ -24,6 +25,7 @@ public class adminFlight implements Serializable
         this.airplaneType = airplaneType;
         this.seatAmount = seatAmount;
         this.baggage_limit = baggage_limit;
+        this.price = price;
     }
     public adminFlight() {
 
@@ -86,5 +88,7 @@ public class adminFlight implements Serializable
     public int getBaggagelimit() {
         return baggage_limit;
     }
+    public int getPrice() {return price;}
+    public void setPrice(int price) {this.price = price;}
 }
 

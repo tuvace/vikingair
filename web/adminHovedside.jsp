@@ -44,7 +44,7 @@
         <button class="button button2"> Forside </button>
     </form>
     <br> <br> <br> <br>
-    <form action="adminFlight.html">
+    <form action="adminFlight.jsp">
         <button class="button button3"> Registrer nytt fly </button>
     </form>
     <br>

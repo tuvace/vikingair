@@ -15,7 +15,7 @@ public class adminFlightLogic
 
         PreparedStatement myStmt;
         // Step 1: create sql statement
-        String sql = "INSERT into Flightdetail(flightFrom, flightTo, flightDate, flightID, airplaneType, duration, seatAmount, baggage_limit)"+ "values (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT into Flightdetails(flightFrom, flightTo, flightDate, flightID, airplaneType, duration, price, baggage_limit)"+ "values (?,?,?,?,?,?,?,?)";
         Connection con = db.connect();
 
        try {
@@ -27,27 +27,10 @@ public class adminFlightLogic
            myStmt.setString(4, adminFlight.getFlightID());
            myStmt.setString(5, adminFlight.getAirplaneType());
            myStmt.setInt(6, adminFlight.getDuration());
-           myStmt.setInt(7, adminFlight.getSeatAmount());
+           myStmt.setInt(7, adminFlight.getPrice());
            myStmt.setInt(8, adminFlight.getBaggagelimit());
+           myStmt.execute();
 
-           /*
-           ResultSet results = myStmt.executeQuery();
-           while (results.next()) {
-               adminFlight.setFlightId(results.getInt("flight_ID"));
-               adminFlight.setYear(results.getInt("flightYear"));
-               adminFlight.setMonth(results.getInt("flightMonth"));
-               adminFlight.setDay(results.getInt("flightDay"));
-               adminFlight.setTo(results.getString("flightTo"));
-               adminFlight.setFrom(results.getString("flightFrom"));
-               adminFlight.setAirplaneType(results.getString("airplaneType"));
-               adminFlight.setDuration(results.getInt("duration"));
-               adminFlight.setSeatAmount(results.getInt("seatAmount"));
-               adminFlight.setBaggagelimit(results.getInt("baggage_limit"));
-
-               //Vi legger til flight i arraylisten flights.
-           }
-
-            */
        }
        catch (SQLException sqlEx)
        {
