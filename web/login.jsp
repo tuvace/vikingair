@@ -60,6 +60,11 @@
                 <button class="button" type="submit" value="login"> Logg inn </button>
 
             </p>
+            <jsp:useBean id="errormsg" scope="request" class="java.lang.String"/>
+            <c:if test="${requestScope.errormsg != null}">
+                <p style="color:#ff3300; text-shadow: 2px 2px 4px black;"> <c:out value="${errormsg}"/> </p>
+            </c:if>
+
         </div>
         <br>
     </form>
@@ -70,6 +75,7 @@
             <button class="button button2"> Registrer ny bruker </button>
         </p>
     </form>
+
 
     </body>
 </div>
