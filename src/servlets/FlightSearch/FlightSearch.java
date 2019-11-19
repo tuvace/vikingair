@@ -2,6 +2,7 @@ package servlets.FlightSearch;
 
 
 public class FlightSearch {
+    private int flightID;
     private String flightDate;
     private int price;
     private String flightFrom;
@@ -10,7 +11,8 @@ public class FlightSearch {
     private int bookedSeat;
     private  int totalSeat;
 
-    public FlightSearch(String flightDate, int price, String flightFrom, String flightTo, int duration, int bookedSeat, int totalSeat) {
+    public FlightSearch(int flightID, String flightDate, int price, String flightFrom, String flightTo, int duration, int bookedSeat, int totalSeat) {
+        this.flightID = flightID;
         this.flightDate = flightDate;
         this.price = price;
         this.flightFrom = flightFrom;
@@ -22,6 +24,14 @@ public class FlightSearch {
 
     public FlightSearch(){
 
+    }
+
+    public int getFlightID() {
+        return flightID;
+    }
+
+    public void setFlightID(int flightID) {
+        this.flightID = flightID;
     }
 
     public String getFlightDate() {

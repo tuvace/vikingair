@@ -1,9 +1,13 @@
 <%@ page import="servlets.FlightSearch.FlightSearch" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+    <link href="css/kontaktoss.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="wrap">
@@ -11,6 +15,9 @@
     <table class="table table-hover">
         <thead>
         <tr>
+            <th>
+                Flyets identifikasjon
+            </th>
             <th>
                 Flyets avgangstid
             </th>
@@ -36,11 +43,20 @@
 
         </tr>
 
-        </thead>
 
+        </thead>
+            <div id="flightData">
             <jsp:useBean id="flsResults" scope="request" type="java.util.List"/>
             <c:forEach items="${flsResults}" var="flightSearch">
+                <!-- link for bestilling av billett-->
+                <c:url var="orderTicket" value="TicketBookingServlet">
+                    <c:param name="command" value="save"/>
+                    <c:param name="flightID" value="${flightSearch.flightID}"/>
+                </c:url>
                 <tr>
+                    <td>
+                        <c:out value="${flightSearch.flightID}"/>
+                    </td>
                     <td>
                         <c:out value="${flightSearch.flightDate}"/>
                     </td>
@@ -63,17 +79,18 @@
                         <c:out value="${flightSearch.totalSeat}"/>
                     </td>
                     <td>
-                        <input type="radio" name ="radios" value="flightSearch">
-                        Velg en flyvning
-                        <input type="submit" value="Trykk" href="booking.jsp">
+                        <a href="${orderTicket}">Bestill reise</a>
+
 
                     </td>
                 </tr>
-
             </c:forEach>
-
+            </div>
     </table>
     </div>
 </div>
 </body>
 </html>
+
+
+
