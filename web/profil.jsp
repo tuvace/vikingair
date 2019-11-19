@@ -84,7 +84,7 @@
 			</form>
 	<br>
 	<form action="${pageContext.request.contextPath}/logout" method="post">
-		<input type="submit" class="button" value="Logout" />
+		<input type="submit" class="button" value="Logg ut" />
 	</form>
 </form>
 </div>

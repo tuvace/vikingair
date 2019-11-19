@@ -68,7 +68,7 @@
 
             <div id="BekreftBestilling">
                 <tr>
-                    <td> <a href="${orderTicket}">Bekreft Bestilling</a></td>
+                    <td> <a href="bestillingsBekreftelse.jsp">Bekreft Bestilling</a></td>
                 </tr>
             </div>
                 </table>
