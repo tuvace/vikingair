@@ -1,8 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: tuvace
+  Date: 2019-11-19
+  Time: 14:13
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<!DOCTYPE html>
 <html lang="no">
 <head>
+<body style="background-color:#ccf2ff;"> </body>
     <style>
         h1 {
             color: white;
@@ -36,46 +45,25 @@
             text-shadow: 2px 2px 4px black;
         }
     </style>
-    <meta charset="UTF-8">
-    <title> Logg inn </title>
-    <link href="css/login.css" rel="stylesheet" type="text/css">
 
+    <meta charset="UTF-8">
+    <title>Bestillingsbekreftelse</title>
 </head>
+<body>
 <div style="text-align: center;">
-    <h1> Logg inn </h1>
+    <h1> Bestillingsbekreftelse </h1>
     <br>
-    <body>
+
     <form action="index.jsp">
         <button class="button button3"> Viking Airways </button>
     </form>
-    <form name="LoginForm" method="get" action="LoginServlet">
-        <div class="container">
-            <p id="loginBox">
-                Email Adresse: <br>
-                <input type="text" placeholder="Email Adresse" name="username" required>
-                <br> <br>
-                Passord: <br>
-                <input type="password" placeholder="Passord" name="userPassword" required>
-                <br> <br>
-                <button class="button" type="submit" value="login"> Logg inn </button>
 
-            </p>
-            <jsp:useBean id="errormsg" scope="request" class="java.lang.String"/>
-            <c:if test="${requestScope.errormsg != null}">
-                <p style="color:#ff3300; text-shadow: 2px 2px 4px black;"> <c:out value="${errormsg}"/> </p>
-            </c:if>
-
-        </div>
-        <br>
-    </form>
-    <form action="register.jsp">
-        <p id="registrerBox">
-            Har du ikke bruker?
-            <br> <br>
-            <button class="button button2"> Registrer ny bruker </button>
-        </p>
-    </form>
+    <br>
+    <h1 style="color:white; text-shadow: 2px 2px 4px black;"> Din bestilling er fullført! </h1>
+        <h2 style="color:white; text-shadow: 2px 2px 4px black;"> Gå inn på Mine Sider for å se billetten. </h2>
+    <a href="profil.jsp"> <button class="button"> Mine Sider </button>  </a>
 
 
-    </body>
 </div>
+</body>
+</html>

@@ -71,47 +71,47 @@
     <button class="button button2"> Viking Airways </button>
   </form>
   <br><br><br>
-  <c:if test="${sessionScope.customer == null}">
 
-    <a href = "login.jsp" class = "button button3"> Logg inn </a>
+    <c:if test="${sessionScope.customer == null}">
 
-      </c:if>
-  <c:if test="${sessionScope.customer != null}">
+        <a href = "login.jsp" class = "button button3"> Logg inn </a>
 
-   <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
-     <c:out value="${customer.firstName}"> </c:out> <p>
+    </c:if>
 
-  </c:if>
+    <c:if test="${sessionScope.customer != null}">
+
+    <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+        <c:out value="${customer.firstName}"> </c:out> <p>
+
+    </c:if>
+
+
+
    <br>
-  <form action="FlightSearchServlet" method="get">
+  <form action="FlightSearchServlet" method="Get">
     <p id="søkBox">
       <input type="text" placeholder="Fra*" name="flightFrom">
       <input type="text" placeholder="Til*" name="flightTo" >
       <br>
       <input type="date" placeholder="Dato" name="flightDate">
-
-    <form action="results">
-      <button class="button"> Søk </button> <br>
+      <button class="button" type="submit"> Søk </button> <br>
       *Påkrevd informasjon
-    </form>
     </p>
   </form>
-  <form action="profil.jsp">
-    <p id="lavprisBox">
-      <button class="button button4"> Lavpriskalender </button>
+    <div id="lavprisBox">
+     <!--
+     En <a> tag står for attribute og fungerer på den måten at man kan linke videre til en ny lokalasjon med å bestemme en href type.
+     href setter linken som skal bli videresendt når en person trykker på linken. class type setter klassen til  taggen og den bruker
+     vi for å gi taggen et design. Her har henriette allerede lagd et design for button button4 så da velger vi bare å bruke samme klasse på
+     alle taggene så designet blir likt på alle knappene
+
+     -->
+      <a href="profil.jsp" class="button button4" > Lavpriskalender </a>
       <br>
-    <form action="klima.html">
-      <button class="button button4"> Bærekraft </button>
+      <a href="kontaktoss.html" class="button button4"> Kontakt Oss </a>
       <br>
-      <form action="kontaktoss.html">
-        <button class="button button4"> Kontakt Oss </button>
-        <br>
-        <form action="profil.jsp">
-          <button class="button button4"> Min side </button>
-        </form>
-      </form>
-  </form>
-    </p>
+     <a href="profil.jsp" class="button button4"> Min side </a>
+    </div>
   </form>
 
 </div>

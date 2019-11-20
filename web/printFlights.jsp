@@ -1,9 +1,13 @@
+<%@ page import="servlets.FlightSearch.FlightSearch" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+    <link href="css/kontaktoss.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="wrap">
@@ -12,70 +16,81 @@
         <thead>
         <tr>
             <th>
-                flightDate
+                Flyets identifikasjon
             </th>
             <th>
-                price
+                Flyets avgangstid
             </th>
             <th>
-               flightTo
+                Pris
+                
             </th>
             <th>
-                flightFrom
+               Til
             </th>
             <th>
-                airplaneType
+                Fra
             </th>
             <th>
-                bookedSeat
+                Reisetid
             </th>
             <th>
-                totalSeat
+                Reserverte seter
+            </th>
+            <th>
+                Totalt antall seter
             </th>
 
         </tr>
 
+
         </thead>
-        <jsp:useBean id="flights" scope="request" type="java.util.List"/>
-            <c:forEach items="${flights}" var="flight">
+            <div id="flightData">
+            <jsp:useBean id="flsResults" scope="request" type="java.util.List"/>
+            <c:forEach items="${flsResults}" var="flightSearch">
+                <!-- link for bestilling av billett-->
+                <c:url var="orderTicket" value="TicketBookingServlet">
+                    <c:param name="command" value="save"/>
+                    <c:param name="flightID" value="${flightSearch.flightID}"/>
+                </c:url>
                 <tr>
+                    <td>
+                        <c:out value="${flightSearch.flightID}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flightSearch.flightDate}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flightSearch.price}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flightSearch.flightTo}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flightSearch.flightFrom}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flightSearch.duration}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flightSearch.bookedSeat}"/>
+                    </td>
+                    <td>
+                        <c:out value="${flightSearch.totalSeat}"/>
+                    </td>
+                    <td>
+                        <a href="${orderTicket}">Bestill reise</a>
 
-                    <td>
-                        <c:out value="${flight.flightDate}"/>
-                    </td>
-                    <td>
-                        <c:out value="${flight.price}"/>
-                    </td>
-                    <td>
-                        <c:out value="${flight.flightTo}"/>
-                    </td>
-                    <td>
-                        <c:out value="${flight.flightFrom}"/>
-                    </td>
-                    <td>
-                        <c:out value="${flight.duration}"/>
-                    </td>
-                    <td>
-                        <c:out value="${flight.bookedSeat}"/>
-                    </td>
-                    <td>
-                        <c:out value="${flight.totalSeat}"/>
-                    </td>
 
-
+                    </td>
                 </tr>
-
-        <form action="booking.jsp">
-                <INPUT TYPE="button" value="Bestill" onclick="Bestill()">
-        </form>
-
             </c:forEach>
+            </div>
     </table>
     </div>
 </div>
-
-
-
-
 </body>
 </html>
+
+
+

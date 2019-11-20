@@ -12,7 +12,7 @@ public class adminSearchLogic
         ArrayList<adminSearch> searches = new ArrayList<>();
         try
         {
-            String sql = "SELECT flightID and customerID FROM Ticket";
+            String sql = "SELECT flightID, customerID FROM Ticket";
 
             Connection con = db.connect();
 

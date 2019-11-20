@@ -44,12 +44,12 @@
         <button class="button button2"> Forside </button>
     </form>
     <br> <br> <br> <br>
-    <form action="adminFlight.html">
+    <form action="adminFlight.jsp">
         <button class="button button3"> Registrer nytt fly </button>
     </form>
     <br>
-    <form action="/adminSearch" method="get">
-        <button class="button button3"> Sjekk solgte billetter </button>
+    <form action="adminSearchServlet" method="get">
+        <input type="submit" class="button button3" value="Sjekk"/>
     </form>
     <br>
     <form action="flyEndring.jsp">

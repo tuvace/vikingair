@@ -1,8 +1,8 @@
 package servlets.FlightSearch;
 
-import java.sql.Date;
 
 public class FlightSearch {
+    private int flightID;
     private String flightDate;
     private int price;
     private String flightFrom;
@@ -11,7 +11,8 @@ public class FlightSearch {
     private int bookedSeat;
     private  int totalSeat;
 
-    public FlightSearch(String flightDate, int price, String flightFrom, String flightTo, int duration, int bookedSeat, int totalSeat) {
+    public FlightSearch(int flightID, String flightDate, int price, String flightFrom, String flightTo, int duration, int bookedSeat, int totalSeat) {
+        this.flightID = flightID;
         this.flightDate = flightDate;
         this.price = price;
         this.flightFrom = flightFrom;
@@ -21,9 +22,17 @@ public class FlightSearch {
         this.totalSeat = totalSeat;
     }
 
-public FlightSearch(){
+    public FlightSearch(){
 
-}
+    }
+
+    public int getFlightID() {
+        return flightID;
+    }
+
+    public void setFlightID(int flightID) {
+        this.flightID = flightID;
+    }
 
     public String getFlightDate() {
         return flightDate;

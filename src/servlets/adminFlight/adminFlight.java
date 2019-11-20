@@ -7,27 +7,25 @@ public class adminFlight implements Serializable
 {
     private String from;
     private String to;
-    private int year;
-    private int month;
-    private int day;
+    private String flightDate;
     private int duration;
-    private String flight_ID;
+    private String flightID;
     private String airplaneType;
     private int seatAmount;
     private int baggage_limit;
+    private int price;
 
-    public adminFlight(String from, String to, int year, int month, int day, int duration, String flight_ID, String airplaneType, int seatAmount, int baggage_limit)
+    public adminFlight(String from, String to, String flightDate, int duration, String flightID, String airplaneType, int baggage_limit, int price)
     {
         this.from = from;
         this.to = to;
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        this.flightDate = flightDate;
         this.duration = duration;
-        this.flight_ID = flight_ID;
+        this.flightID = flightID;
         this.airplaneType = airplaneType;
         this.seatAmount = seatAmount;
         this.baggage_limit = baggage_limit;
+        this.price = price;
     }
     public adminFlight() {
 
@@ -47,29 +45,10 @@ public class adminFlight implements Serializable
     public void setTo(String to) {
         this.to = to;
     }
-    public int getYear() {
-        return year;
-    }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+    public void setFlightDate(String flightDate){this.flightDate = flightDate;}
 
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int Month) {
-        this.month = month;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int Day) {
-        this.day = day;
-    }
+    public String getFlightDate() {return flightDate;}
 
     public void setDuration(int duration) {
         this.duration = duration;
@@ -79,12 +58,12 @@ public class adminFlight implements Serializable
         return duration;
     }
 
-    public void setFlightId(String flight_ID) {
-        this.flight_ID = flight_ID;
+    public void setFlightID(String flightID) {
+        this.flightID = flightID;
     }
 
-    public String getFlight_ID() {
-        return flight_ID;
+    public String getFlightID() {
+        return flightID;
     }
 
     public void setAirplaneType(String airplaneType) {
@@ -109,5 +88,7 @@ public class adminFlight implements Serializable
     public int getBaggagelimit() {
         return baggage_limit;
     }
+    public int getPrice() {return price;}
+    public void setPrice(int price) {this.price = price;}
 }
 

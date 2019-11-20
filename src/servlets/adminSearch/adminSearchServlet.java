@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "adminSearchServlet", urlPatterns = {"/adminSearch"})
+@WebServlet(name = "adminSearchServlet", urlPatterns = {"/adminSearchServlet"})
 public class adminSearchServlet extends HttpServlet {
     adminSearchLogic SL = new adminSearchLogic();
 

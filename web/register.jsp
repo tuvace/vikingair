@@ -38,40 +38,37 @@
     <link href="css/register.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <form action="index.html">
+    <form action="index.jsp">
         <button class="button button2"> Viking Airways </button>
     </form>
 <div style="text-align: center;">
 <h1> Registrer deg </h1>
 <br>
-<script>
-    {
-
-    }
-</script>
-<form action="Person">
-   <p id="registerBox">
+<form action="registrerServlet" method="post" name="addKunde">
+   <div class="container">
+    <p id="registerBox">
     Fornavn: <br>
-        <input type="text" name="first_name"><br>
+        <input type="text" name="firstName"><br>
     Etternavn: <br>
-        <input type="text" name="last_name"><br>
+        <input type="text" name="lastName"><br>
     Adresse: <br>
-        <input type="text" name="customer_address"><br>
+        <input type="text" name="customerAddress"><br>
     Epost Adresse: <br>
         <input type="text" name="email"><br>
     Mobilnummer: <br>
-        <input type="number" name="phone"><br>
-    Kjønn: <br>
-        <input type="radio" name="gender" value="male"> Mann<br>
-        <input type="radio" name="gender" value="female"> Kvinne<br>
-        <input type="radio" name="gender" value="others"> Annet<br><br>
+        <input type="number" name="phoneNumber"><br>
+    Kj&oslashnn: <br>
+        <input type="radio" name="gender" value="male"> Mann <br>
+        <input type="radio" name="gender" value="female"> Kvinne <br>
+        <input type="radio" name="gender" value="others"> Annet <br><br>
     Passord: <br>
-    <input type="text" name="password"><br><br>
+    <input type="text" name="password">
+       <br><br>
 
-    <form action="register.java">
-        <button class="button"> Registrer </button>
-    </form>
+    <input type="submit" class="button" value="Registrer deg"/>
+
     </p>
+   </div>
 </form>
 </div>
 </body>
