@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dbcode.dbUtilities;
-import servlets.PNR;
+
 import servlets.customers.Customer;
 import servlets.flights.Flight;
 import javax.sql.DataSource;

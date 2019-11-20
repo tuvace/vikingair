@@ -84,7 +84,7 @@
 
 	</form>
 		<form action="TicketServlet" method="get">
-			<jsp:useBean id="customer" scope="session" class="servlets.customers.Customer">
+			<jsp:useBean id="customerTic" scope="session" class="servlets.customers.Customer">
 			<input type = "hidden" name = "cus_id" value = <c:out value="${customer.customerID}"> </c:out>>
 			</jsp:useBean>
 			<input type="submit" >
