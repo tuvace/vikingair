@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -69,10 +70,16 @@
 	<form action="index.jsp">
 		<button class="button"> Logg ut</button>
 	</p>
-			<form action="/TicketServlet" method="get">
-				<button class="button"> billett </button>
-			</form>
-</form>
+
+	</form>
+		<form action="TicketServlet" method="get">
+			<jsp:useBean id="customer" scope="session" class="servlets.customers.Customer">
+			<input type = "hidden" name = "cus_id" value = <c:out value="${customer.customerID}"> </c:out>>
+			</jsp:useBean>
+			<input type="submit" >
+			<button class="button"> billett </button>
+		</form>
+
 </div>
 </body>
 </html>

@@ -32,8 +32,6 @@ public class TicketLogic {
             ps.setInt(2, tic.getCustomerID());
             ps.setInt(3, tic.getFlightID());
             ps.setString(3, tic.getGate());
-            ps.setString(3, tic.getFirstName());
-            ps.setString(3, tic.getLastName());
             ps.setInt(3, tic.getSeatRow());
             ps.setString(3, tic.getSeatLetter());
             ps.setString(3, tic.getClassType());
@@ -52,41 +50,59 @@ public class TicketLogic {
         }
     }
 
-    public void delete() throws SQLException {
+    public void delete(int id) {
 
-        String sql = "DELETE FROM ticket WHERE gate=?";
+        PreparedStatement ps;
+        ResultSet results;
+        String sql = "DELETE FROM ticket WHERE ticketID=?";
+
         Connection con = db.connect();
-        PreparedStatement statement = con.prepareStatement(sql);
-        statement.setString(1, "4C");
 
-        int rowsDeleted = statement.executeUpdate();
-        if (rowsDeleted > 0) {
-            System.out.println("A user was deleted successfully!");
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            results = ps.executeQuery();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+
+        } finally {
+            if (con!= null){
+                db.close();
+
+            }
         }
+
     }
 
     public void update(Ticket ticket) {
 
     }
 
-    public ArrayList<Ticket> showAll(String gate) throws SQLException {
+    public ArrayList<Ticket> showAll(int id) throws SQLException {
 
         ArrayList<Ticket> tickets = new ArrayList<>();
-        PreparedStatement myStmt;
-
-        String sql = "SELECT * FROM TICKET LIMIT 1";
+        PreparedStatement ps;
+        ResultSet results;
+        String sql = "select *from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID inner join seat on ticket.seatID = seat.seatID where ticket.customerId = ?";
 
         Connection con = db.connect();
 
         try{
-            myStmt = con.prepareStatement(sql);
-            ResultSet results = myStmt.executeQuery();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            results = ps.executeQuery();
 
             while (results.next()){
+
             Ticket tic = new Ticket();
 
-            tic.setGate(results.getString("gate"));
-
+            tic.setGate(results.getString("Gate"));
+            tic.setSeatRow(results.getInt("seatRow"));
+            tic.setSeatLetter(results.getString("Seatletter"));
+            tic.setClassType(results.getString("Class"));
+            tic.setFlightTo(results.getString("flightTo"));
+            tic.setFlightFrom(results.getString("flightFrom"));
             tickets.add(tic);
             }
 
