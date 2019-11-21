@@ -93,7 +93,7 @@
       <input type="text" placeholder="Fra*" name="flightFrom">
       <input type="text" placeholder="Til*" name="flightTo" >
       <br>
-      <input type="date" placeholder="Dato" name="flightDate">
+      <input type="date" placeholder="Dato" name="flightDate" required>
       <button class="button" type="submit"> Søk </button> <br>
       *Påkrevd informasjon
     </p>
