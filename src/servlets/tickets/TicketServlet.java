@@ -20,9 +20,9 @@ public class TicketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String gate = request.getParameter("gate");
-
+        int id = 1;
         try {
-            request.setAttribute("gate", ticLog.showAll(gate));
+            request.setAttribute("gate", ticLog.showAll(id));
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -87,10 +87,13 @@ public class TicketServlet extends HttpServlet {
 
 
             ServletContext sc = this.getServletContext();
-            String gate = request.getParameter("gate");
+
+            //int id = Integer.parseInt(request.getParameter("cus_id"));
+            int ide = 1;
 
             try {
-                request.setAttribute("ticket", ticLog.showAll(gate));
+                request.setAttribute("tickets", ticLog.showAll(ide));
+
 
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -103,7 +106,7 @@ public class TicketServlet extends HttpServlet {
         }
 
 /**
-        public void funkjon1(){
+        public void funksjon1(){
             TicketLogic.delete();
         }*/
 }
