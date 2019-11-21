@@ -90,8 +90,8 @@
    <br>
   <form action="FlightSearchServlet" method="Get">
     <p id="søkBox">
-      <input type="text" placeholder="Fra*" name="flightFrom">
-      <input type="text" placeholder="Til*" name="flightTo" >
+      <input type="text" placeholder="Fra*" name="flightFrom" required>
+      <input type="text" placeholder="Til*" name="flightTo" required>
       <br>
       <input type="date" placeholder="Dato" name="flightDate" required>
       <button class="button" type="submit"> Søk </button> <br>
