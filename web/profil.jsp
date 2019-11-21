@@ -77,7 +77,11 @@
 	<form action="editProfile.jsp" >
 		<button class="button"> Rediger profilinformasjon </button>
 	</form>
-	</c:if>
+	
+	<form action="registrer.html">
+			<button class="button"> Endre passord </button>
+		</form>
+
 			<form action="/TicketServlet" method="get">
 				<button class="button"> billett </button>
 			</form>
@@ -85,7 +89,15 @@
 	<form action="${pageContext.request.contextPath}/logout" method="post">
 		<input type="submit" class="button" value="Logg ut" />
 	</form>
-<h1> Hvis du har endret profilinformasjonen din, så må du logge ut for at det skal oppdatere seg </h1>
+
+	</form>
+		<form action="TicketServlet" method="get">
+			<jsp:useBean id="customerTic" scope="session" class="servlets.customers.Customer">
+			<input type = "hidden" name = "cus_id" value = <c:out value="${customer.customerID}"> </c:out>>
+			</jsp:useBean>
+			<input type="submit" >
+			<button class="button"> billett </button>
+		</form>
 </div>
 </body>
 </html>

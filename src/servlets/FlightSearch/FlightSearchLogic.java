@@ -14,7 +14,7 @@ public class FlightSearchLogic {
         PreparedStatement cs;
         ArrayList<FlightSearch> flsResults = new ArrayList<>();
         ResultSet myRs;
-        String query =  "Select * from view_load_flight_details where flightTo = ? and flightFrom = ? and flightDate >= ?";
+        String query =  "Select * from view_load_flight_details where flightTo = ? and flightFrom = ? and flightDate >= ? and bookedSeat < totalSeat";
 
         Connection con = db.connect(); //Kobler til databasen.
         try {

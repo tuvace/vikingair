@@ -3,12 +3,15 @@ package servlets.ticketBooking;
 public class TicketBooking {
     String flightID;
     String customerID;
-    String seatID;
 
-    public TicketBooking(String flightID, String customerID, String seatID) {
+
+    public TicketBooking(String flightID, String customerID) {
         this.flightID = flightID;
         this.customerID = customerID;
-        this.seatID = seatID;
+
+    }
+
+    public TicketBooking() {
     }
 
     public String getFlightID() {
@@ -27,12 +30,6 @@ public class TicketBooking {
         this.customerID = customerID;
     }
 
-    public String getSeatID() {
-        return seatID;
-    }
 
-    public void setSeatID(String seatID) {
-        this.seatID = seatID;
-    }
 }
 

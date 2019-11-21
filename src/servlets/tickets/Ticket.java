@@ -5,23 +5,23 @@ public class Ticket {
     int customerID;
     int flightID;
     String gate;
-    String firstName;
-    String lastName;
     int seatRow;
     String seatLetter;
     String classType;
+    String flightTo;
+    String flightFrom;
 
-public Ticket(int ticketID, int customerID, int flightID, String gate, String firstName, String lastName, int seatRow, String seatLetter, String classType){
+public Ticket(int ticketID, int customerID, int flightID, String gate, int seatRow, String seatLetter, String classType, String flightTo, String flightFrom){
 
     this.ticketID = ticketID;
     this.customerID = customerID;
     this.flightID = flightID;
     this.gate = gate;
-    this.firstName = firstName;
-    this.lastName = lastName;
     this.seatRow = seatRow;
     this.seatLetter = seatLetter;
     this.classType = classType;
+    this.flightTo=flightTo;
+    this.flightFrom=flightFrom;
 }
 
 public Ticket(){
@@ -49,22 +49,6 @@ public Ticket(){
 
     public void setFlightID(int flightID) {
         this.flightID = flightID;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getGate() {
@@ -99,5 +83,12 @@ public Ticket(){
         this.classType = classType;
     }
 
+    public String getFlightTo() { return flightTo; }
+
+    public void setFlightTo(String flightTo) { this.flightTo = flightTo; }
+
+    public String getFlightFrom() {return flightFrom;}
+
+    public void setFlightFrom(String flightFrom) {this.flightFrom = flightFrom;}
 }
 

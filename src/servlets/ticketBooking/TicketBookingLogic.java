@@ -15,12 +15,11 @@ public class TicketBookingLogic {
         PreparedStatement cs;
         Connection con = db.connect();
         try {
-            String query = "insert into Ticket(customerID, flightID, seatID) values(?, ?, ?);";
+            String query = "insert into Ticket(customerID, flightID)"+"values(?, ?)";
             cs = con.prepareStatement(query);
             cs.setString(1, ticketBooking.getCustomerID());
             cs.setString(2, ticketBooking.getFlightID());
-            cs.setString(3, ticketBooking.getSeatID());
-            cs.executeQuery();
+            cs.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

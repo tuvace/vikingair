@@ -29,23 +29,21 @@
                 Navn: <br>
                 <c:out value="${customer.firstName}"> </c:out>
                 <c:out value="${customer.middleName}"> </c:out>
-                <c:out value="${customer.lastName}"> </c:out><br><br>
+                <c:out value="${customer.lastName}"> </c:out>
+                <c:out value="${customer.customerID}"></c:out><br><br>
             </div>
 
-
+            <form action="TicketBookingServlet" method="post" name="saveTicket">
             <div id="flightData">
                 <jsp:useBean id="flsData" scope="request" type="java.util.List"/>
                 <c:forEach items="${flsData}" var="ticketBooking">
                     <!-- link for bestilling av billett-->
-                    <c:url var="orderTicket" value="TicketBookingServlet">
-                        <c:param name="command" value="save"/>
-                        <c:param name="flightID" value="${TicketBooking.flightID}"/>
-                    </c:url>
+
 
 
                     <tr>
                         <td>Fly identifikasjon:</td>
-                        <td><c:out value="${ticketBooking.flightID}"/></td>
+                        <td> <input type="text" value="${ticketBooking.flightID}" name="flightID"></td>
                     </tr>
                     <tr>
                         <td>Dato og klokkeslett:</td>
@@ -63,14 +61,18 @@
                         <td>Fly til:</td>
                         <td><c:out value="${ticketBooking.flightTo}"/></td>
                     </tr>
+                    <tr>
+                        <input type="text" value="${customer.customerID}" name="customerID">
+                    </tr>
                 </c:forEach>
             </div>
 
             <div id="BekreftBestilling">
                 <tr>
-                    <td> <a href="bestillingsBekreftelse.jsp">Bekreft Bestilling</a></td>
+                    <input type="submit" class="button" value="Bekreft bestilling"/>
                 </tr>
             </div>
+            </form>
                 </table>
         </table>
     </div>

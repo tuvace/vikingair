@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-<body style="background-color:#ccf2ff;"> </body>
+<body style="background-color:#D0E6FF;"> </body>
     <style>
         h1 {
             color: white;
