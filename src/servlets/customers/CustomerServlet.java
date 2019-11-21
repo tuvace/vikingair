@@ -23,51 +23,59 @@ import servlets.customers.CustomerLogic;
 public class CustomerServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private CustomerLogic cusLog;
+    CustomerLogic CustomerLogic = new CustomerLogic();
+    Customer Customer = new Customer();
 
-    //The constructor
-    public CustomerServlet(){
-        cusLog = new CustomerLogic();
-    }
-
-    /** This doPost method is responsible for updating and posting/sending information to the server according to what the input from the user is.
-     * The method is responsible for receiving information from new customers when they are signing up.*/
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Customer cus = new Customer();
-
-        String customerID = request.getParameter("customerID");
-        cus.setFirstName(request.getParameter("firstName"));
-        cus.setLastName(request.getParameter("lastName"));
-        cus.setEmail(request.getParameter("email"));
-        //Burde ha(?):
-        //cus.setDateOfBirth(request.getParameter("dateOfBirth"));
-        //cus.setPassword(request.getParameter("password"));
-
-
-        //Hvis det ikke eksisterer noen kunder vil det bli opprettet en.
-        if (customerID == null || customerID.isEmpty()) {
-
-            //cusLog.create(cus);
-
-        //
-        } else {
-            int cus_customerID = Integer.parseInt(customerID.trim());
-            cus.setCustomerID(cus_customerID);
-            cusLog.update(cus);
-
+        String action = request.getParameter("action");
+        if (action.equals("editFirstName")) {
+            try {
+                editFirstName(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        //Printer ut kunder. Burde ha i jsp heller?
-        System.out.println(cus);
-
-        //response.sendRedirect("customerRedirect.jsp");
+        if (action.equals("editLastName")) {
+            try {
+                editLastName(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+         if (action.equals("editAddress"))
+         {
+             try {
+                 editAddress(request, response);
+             } catch (SQLException e) {
+                 e.printStackTrace();
+             }
+         }
+        if (action.equals("editPhone"))
+        {
+            try {
+                editPhone(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (action.equals("editEmail"))
+        {
+            try {
+                editEmail(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         RequestDispatcher redirect = request.getRequestDispatcher("login.jsp");
         redirect.forward(request, response);
     }
 
-    /** This doGet method is responsible for getting information from the server, in this case the actions printall, delete and update already
-     * existing customers.  */
+    /**
+     * This doGet method is responsible for getting information from the server, in this case the actions printall, delete and update already
+     * existing customers.
+     */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -76,37 +84,127 @@ public class CustomerServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         //Skal kunne vise alle kunder.
-        if(action.equalsIgnoreCase("printall")) {
-            forward = "/printCustomers.jsp";
+        if (action.equalsIgnoreCase("delete")) {
+            int customerID = Integer.parseInt(request.getParameter("customerID"));
+            CustomerLogic.delete(customerID);
+            forward = "/login.jsp";
             try {
-                request.setAttribute("customers", cusLog.showAll());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            //Gjør det mulig å slette en kunde fra databasen.
-        } else if(action.equalsIgnoreCase("delete")){
-            int customerID = Integer.parseInt(request.getParameter("cus_customerID"));
-            cusLog.delete(customerID);
-            forward = "/printCustomers.jsp";
-            try {
-                request.setAttribute("customers", cusLog.showAll());
+                request.setAttribute("customers", CustomerLogic.showAll());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-        //Oppdaterer
-        } else if(action.equalsIgnoreCase("update")){
+            //Oppdaterer
+        } else if (action.equalsIgnoreCase("update")) {
             forward = "/signup.jsp"; //Trenger en signup i jsp format.
-            int customerID = Integer.parseInt(request.getParameter("cus_customerID"));
+            int customerID = Integer.parseInt(request.getParameter("customerID"));
 
-        }
-
-        else{
-            forward="/index.jsp";
+        } else {
+            forward = "/index.jsp";
         }
         RequestDispatcher view = sc.getRequestDispatcher(forward);
         view.forward(request, response);
     }
 
+    private void editFirstName(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        String firstName = request.getParameter("firstName");
+        String username = request.getParameter("username");
+        ServletContext sc = this.getServletContext();
+        int customerID = 0;
+        try {
+            customerID = CustomerLogic.getcustomerID(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            CustomerLogic.updateFirstname(customerID, firstName);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
+        view.forward(request, response);
     }
+
+    private void editLastName(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        String lastName = request.getParameter("lastName");
+        String username = request.getParameter("username");
+        ServletContext sc = this.getServletContext();
+        int customerID = 0;
+        try {
+            customerID = CustomerLogic.getcustomerID(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            CustomerLogic.updateLastname(customerID, lastName);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
+        view.forward(request, response);
+    }
+    private void editAddress(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        String customerAddress = request.getParameter("customerAddress");
+        String username = request.getParameter("username");
+        ServletContext sc = this.getServletContext();
+        int customerID = 0;
+        try {
+            customerID = CustomerLogic.getcustomerID(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            CustomerLogic.updateAddress(customerID, customerAddress);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
+        view.forward(request, response);
+    }
+    private void editPhone(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        String phoneNumber = request.getParameter("phoneNumber");
+        String username = request.getParameter("username");
+        ServletContext sc = this.getServletContext();
+        int customerID = 0;
+        try {
+            customerID = CustomerLogic.getcustomerID(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            CustomerLogic.updatePhone(customerID, phoneNumber);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
+        view.forward(request, response);
+    }
+    private void editEmail(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        String email = request.getParameter("email");
+        String username = request.getParameter("username");
+        ServletContext sc = this.getServletContext();
+        int customerID = 0;
+        try {
+            customerID = CustomerLogic.getcustomerID(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            CustomerLogic.updateEmail(customerID, email);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
+        view.forward(request, response);
+    }
+}

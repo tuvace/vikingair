@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="no">
@@ -42,6 +43,7 @@
 	<form action="index.jsp">
 		<button class="button button2"> Viking Airways </button>
 	</form>
+
 <div style="text-align: center;">
 <h1> Din profil </h1>
 <br>
@@ -52,6 +54,8 @@
 
 	</c:if>
 	<c:if test="${sessionScope.customer != null}">
+		<jsp:useBean id="customerID" scope="request" class="servlets.customers.Customer"/>
+
 
 
 	<p id="profileBox">
@@ -69,16 +73,11 @@
 		<c:out value="${customer.email}"> </c:out>
 	</p>
 
-	</c:if>
 		<br>
-	<form action="registrer.html">
-		<button class="button"> Endre profilinfomasjon </button>
+	<form action="editProfile.jsp" >
+		<button class="button"> Rediger profilinformasjon </button>
 	</form>
-	
-	<form action="registrer.html">
-			<button class="button"> Endre passord </button>
-		</form>
-
+	</c:if>
 			<form action="/TicketServlet" method="get">
 				<button class="button"> billett </button>
 			</form>
@@ -86,7 +85,7 @@
 	<form action="${pageContext.request.contextPath}/logout" method="post">
 		<input type="submit" class="button" value="Logg ut" />
 	</form>
-</form>
+<h1> Hvis du har endret profilinformasjonen din, så må du logge ut for at det skal oppdatere seg </h1>
 </div>
 </body>
 </html>

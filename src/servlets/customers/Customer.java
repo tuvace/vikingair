@@ -1,11 +1,6 @@
 package servlets.customers;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @WebServlet(name = "Customer")
 public class Customer {
@@ -36,9 +31,7 @@ public class Customer {
 
     }
 
-    public int getCustomerID() {
-        return customerID;
-    }
+    public int getCustomerID() { return customerID; }
 
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
@@ -108,6 +101,7 @@ public class Customer {
         "Email= " + email + "/n" +
         "phoneNumber =" + phoneNumber;
     }
+
 }
 
 

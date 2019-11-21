@@ -11,7 +11,6 @@ import javax.naming.NamingException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import java.sql.SQLException;
-import servlets.PNR;
 import servlets.customers.Customer;
 import servlets.tickets.Ticket;
 
@@ -74,7 +73,7 @@ public class CustomerLogic {
 
         // Denne SQL kommandoen kjøres hver gang en kunde blir slettet,
         // slik at kunden også blir slettet fra databasen.
-        String query = "delete from customer where cus_customerID =?";
+        String query = "delete from customer where customerID =?";
         Connection con = db.connect();
         try {
             PreparedStatement ps = con.prepareStatement(query); //Sender kommandoen til databasen.
@@ -87,29 +86,52 @@ public class CustomerLogic {
         //Denne metoden oppdaterer informasjonen om en kunde.
     }
 
-    public void update(Customer customer) {
+    public void updateFirstname(int customerID, String firstName) throws SQLException {
 
-        //Denne SQL kommandoen kjøres når noe informasjon om kunde blir oppdatert.
-        String query = "update Customer set cus_fname = ?, cus_lname = ?, cus_email = ?, cus_dateOfBirth = ?, cus_pw = ? where cus_id = ?";
+        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        String query = "update Customer set firstName = '"+firstName+"' where customerID = " + customerID;
         Connection con = db.connect();
-
-        try {
-            PreparedStatement ps = con.prepareStatement(query); //Sender queryen til db sikkert.
-            ps.setString(1, customer.getFirstName());
-            ps.setString(2, customer.getLastName());
-            ps.setString(3, customer.getEmail());
-            // ps.setString(4, customer.getDateOfBirth());
-            // ps.setString(5, customer.getPassword());
-            ps.setInt(6, customer.getCustomerID());
-            ps.executeUpdate(); //Oppdaterer databasen.
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+        Statement ps = con.createStatement();
+        ps.executeUpdate(query); //Oppdaterer databasen.
 
     }
-    //Denne metoden oppretter en ArrayList for kunders basert på de eksisterende kundene i databasen.
+    public void updateLastname(int customerID, String lastName) throws SQLException {
 
+        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        String query = "update Customer set lastName = '" + lastName + "' where customerID = " + customerID;
+        Connection con = db.connect();
+        Statement ps = con.createStatement(); //Sender queryen til db sikkert.
+        ps.executeUpdate(query); //Oppdaterer databasen.
+
+        //Denne metoden oppretter en ArrayList for kunders basert på de eksisterende kundene i databasen.
+    }
+    public void updateAddress(int customerID, String customerAddress) throws SQLException {
+
+        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        String query = "update Customer set customerAddress = '"+customerAddress+"' where customerID = " + customerID;
+        Connection con = db.connect();
+        Statement ps = con.createStatement();
+        ps.executeUpdate(query); //Oppdaterer databasen.
+
+    }
+    public void updatePhone(int customerID, String phoneNumber) throws SQLException {
+
+        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        String query = "update Customer set customerAddress = '"+phoneNumber+"' where customerID = " + customerID;
+        Connection con = db.connect();
+        Statement ps = con.createStatement();
+        ps.executeUpdate(query); //Oppdaterer databasen.
+
+    }
+    public void updateEmail(int customerID, String email) throws SQLException {
+
+        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        String query = "update Customer set customerAddress = '"+email+"' where customerID = " + customerID;
+        Connection con = db.connect();
+        Statement ps = con.createStatement();
+        ps.executeUpdate(query); //Oppdaterer databasen.
+
+    }
     public ArrayList<Customer> showAll() throws SQLException {
 
         PreparedStatement ps;
@@ -126,10 +148,10 @@ public class CustomerLogic {
 
             while (results.next()) { //This loop iterates through each element of the list. For every new element it returns a new value.
                 Customer cus = new Customer();
-                cus.setCustomerID(results.getInt("cus_CustomerID"));
-                cus.setFirstName(results.getString("cus_firstName"));
-                cus.setLastName(results.getString("cus_lastName"));
-                cus.setEmail(results.getString("cus_email"));
+                cus.setCustomerID(results.getInt("CustomerID"));
+                cus.setFirstName(results.getString("firstName"));
+                cus.setLastName(results.getString("lastName"));
+                cus.setEmail(results.getString("email"));
                 // cus.setDateOfBirth(results.getString("cus_dateOfBirth"));
                 // cus.setPassword(results.getString("cus_pw"));
 
@@ -166,7 +188,6 @@ public class CustomerLogic {
                 int id = results.getInt(1);
                 String firstname = results.getString(2);
 
-
                 cus.setCustomerID(results.getInt(1));
                 cus.setFirstName(results.getString(2));
                 cus.setMiddleName(results.getString(3));
@@ -188,6 +209,25 @@ public class CustomerLogic {
         }
         System.out.println(cus);
         return cus;
+    }
+    public int getcustomerID(String username) throws SQLException {
+
+        String sql = "select * from Customer where customerID=?";
+
+        Connection con = db.connect();
+
+        PreparedStatement myStmt = con.prepareStatement(sql);
+        myStmt.setString(1, username);
+        ResultSet rs = myStmt.executeQuery();
+        Customer customeR = new Customer();
+        while (rs.next()) {
+            customeR.setCustomerID(rs.getInt("customerID"));
+        }
+
+        //Returns the id associated to the username input parameter
+        System.out.println(customeR.getCustomerID());
+        return customeR.getCustomerID();
+
     }
 
 }
