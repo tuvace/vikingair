@@ -1,4 +1,5 @@
 <%@ page import="servlets.FlightSearch.FlightSearch" %>
+<%@ page import="servlets.FlightSearch.FlightDetailServlet" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 
@@ -49,7 +50,7 @@
             <jsp:useBean id="flsResults" scope="request" type="java.util.List"/>
             <c:forEach items="${flsResults}" var="flightSearch">
                 <!-- link for bestilling av billett-->
-                <c:url var="orderTicket" value="TicketBookingServlet">
+                <c:url var="orderTicket" value="FlightDetailServlet">
                     <c:param name="command" value="save"/>
                     <c:param name="flightID" value="${flightSearch.flightID}"/>
                 </c:url>

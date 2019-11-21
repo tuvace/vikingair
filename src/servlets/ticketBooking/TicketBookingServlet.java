@@ -17,43 +17,25 @@ import java.sql.SQLException;
 @WebServlet(name = "TicketBookingServlet", urlPatterns = {"/TicketBookingServlet"})
 public class TicketBookingServlet extends HttpServlet {
 
-    TicketBookingLogic ticketBooking = new TicketBookingLogic();
-    FlightSearchLogic fls = new FlightSearchLogic();
+    TicketBookingLogic ticBook = new TicketBookingLogic();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+            ServletContext sc = this.getServletContext();
             String flightID = request.getParameter("flightID");
+            String customerID = request.getParameter("customerID");
+            TicketBooking TB = new TicketBooking(flightID, customerID);
 
 
            try {
-               request.setAttribute("flsData", fls.getFlightData(flightID));
+               ticBook.saveTicket(TB);
 
            } catch (SQLException e) {
                e.printStackTrace();
            }
-
-            RequestDispatcher dispatcher =
-                    request.getRequestDispatcher("/ticketBooking.jsp");
-            dispatcher.forward(request,response);
-        }
-    }
-     /**   ServletContext sc = this.getServletContext();
-        String flightID = request.getParameter("flightID");
-        String customerID = request.getParameter("customerID");
-        String seatID = request.getParameter("seatID");
-
-
-        try {
-            request.setAttribute("addTicket", ticketBooking.saveTicket(flightID, customerID, seatID));
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-
-
-        }
-
-        RequestDispatcher view = sc.getRequestDispatcher("/printFlights.jsp");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+        RequestDispatcher view = sc.getRequestDispatcher("/bestillingsBekreftelse.jsp");
         view.forward(request, response);
+        }
     }
-}
-*/
+
