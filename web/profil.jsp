@@ -34,6 +34,9 @@
 		box-shadow: 2px 2px 4px black;
 		text-shadow: 2px 2px 4px black;
 	}
+	.button3 {
+		font-size: 30px;
+	}
 </style>
 <meta charset="UTF-8">
 <title> Registration </title>
@@ -77,14 +80,6 @@
 	<form action="editProfile.jsp" >
 		<button class="button"> Rediger profilinformasjon </button>
 	</form>
-	
-	<form action="registrer.html">
-			<button class="button"> Endre passord </button>
-		</form>
-
-			<form action="/TicketServlet" method="get">
-				<button class="button"> billett </button>
-			</form>
 	<br>
 	<form action="${pageContext.request.contextPath}/logout" method="post">
 		<input type="submit" class="button" value="Logg ut" />
@@ -98,6 +93,7 @@
 			<input type="submit" >
 			<button class="button"> billett </button>
 		</form>
+	</c:if>
 </div>
 </body>
 </html>

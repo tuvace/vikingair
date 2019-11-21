@@ -80,15 +80,14 @@
                         <c:out value="${flightSearch.totalSeat}"/>
                     </td>
                     <td>
-                        <a href="${orderTicket}">Bestill reise</a>
 
-
-                    </td>
-                </tr>
-            </c:forEach>
-            </div>
-    </table>
-    </div>
+                   <a href="${orderTicket}">Bestill reise</a>
+              </td>
+          </tr>
+      </c:forEach>
+      </div>
+</table>
+</div>
 </div>
 </body>
 </html>

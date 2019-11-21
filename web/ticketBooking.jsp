@@ -17,9 +17,52 @@
 <head>
     <title>Title</title>
     <link href="css/kontaktoss.css" rel="stylesheet" type="text/css">
+    <style>
+        h1 {
+            color: cornflowerblue;
+            text-shadow: 2px 2px 4px black;
+            font-size: 50px;
+            font-variant: small-caps;
+        }
+        .button {
+            background-color: lightskyblue;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 8px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            font-variant: small-caps;
+            margin: 4px 2px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px black;
+        }
+        .button2 {
+            background-color: lightskyblue;
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            font-size: 30px;
+            box-shadow: 2px 2px 4px black;
+            text-shadow: 2px 2px 4px black;
+        }
+        .button3 {
+            font-size: 30px;
+        }
+    </style>
 </head>
 <body>
+<div style="text-align: center">
+<c:if test="${sessionScope.customer == null}">
+    <h1>Du må logge inn for å bestille</h1> <br>
+    <a href = "login.jsp" class = "button button3"> Logg inn </a>
+
+</c:if>
+<c:if test="${sessionScope.customer != null}">
 <div class="wrap">
+
     <div class="container">
         <table class="table table-hover">
 
@@ -32,6 +75,8 @@
                 <c:out value="${customer.lastName}"> </c:out>
                 <c:out value="${customer.customerID}"></c:out><br><br>
             </div>
+
+
 
             <form action="TicketBookingServlet" method="post" name="saveTicket">
             <div id="flightData">
@@ -75,7 +120,9 @@
             </form>
                 </table>
         </table>
+        </c:if>
     </div>
+</div>
 </div>
 </body>
 </html>
