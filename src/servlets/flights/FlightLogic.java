@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 import dbcode.dbUtilities;
 
+import servlets.customers.Customer;
+import servlets.flights.Flight;
+import javax.sql.DataSource;
+import java.sql.*;
 
 public class FlightLogic {
     dbUtilities db = new dbUtilities();
