@@ -1,6 +1,9 @@
 package servlets.tickets;
 
+import com.sun.deploy.net.HttpResponse;
+
 import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.servlet.ServletContext;
 
@@ -17,7 +21,7 @@ import javax.servlet.ServletContext;
 public class TicketServlet extends HttpServlet {
         TicketLogic ticLog = new TicketLogic();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String gate = request.getParameter("gate");
         int id = 1;
@@ -26,79 +30,38 @@ public class TicketServlet extends HttpServlet {
         } catch (SQLException e) {
             System.out.println(e);
         }
-    }
+    }*/
+        protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            String action = request.getParameter("action");
+            ServletContext sc = this.getServletContext();
+            int id = Integer.parseInt(request.getParameter("tic_id"));
+            if (action.equalsIgnoreCase("delete")) {
 
-        /**response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
-
-        String firstName = request.getParameter("firstName");
-
-
-        try {
-            boolean validate = TicketLogic(firstName);
-
-            if (validate) {
-                out.print("<h1 Hi" + firstName + "</h1>");
-            } else {
-                out.print("Wrong shit bookaroo");
-                RequestDispatcher rd = request.getRequestDispatcher("index.html");
-                rd.include(request, response);
-            }
-
-        } catch (SQLException e) {
-                    e.printStackTrace();
+                try {
+                    ticLog.delete(id);
+                } catch (Exception ex) {
+                    System.out.println(ex);
                 }
 
-            System.out.println("FirstName", firstName);
-
-            PrintWriter writer = response.getWriter();
-
-            String htmlResponse = "<html>";
-            htmlResponse += "<h2> Yo biiiitch" + firstName + "<br/>";
-            htmlResponse += "This a ticket mate </h2>";
-            htmlResponse += "</html>";
-
-
-
-            //response.sendRedirect("customerRedirect.jsp");
-            writer.println(htmlResponse);
+                RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
+                view.forward(request, response);
+            }
         }
 
-
-
-
-
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-        {
-
-        String gate = request.getParameter("gate");
-
-        Ticket ticket = ticLog.showAll(gate);
-
-        HttpSession session=request.getSession();
-
-        session.setAttribute("gate",ticket);
-
-        request.getRequestDispatcher("printTicket.jsp").forward(request,response);
-        }*/
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
             ServletContext sc = this.getServletContext();
 
-            //int id = Integer.parseInt(request.getParameter("cus_id"));
-            int ide = 1;
+            int id = 1;
 
             try {
-                request.setAttribute("tickets", ticLog.showAll(ide));
+                request.setAttribute("tickets", ticLog.showAll(id));
 
 
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
-
-
             }
 
             RequestDispatcher view = sc.getRequestDispatcher("/cusTicket.jsp");

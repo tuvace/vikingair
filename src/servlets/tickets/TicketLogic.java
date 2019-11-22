@@ -21,7 +21,7 @@ public class TicketLogic {
         Connection con = db.connect();
 
         //The SQL query is executed whenever a new customer is signing up.
-        String query = ("insert into Ticket(ticketID, customerID, flightID, gate, firstName, lastName, seatRow, seatLetter, classType)"
+        String query = ("insert into Ticket(ticketID, customerID, flightID, gate, firstName, lastName, classType)"
                 + "values (?,?,?,?,?,?,?,?,?);");
 
         try {
@@ -32,9 +32,6 @@ public class TicketLogic {
             ps.setInt(2, tic.getCustomerID());
             ps.setInt(3, tic.getFlightID());
             ps.setString(3, tic.getGate());
-            ps.setInt(3, tic.getSeatRow());
-            ps.setString(3, tic.getSeatLetter());
-            ps.setString(3, tic.getClassType());
 
             ps.execute(); //Updates the db.
 
@@ -51,17 +48,12 @@ public class TicketLogic {
     }
 
     public void delete(int id) {
-
-        PreparedStatement ps;
-        ResultSet results;
-        String sql = "DELETE FROM ticket WHERE ticketID=?";
-
         Connection con = db.connect();
-
+        PreparedStatement ps;
+        String sql = "DELETE * FROM ticket WHERE ticketID=" + id;
         try{
             ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            results = ps.executeQuery();
+            ps.executeUpdate(sql);
 
         } catch (SQLException e){
             e.printStackTrace();
@@ -84,9 +76,10 @@ public class TicketLogic {
         ArrayList<Ticket> tickets = new ArrayList<>();
         PreparedStatement ps;
         ResultSet results;
-        String sql = "select *from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID inner join seat on ticket.seatID = seat.seatID where ticket.customerId = ?";
-
+        String sql = "select *from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID  = ? limit 1";
         Connection con = db.connect();
+
+
 
         try{
             ps = con.prepareStatement(sql);
@@ -97,10 +90,8 @@ public class TicketLogic {
 
             Ticket tic = new Ticket();
 
+            tic.setTicketID(results.getInt("ticketID"));
             tic.setGate(results.getString("Gate"));
-            tic.setSeatRow(results.getInt("seatRow"));
-            tic.setSeatLetter(results.getString("Seatletter"));
-            tic.setClassType(results.getString("Class"));
             tic.setFlightTo(results.getString("flightTo"));
             tic.setFlightFrom(results.getString("flightFrom"));
             tickets.add(tic);

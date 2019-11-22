@@ -15,29 +15,20 @@
             <tr>
 
                 <th>
-                    seatRow
+                    Informasjon
                 </th>
             </tr>
             </thead>
             <div id="CustomerInfo">
+                <tr>
+                <td>
             <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
             <c:out value="${customer.firstName}"/>
             <c:out value="${customer.lastName}"/>
-            </div>
-            <tr>
-            <td>
-
-
-
-
-
 
             <jsp:useBean id="tickets" scope="request" type="java.util.List"/>
             <c:forEach items="${tickets}" var="tic">
                 <c:out value="${tic.gate}"/>
-                <c:out value="${tic.seatRow}"/>
-                <c:out value="${tic.seatLetter}"/>
-                <c:out value="${tic.classType}"/>
                 <c:out value="${tic.flightTo}"/>
                 <c:out value="${tic.flightFrom}"/>
 
@@ -49,12 +40,14 @@
                 </c:url>
 
                 <td>
-                    <a href="${templink}"
-                       onclick="if (!(confirm ('Er du sikker på at du vil avbestille billetten?'))) return false"> Avbestill</a>
+                    <form action="TicketServlet" method="post">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id" value="${tic.ticketID}">
+                        <button class="button" type="submit"> Slett </button>
+                    </form>
                 </td>
+    </div>
 
-                <td><a href=TicketServlet?action=update&ticket_id=<c:out value="${ticket.ticketID}"/>"><i class="fas fa-edit"></i></a></td>
-                <td><a href=TicketServlet?action=update&ticket_id=<c:out value="${ticket.ticketID}"/>"><i class="fas fa-trash"></i></a></td>
 
             </tr>
             </c:forEach>

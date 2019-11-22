@@ -7,14 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dbcode.dbUtilities;
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-import servlets.customers.Customer;
-import servlets.flights.Flight;
-import javax.sql.DataSource;
-import java.sql.*;
 
 
 public class FlightLogic {
