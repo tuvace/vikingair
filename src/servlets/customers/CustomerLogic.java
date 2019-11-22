@@ -117,7 +117,7 @@ public class CustomerLogic {
     public void updatePhone(int customerID, String phoneNumber) throws SQLException {
 
         //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
-        String query = "update Customer set customerAddress = '"+phoneNumber+"' where customerID = " + customerID;
+        String query = "update phone set phoneNumber = '"+phoneNumber+"' where customerID = " + customerID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
@@ -126,7 +126,7 @@ public class CustomerLogic {
     public void updateEmail(int customerID, String email) throws SQLException {
 
         //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
-        String query = "update Customer set customerAddress = '"+email+"' where customerID = " + customerID;
+        String query = "update email set email = '"+email+"' where customerID = " + customerID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
@@ -141,8 +141,6 @@ public class CustomerLogic {
         String query = "select * from Customer";
         Connection con = db.connect(); //Kobler til databasen.
         try {
-
-
             ps = con.prepareStatement(query); //Sender kommandoen sikkert.
             ResultSet results = ps.executeQuery(); //Etter å sende kommandoen, får vi et resultat fra databasen.
 

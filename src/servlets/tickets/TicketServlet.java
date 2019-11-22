@@ -32,42 +32,59 @@ public class TicketServlet extends HttpServlet {
         }
     }*/
         protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String action = request.getParameter("action");
-            ServletContext sc = this.getServletContext();
-            int id = Integer.parseInt(request.getParameter("tic_id"));
-            if (action.equalsIgnoreCase("delete")) {
 
+            String action = request.getParameter("action");
+
+            if (action.equalsIgnoreCase("delete")) {
                 try {
-                    ticLog.delete(id);
+                    deleteTicket(request,response);
                 } catch (Exception ex) {
                     System.out.println(ex);
                 }
 
-                RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
-                view.forward(request, response);
+                RequestDispatcher redirect = request.getRequestDispatcher("profil.jsp");
+                redirect.forward(request, response);
             }
         }
 
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+            int cus_id = Integer.parseInt(request.getParameter("cus_id"));
             ServletContext sc = this.getServletContext();
+            try
+            {
+                HttpSession session = request.getSession();
+                session.setAttribute("tickets", ticLog.showAll(cus_id));
 
-            int id = 1;
-
-            try {
-                request.setAttribute("tickets", ticLog.showAll(id));
-
-
-            } catch (Exception ex) {
-                System.out.println(ex);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
             }
 
             RequestDispatcher view = sc.getRequestDispatcher("/cusTicket.jsp");
             view.forward(request, response);
         }
+    private void deleteTicket(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        String tic_id = request.getParameter("tic_id");
+        String cus_id = request.getParameter("cus_id");
+        ServletContext sc = this.getServletContext();
+        int ticID = 0;
+        try {
+            ticID = ticLog.getTicID(tic_id,cus_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            ticLog.deleteTic(ticID);
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        RequestDispatcher view = sc.getRequestDispatcher("/profil.jsp");
+        view.forward(request, response);
+    }
 /**
         public void funksjon1(){
             TicketLogic.delete();

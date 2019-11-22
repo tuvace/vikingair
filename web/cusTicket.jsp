@@ -26,31 +26,26 @@
             <c:out value="${customer.firstName}"/>
             <c:out value="${customer.lastName}"/>
 
-            <jsp:useBean id="tickets" scope="request" type="java.util.List"/>
-            <c:forEach items="${tickets}" var="tic">
-                <c:out value="${tic.gate}"/>
-                <c:out value="${tic.flightTo}"/>
-                <c:out value="${tic.flightFrom}"/>
-
+            <jsp:useBean id="tickets" scope="session" type="java.util.List"/>
+                <c:forEach items="${tickets}" var="tickets">
+                <c:out value="${tickets.gate}"/>
+                <c:out value="${tickets.flightTo}"/>
+                <c:out value="${tickets.flightFrom}"/>
                 </td>
-
-                <c:url var="templink" value="TicketServlet">
-                    <c:param name="command" value="cancel"/>
-                    <c:param name="ticketID" value="${tempTicketID}" />
-                </c:url>
-
                 <td>
                     <form action="TicketServlet" method="post">
                         <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="id" value="${tic.ticketID}">
+                        <input type="hidden" name="cus_id" value="${customer.customerID}">
+                        <input type="hidden" name="tic_id" value="${tickets.ticketID}">
                         <button class="button" type="submit"> Slett </button>
                     </form>
+
                 </td>
+             </c:forEach>
     </div>
 
 
             </tr>
-            </c:forEach>
         </table>
     </div>
     </section>

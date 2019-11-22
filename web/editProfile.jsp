@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Rediger profil</title>
+    <link href="css/profil.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div style="text-align: center">
 <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
 <form action="CustomerServlet" method="post">
     <input type="text" placeholder="Fornavn" name="firstName"/>
@@ -41,6 +43,7 @@
     <input type="hidden" value="editEmail" name="action">
     <input type="hidden" name="username" value="${customer.customerID}">
     <button class="button" type="submit">Endre</button>
-</form>
+    </form>
+</div>
 </body>
 </html>

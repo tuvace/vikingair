@@ -2,17 +2,15 @@ package servlets.tickets;
 
 import dbcode.dbUtilities;
 import servlets.interfaces.VikingAir;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 
 public class TicketLogic {
 
 
     dbUtilities db = new dbUtilities();
-
+    Ticket tickeT = new Ticket();
 
     public void create(Ticket tic) throws SQLException {
 
@@ -21,7 +19,7 @@ public class TicketLogic {
         Connection con = db.connect();
 
         //The SQL query is executed whenever a new customer is signing up.
-        String query = ("insert into Ticket(ticketID, customerID, flightID, gate, firstName, lastName, classType)"
+        String query = ("insert into Ticket(ticketID, customerID, flightID)"
                 + "values (?,?,?,?,?,?,?,?,?);");
 
         try {
@@ -76,10 +74,8 @@ public class TicketLogic {
         ArrayList<Ticket> tickets = new ArrayList<>();
         PreparedStatement ps;
         ResultSet results;
-        String sql = "select *from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID  = ? limit 1";
+        String sql = "select * from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID  where ticketID = ? limit 1";
         Connection con = db.connect();
-
-
 
         try{
             ps = con.prepareStatement(sql);
@@ -109,8 +105,31 @@ public class TicketLogic {
         return tickets;
     }
 
-    public Ticket showOne(int id) {
-        return null;
-    }
 
+    public int getTicID(String tic_id, String cus_id) throws SQLException {
+        String sql = "select * from Ticket where ticketID=? and customerID =?";
+
+        Connection con = db.connect();
+
+        PreparedStatement myStmt = con.prepareStatement(sql);
+        myStmt.setString(1, tic_id);
+        myStmt.setString(2, cus_id);
+        ResultSet rs = myStmt.executeQuery();
+        while (rs.next()) {
+            tickeT.setTicketID(rs.getInt("ticketID"));
+        }
+        con.close();
+        //Returns the id associated to the username input parameter
+        System.out.println(tickeT.getTicketID());
+        return tickeT.getTicketID();
+    }
+    public void deleteTic(int id) throws SQLException {
+
+        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        String query = "delete * from Ticket where ticketID = " + id;
+        Connection con = db.connect();
+        Statement ps = con.createStatement();
+        ps.executeQuery(query); //Oppdaterer databasen.
+        con.close();
+    }
 }
