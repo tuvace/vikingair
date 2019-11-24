@@ -33,6 +33,7 @@
                 <c:out value="${tickets.flightFrom}"/>
                 </td>
                 <td>
+
                     <form action="TicketServlet" method="post">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="cus_id" value="${customer.customerID}">

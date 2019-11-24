@@ -8,6 +8,7 @@ public class Ticket {
     String flightTo;
     String flightFrom;
 
+    //Constructor med alle variabler
 public Ticket(int ticketID, int customerID, int flightID, String gate, String flightTo, String flightFrom){
 
     this.ticketID = ticketID;
@@ -18,9 +19,11 @@ public Ticket(int ticketID, int customerID, int flightID, String gate, String fl
     this.flightFrom=flightFrom;
 }
 
+//En tom constructor som kan bli kalt for å legge til egne variabler
 public Ticket(){
 }
 
+// Settere og gettere for alle variablene i klassen
     public int getTicketID() {
         return ticketID;
     }
