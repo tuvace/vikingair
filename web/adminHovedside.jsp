@@ -40,7 +40,7 @@
 </head>
 <body bgcolor="#b8860b">
 <div style="text-align: center;">
-    <form action="index.html">
+    <form action="index.jsp">
         <button class="button button2"> Forside </button>
     </form>
     <br> <br> <br> <br>
@@ -49,15 +49,15 @@
     </form>
     <br>
     <form action="adminSearchServlet" method="get">
-        <input type="submit" class="button button3" value="Sjekk"/>
+        <input type="submit" class="button button3" value="Finn fly"/>
     </form>
     <br>
     <form action="flyEndring.jsp">
-        <button class="button button3"> Forespør endring av eksisterende fly </button>
+        <button class="button button3"> Foresp&oslashr endring av eksisterende fly </button>
     </form>
     <br>
-    <form action="sideEndring.jsp">
-        <button class="button button3"> Foreslå UI forbedring </button>
+    <form action="index.jsp">
+        <button class="button button3"> Foresl&aring UI forbedring </button>
     </form>
 </div>
 </body>

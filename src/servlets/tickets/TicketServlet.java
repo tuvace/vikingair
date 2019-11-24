@@ -32,7 +32,7 @@ public class TicketServlet extends HttpServlet {
         }
     }*/
         protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+            ServletContext sc = this.getServletContext();
             String action = request.getParameter("action");
 
             if (action.equalsIgnoreCase("delete")) {
@@ -42,7 +42,7 @@ public class TicketServlet extends HttpServlet {
                     System.out.println(ex);
                 }
 
-                RequestDispatcher redirect = request.getRequestDispatcher("profil.jsp");
+                RequestDispatcher redirect = sc.getRequestDispatcher("profil.jsp");
                 redirect.forward(request, response);
             }
         }
@@ -56,7 +56,6 @@ public class TicketServlet extends HttpServlet {
             {
                 HttpSession session = request.getSession();
                 session.setAttribute("tickets", ticLog.showAll(cus_id));
-
             }
             catch (Exception e) {
                 e.printStackTrace();

@@ -99,7 +99,7 @@ public class TicketLogic {
         //Lager en resultSet variabel som vil iterere over alle radene senere i databasen.
         ResultSet results;
         // Queriem som ble lagd for å hente alle ønskede variabler fra db
-        String sql = "select * from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID  where ticketID = ? limit 1";
+        String sql = "select * from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID  where Ticket.customerID = ?";
         //Kobler til database
         Connection con = db.connect();
 
@@ -163,7 +163,7 @@ public class TicketLogic {
     public void deleteTic(int id) throws SQLException {
 
         //Denne SQL kommandoen kjøres for å slette billetten til kunden med riktig ID.
-        String query = "delete * from Ticket where ticketID = " + id;
+        String query = "delete from Ticket where ticketID = " + id;
 
         // Kboler til database
         Connection con = db.connect();
