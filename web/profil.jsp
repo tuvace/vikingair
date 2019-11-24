@@ -81,18 +81,17 @@
 		<button class="button"> Rediger profilinformasjon </button>
 	</form>
 	<br>
-	<form action="${pageContext.request.contextPath}/logout" method="post">
-		<input type="submit" class="button" value="Logg ut" />
-	</form>
 
-	</form>
 		<form action="TicketServlet" method="get">
 			<jsp:useBean id="customerTic" scope="session" class="servlets.customers.Customer">
 			<input type = "hidden" name = "cus_id" value = <c:out value="${customer.customerID}"> </c:out>>
 			</jsp:useBean>
-			<input type="submit" >
-			<button class="button"> billett </button>
+			<button type="submit" class="button"> Billett </button>
 		</form>
+		<br>
+		<form action="${pageContext.request.contextPath}/logout" method="post">
+		<input type="submit" class="button" value="Logg ut" />
+	</form>
 	</c:if>
 </div>
 </body>

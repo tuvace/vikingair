@@ -86,8 +86,11 @@
     </c:if>
 
 
+    <c:if test="${sessionScope.customer.userID == '1'}">
+    <a href="adminHovedside.jsp" class="button"> Admin </a>
+    </c:if>
 
-   <br>
+
   <form action="FlightSearchServlet" method="Get">
     <p id="søkBox">
       <input type="text" placeholder="Fra*" name="flightFrom" required>

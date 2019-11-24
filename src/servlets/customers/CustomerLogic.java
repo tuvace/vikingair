@@ -117,7 +117,7 @@ public class CustomerLogic {
     public void updatePhone(int customerID, String phoneNumber) throws SQLException {
 
         //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
-        String query = "update Customer set customerAddress = '"+phoneNumber+"' where customerID = " + customerID;
+        String query = "update phone set phoneNumber = '"+phoneNumber+"' where customerID = " + customerID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
@@ -126,7 +126,7 @@ public class CustomerLogic {
     public void updateEmail(int customerID, String email) throws SQLException {
 
         //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
-        String query = "update Customer set customerAddress = '"+email+"' where customerID = " + customerID;
+        String query = "update email set email = '"+email+"' where customerID = " + customerID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
@@ -141,8 +141,6 @@ public class CustomerLogic {
         String query = "select * from Customer";
         Connection con = db.connect(); //Kobler til databasen.
         try {
-
-
             ps = con.prepareStatement(query); //Sender kommandoen sikkert.
             ResultSet results = ps.executeQuery(); //Etter å sende kommandoen, får vi et resultat fra databasen.
 
@@ -152,6 +150,7 @@ public class CustomerLogic {
                 cus.setFirstName(results.getString("firstName"));
                 cus.setLastName(results.getString("lastName"));
                 cus.setEmail(results.getString("email"));
+                cus.setUserID(results.getInt("userID"));
                 // cus.setDateOfBirth(results.getString("cus_dateOfBirth"));
                 // cus.setPassword(results.getString("cus_pw"));
 
@@ -196,6 +195,8 @@ public class CustomerLogic {
                 cus.setDisabilities(results.getInt(6));
                 cus.setEmail(results.getString(7));
                 cus.setPhoneNumber(results.getString(8));
+                cus.setRole(results.getString(9));
+                cus.setUserID(results.getInt(10));
 
                 System.out.println("user is logged in");
 
