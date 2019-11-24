@@ -24,7 +24,9 @@ public class TicketBookingServlet extends HttpServlet {
             ServletContext sc = this.getServletContext();
             String flightID = request.getParameter("flightID");
             String customerID = request.getParameter("customerID");
-            TicketBooking TB = new TicketBooking(flightID, customerID);
+            String baggage = request.getParameter("baggage");
+            String flight_class = request.getParameter("flight_class");
+            TicketBooking TB = new TicketBooking(flightID, customerID, baggage, flight_class);
 
 
            try {
@@ -33,7 +35,6 @@ public class TicketBookingServlet extends HttpServlet {
            } catch (SQLException e) {
                e.printStackTrace();
            }
-        request.getRequestDispatcher("index.jsp").forward(request, response);
         RequestDispatcher view = sc.getRequestDispatcher("/bestillingsBekreftelse.jsp");
         view.forward(request, response);
         }
