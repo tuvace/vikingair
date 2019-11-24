@@ -92,7 +92,7 @@ public class TicketLogic {
     //Denne metoden viser variablene som vanligvis vises på en billett.
     public ArrayList<Ticket> showAll(int id) throws SQLException {
 
-        //Laer en ny liste hvor alle billetter som returneres i senere SQL-query lagres
+        //Lager en ny liste hvor alle billetter som returneres i senere SQL-query lagres
         ArrayList<Ticket> tickets = new ArrayList<>();
         // Lager et preparedstatement for å utføre sql kode senere
         PreparedStatement ps;

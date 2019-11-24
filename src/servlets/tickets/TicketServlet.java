@@ -19,6 +19,7 @@ import javax.servlet.ServletContext;
 //Denne servletten er en kontroller.
 @WebServlet(name = "TicketServlet", urlPatterns = {"/TicketServlet"})
 public class TicketServlet extends HttpServlet {
+    //Kjører en kopi av ticketLogic klassen
         TicketLogic ticLog = new TicketLogic();
 
     /**protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,10 +34,12 @@ public class TicketServlet extends HttpServlet {
     }*/
         protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             ServletContext sc = this.getServletContext();
+            //Henter parameter i jsp som matcher variablen "action"
             String action = request.getParameter("action");
-
+            //Hvis action i forrige linje referer til delete, utfør resten av koden.
             if (action.equalsIgnoreCase("delete")) {
                 try {
+                    //Kjører deleteTicket metoden i ticketLogic
                     deleteTicket(request,response);
                 } catch (Exception ex) {
                     System.out.println(ex);
@@ -50,11 +53,13 @@ public class TicketServlet extends HttpServlet {
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+            //Henter customer_id for senere bruk
             int cus_id = Integer.parseInt(request.getParameter("cus_id"));
             ServletContext sc = this.getServletContext();
             try
             {
                 HttpSession session = request.getSession();
+                //Kjører metoden showAll fra ticketLogic
                 session.setAttribute("tickets", ticLog.showAll(cus_id));
             }
             catch (Exception e) {
@@ -65,16 +70,20 @@ public class TicketServlet extends HttpServlet {
             view.forward(request, response);
         }
     private void deleteTicket(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+            //Henter ticketID fra SQL
         String tic_id = request.getParameter("tic_id");
+            //Henter customerID fra SQL
         String cus_id = request.getParameter("cus_id");
         ServletContext sc = this.getServletContext();
         int ticID = 0;
         try {
+            //Kjører getTicID for å trekke ut ticketID for senere bruk
             ticID = ticLog.getTicID(tic_id,cus_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         try {
+            //Kjører deleteTic metoden fra ticLog med ticID som ble trukket ut fra forrige try-metode
             ticLog.deleteTic(ticID);
 
         } catch (SQLException e) {
