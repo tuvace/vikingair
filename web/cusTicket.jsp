@@ -5,8 +5,34 @@
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <meta charset="UTF-8">
     <title>Printer ut kundens billett</title>
+        <style>
+            .button
+            {
+                background-color: lightskyblue;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                padding: 8px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 15px;
+                font-variant: small-caps;
+                margin: 4px 2px;
+                cursor: pointer;
+                box-shadow: 2px 2px 4px black;
+            }
+            h1 {
+                color: lightskyblue;
+                text-shadow: 2px 2px 4px black;
+                font-size: 50px;
+                font-variant: small-caps;
+            }
+        </style>
 
 <body>
+<div style="text-align: center">
+    <h1> Dine Billetter </h1>
 <div class="wrap">
     <section>
     <div class="container">
@@ -50,6 +76,7 @@
         </table>
     </div>
     </section>
+</div>
 </div>
 </body>
 </html>
