@@ -150,6 +150,7 @@ public class CustomerLogic {
                 cus.setFirstName(results.getString("firstName"));
                 cus.setLastName(results.getString("lastName"));
                 cus.setEmail(results.getString("email"));
+                cus.setUserID(results.getInt("userID"));
                 // cus.setDateOfBirth(results.getString("cus_dateOfBirth"));
                 // cus.setPassword(results.getString("cus_pw"));
 
@@ -194,6 +195,8 @@ public class CustomerLogic {
                 cus.setDisabilities(results.getInt(6));
                 cus.setEmail(results.getString(7));
                 cus.setPhoneNumber(results.getString(8));
+                cus.setRole(results.getString(9));
+                cus.setUserID(results.getInt(10));
 
                 System.out.println("user is logged in");
 

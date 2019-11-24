@@ -8,6 +8,7 @@ import java.sql.*;
 public class LoginLogic {
     static dbUtilities db = new dbUtilities();
 
+
     public static boolean validate(String username, String userPassword) throws SQLException {
         boolean status = false;
 
@@ -18,9 +19,11 @@ public class LoginLogic {
             // Step 2:Create a statement using connection object
             String query = "{CALL log_in_user(?, ?)}";
             myStmt = con.prepareCall(query);
+            int userID= 0;
             {
                 myStmt.setString(1, username);
                 myStmt.setString(2, userPassword);
+                userID = myStmt.getInt("userID");
 
                 System.out.println(myStmt);
                 ResultSet rs = myStmt.executeQuery();

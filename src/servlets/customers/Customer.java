@@ -13,9 +13,11 @@ public class Customer {
     private int disabilities;
     private String email;
     private String phoneNumber;
+    private int userID;
+    private String role;
 
     public Customer(int customerID, String firstName, String middleName, String lastName,
-                    String customerAddress, int disabilities, String email, String phoneNumber) {
+                    String customerAddress, int disabilities, String email, String phoneNumber, int userID, String role) {
         super();
         this.customerID = customerID;
         this.firstName = firstName;
@@ -25,6 +27,8 @@ public class Customer {
         this.disabilities = disabilities;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.userID = userID;
+        this.role = role;
     }
 
     public Customer(){
@@ -91,6 +95,20 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public int getUserID() { return userID; }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
