@@ -1,4 +1,4 @@
-package classes.adminSearch;
+package classes;
 
 public class adminSearch {
     private int flightID;

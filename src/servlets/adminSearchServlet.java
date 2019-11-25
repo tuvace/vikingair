@@ -1,4 +1,6 @@
-package classes.adminSearch;
+package servlets;
+
+import logics.adminSearchLogic;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;

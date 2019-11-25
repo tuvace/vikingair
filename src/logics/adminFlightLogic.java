@@ -1,5 +1,6 @@
-package classes.adminFlight;
+package logics;
 
+import classes.adminFlight;
 import dbcode.dbUtilities;
 
 import java.sql.Connection;

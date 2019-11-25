@@ -112,11 +112,12 @@
      alle taggene så designet blir likt på alle knappene
 
      -->
-      <a href="profil.jsp" class="button button4" > Lavpriskalender </a>
-      <br>
-      <a href="kontaktoss.html" class="button button4"> Kontakt Oss </a>
+
+      <a href="kontaktoss.jsp" class="button button4"> Kontakt Oss </a>
       <br>
      <a href="profil.jsp" class="button button4"> Min side </a>
+        <a href="https://www.miljodirektoratet.no/globalassets/publikasjoner/M97/M97.pdf" class="button button4" > Om miljø </a>
+        <br>
     </div>
   </form>
 

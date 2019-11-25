@@ -1,4 +1,7 @@
-package classes.adminFlight;
+package servlets;
+
+import classes.adminFlight;
+import logics.adminFlightLogic;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;

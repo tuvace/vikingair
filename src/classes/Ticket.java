@@ -1,12 +1,12 @@
 package classes;
 
 public class Ticket {
-    int ticketID;
-    int customerID;
-    int flightID;
-    String gate;
-    String flightTo;
-    String flightFrom;
+   private int ticketID;
+   private int customerID;
+   private int flightID;
+   private String gate;
+   private String flightTo;
+   private String flightFrom;
 
     //Constructor med alle variabler
 public Ticket(int ticketID, int customerID, int flightID, String gate, String flightTo, String flightFrom){

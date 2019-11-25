@@ -1,5 +1,6 @@
 package logics;
 
+import classes.Registrer;
 import dbcode.dbUtilities;
 import classes.Registrer;
 import java.sql.Connection;

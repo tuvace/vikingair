@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.http.HttpSession;
 
 
@@ -29,8 +30,13 @@ public class LoginServlet extends HttpServlet {
 
         //Hvis brukernavn og passord stemmer med databasen vil man bli 'logget inn',
         //session blir tatt i bruk, og man blir sendt til index.jsp.
-        Customer customer = cuslo.login(username, password);
-            if (customer != null) {
+        Customer customer = null;
+        try {
+            customer = cuslo.login(username, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (customer != null) {
             HttpSession session = request.getSession();
 
         session.setAttribute("customer", customer);

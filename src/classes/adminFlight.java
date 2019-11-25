@@ -1,4 +1,4 @@
-package classes.adminFlight;
+package classes;
 
 import java.io.Serializable;
 

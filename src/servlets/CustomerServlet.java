@@ -116,6 +116,7 @@ public class CustomerServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         try {
             CustomerLogic.updateFirstname(customerID, firstName);
 

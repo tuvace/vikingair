@@ -1,5 +1,6 @@
-package classes.adminSearch;
+package logics;
 
+import classes.adminSearch;
 import dbcode.dbUtilities;
 import java.sql.*;
 import java.util.ArrayList;

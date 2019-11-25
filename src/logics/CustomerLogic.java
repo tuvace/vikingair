@@ -13,54 +13,6 @@ public class CustomerLogic {
     dbUtilities db = new dbUtilities();
     Customer customer = new Customer();
 
-    public ArrayList<Customer> selectAll() throws SQLException {
-
-        //  Creating a customer
-        //  Creating the Arraylist to be  containing customers
-        ArrayList<Customer> customers = new ArrayList<>();
-        PreparedStatement myStmt;
-        // Step 1: Create sql statements
-        String sql = "SELECT* FROM Customer LIMIT 5";
-        Connection con = db.connect();
-        try {
-            //  Step 2: get a connection
-            // Work in progress, have not added the DB
-            myStmt = con.prepareStatement(sql);
-
-            ResultSet results = myStmt.executeQuery();
-
-            //  For hvert element i databasen (results) blir det lagd et nytt objekt
-            //  og alle feltene blir fylt opp med tilsvarende info fra DB
-            while (results.next()) {
-                customer.setCustomerID(results.getInt("customerID"));
-                customer.setFirstName(results.getString("firstName"));
-                customer.setMiddleName(results.getString("middleName"));
-                customer.setLastName(results.getString("lastName"));
-                customer.setCustomerAddress(results.getString("customerAddress"));
-                customer.setDisabilities(results.getInt("disabilities"));
-                customer.setEmail(results.getString("email"));
-                customer.setPhoneNumber(results.getString("phoneNumber"));
-
-                //  Legger til customer i arraylisten Customer.
-                customers.add(customer);
-            }
-
-
-        } catch (SQLException sqlEX) {
-            sqlEX.printStackTrace();
-        } finally {
-            if (con != null) {
-                //  close JDBC
-                con.close();
-            }
-        }
-
-
-        //  Returnerer liste customers når den er full for å bruke
-        //  den et annet sted
-        return customers;
-    }
-
     //En metode som sletter en eksisterenede kunde fra databasen.
 
     public void delete(int customerID) {
@@ -145,8 +97,6 @@ public class CustomerLogic {
                 cus.setLastName(results.getString("lastName"));
                 cus.setEmail(results.getString("email"));
                 cus.setUserID(results.getInt("userID"));
-                // cus.setDateOfBirth(results.getString("cus_dateOfBirth"));
-                // cus.setPassword(results.getString("cus_pw"));
 
                 customers.add(cus); //For every new iteration in the db a new customer is added to the list.
             }
@@ -163,7 +113,7 @@ public class CustomerLogic {
         return customers; //Returnerer alle eksisterende kunder i ArrayListen.
     }
 
-    public Customer login(String brukernavn, String passord) {
+    public Customer login(String brukernavn, String passord) throws SQLException {
         Customer cus = new Customer();
         Connection con = db.connect();
         PreparedStatement ps;
@@ -175,11 +125,9 @@ public class CustomerLogic {
             ps.setString(1, brukernavn);
             ps.setString(2, passord);
 
-            ResultSet results  = ps.executeQuery();
+            ResultSet results  = ps.executeQuery(); //Hver gang du kaller på results utføres en get i databasen.
 
             if(results.next()){
-                int id = results.getInt(1);
-                String firstname = results.getString(2);
 
                 cus.setCustomerID(results.getInt(1));
                 cus.setFirstName(results.getString(2));
@@ -201,7 +149,13 @@ public class CustomerLogic {
             }
         }catch(SQLException ex){
             System.out.println(ex);
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+            //Lukker forbindelsen til databasen.
         }
+
         System.out.println(cus);
         return cus;
     }

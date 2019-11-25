@@ -1,5 +1,8 @@
 package servlets;
 
+import classes.Registrer;
+import logics.registrerLogic;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,7 +17,7 @@ import classes.Registrer;
 @WebServlet(name = "registrerServlet", urlPatterns = {"/registrerServlet"})
 public class registrerServlet extends HttpServlet
 {
-    registrerLogic registrerLogic = new registrerLogic();
+    logics.registrerLogic registrerLogic = new registrerLogic();
     //CustomerLogic logic = new CustomerLogic();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
