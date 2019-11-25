@@ -1,7 +1,7 @@
-package classes.registrer;
+package logics;
 
 import dbcode.dbUtilities;
-
+import classes.Registrer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

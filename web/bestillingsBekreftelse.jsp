@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-<body style="background-color:#D0E6FF;"> </body>
     <style>
         h1 {
             color: white;
@@ -49,8 +48,7 @@
     <meta charset="UTF-8">
     <title>Bestillingsbekreftelse</title>
 </head>
-<body>
-<div style="text-align: center;">
+<body style="text-align: center">
     <h1> Bestillingsbekreftelse </h1>
     <br>
 
@@ -64,6 +62,5 @@
     <a href="profil.jsp"> <button class="button"> Mine Sider </button>  </a>
 
 
-</div>
 </body>
 </html>

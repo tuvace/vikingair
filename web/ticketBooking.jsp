@@ -65,8 +65,7 @@
                 Navn: <br>
                 <c:out value="${customer.firstName}"> </c:out>
                 <c:out value="${customer.middleName}"> </c:out>
-                <c:out value="${customer.lastName}"> </c:out>
-                <c:out value="${customer.customerID}"></c:out><br><br>
+                <c:out value="${customer.lastName}"> </c:out><br><br>
             </div>
 
 

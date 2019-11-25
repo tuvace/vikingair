@@ -62,7 +62,7 @@
         <input type="radio" name="gender" value="female"> Kvinne <br>
         <input type="radio" name="gender" value="others"> Annet <br><br>
     Passord: <br>
-    <input type="text" name="password">
+    <input type="password" name="password">
        <br><br>
 
     <input type="submit" class="button" value="Registrer deg"/>
