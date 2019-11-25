@@ -56,19 +56,10 @@ Avgangsdato:
  <br> <br>
 
  Fra:
-<select name="flightFrom">
-  <option value="France">Frankrike</option>
-  <option value="USA">USA</option>
-  <option value="Germany">Tyskland</option>
-  <option value="India">India</option>
-</select><br><br>
+    <input type="text" name="flightFrom">
+<br><br>
 Til:
-<select name="flightTo">
-  <option value="Norway">Norge</option>
-  <option value="England">England</option>
-  <option value="Italy">Italy</option>
-  <option value="Sweden">Sweden</option>
-</select><br><br>
+      <input type="text" name="flightTo"><br><br>
 Duration (in minutes):
     <input type="number" name="duration"><br><br>
 

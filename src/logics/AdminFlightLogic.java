@@ -1,16 +1,16 @@
 package logics;
 
-import classes.adminFlight;
+import classes.AdminFlight;
 import dbcode.dbUtilities;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class adminFlightLogic
+public class AdminFlightLogic
 {
      dbUtilities db = new dbUtilities();
-    public void addFlight(adminFlight adminFlight) throws SQLException {
+    public void addFlight(AdminFlight adminFlight) throws SQLException {
 
         PreparedStatement myStmt;
         // Step 1: create sql statement

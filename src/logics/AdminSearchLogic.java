@@ -1,16 +1,16 @@
 package logics;
 
-import classes.adminSearch;
+import classes.AdminSearch;
 import dbcode.dbUtilities;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class adminSearchLogic
+public class AdminSearchLogic
 {
     dbUtilities db = new dbUtilities();
-    public ArrayList<adminSearch> selectAll() throws SQLException
+    public ArrayList<AdminSearch> selectAll() throws SQLException
     {
-        ArrayList<adminSearch> searches = new ArrayList<>();
+        ArrayList<AdminSearch> searches = new ArrayList<>();
         try
         {
             String sql = "SELECT flightID, customerID FROM Ticket";
@@ -23,7 +23,7 @@ public class adminSearchLogic
 
             while (rs.next())
             {
-                adminSearch search = new adminSearch();
+                AdminSearch search = new AdminSearch();
                 search.setFlightID(rs.getInt("flightID"));
                 search.setCustomerID(rs.getString("customerID"));
                 searches.add(search);
@@ -45,7 +45,7 @@ public class adminSearchLogic
         PreparedStatement myStmt = con.prepareStatement(sql);
         myStmt.setString(1, flightID);
         ResultSet rs = myStmt.executeQuery();
-        adminSearch adminS = new adminSearch();
+        AdminSearch adminS = new AdminSearch();
         while (rs.next())
         {
             adminS.setFlightID(rs.getInt("flightID"));

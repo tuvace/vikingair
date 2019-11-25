@@ -1,6 +1,6 @@
 package servlets;
 
-import logics.adminSearchLogic;
+import logics.AdminSearchLogic;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "adminSearchServlet", urlPatterns = {"/adminSearchServlet"})
-public class adminSearchServlet extends HttpServlet {
-    adminSearchLogic SL = new adminSearchLogic();
+public class AdminSearchServlet extends HttpServlet {
+    AdminSearchLogic SL = new AdminSearchLogic();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

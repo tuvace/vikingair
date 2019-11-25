@@ -1,7 +1,7 @@
 package servlets;
 
-import classes.adminFlight;
-import logics.adminFlightLogic;
+import classes.AdminFlight;
+import logics.AdminFlightLogic;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "adminFlightServlet", urlPatterns = {"/adminFlight"})
-public class adminFlightServlet extends HttpServlet {
-    adminFlightLogic flightLogic = new adminFlightLogic();
+public class AdminFlightServlet extends HttpServlet {
+    AdminFlightLogic flightLogic = new AdminFlightLogic();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,7 +29,7 @@ public class adminFlightServlet extends HttpServlet {
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
         int baggage_limit = Integer.parseInt(request.getParameter("baggage_limit"));
-        adminFlight flight = new adminFlight(to, from, flightDate, duration, flightID, airplaneType, price, baggage_limit);
+        AdminFlight flight = new AdminFlight(to, from, flightDate, duration, flightID, airplaneType, price, baggage_limit);
 
         try {
             flightLogic.addFlight(flight);

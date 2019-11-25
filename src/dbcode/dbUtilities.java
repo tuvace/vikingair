@@ -10,8 +10,7 @@ import javax.sql.DataSource;
 
 
 /**
-     * This servlet establishes a connection to our database.
-     * It also contains the functions that send SELECT, UPDATE, DROP queries etc*/
+     * This servlet establishes a connection to our database.*/
 
     public class dbUtilities {
     Connection con;
@@ -22,8 +21,7 @@ import javax.sql.DataSource;
 
             DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/FlightBooking");
             Connection con = dataSource.getConnection();
-            //con = dataSource.getConnection();
-            //jdbc:mysql://localhost:3306/FlightBooking denne gir en naming ex
+
 
 
 

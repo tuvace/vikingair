@@ -2,7 +2,7 @@ package classes;
 
 import java.io.Serializable;
 
-public class adminFlight implements Serializable
+public class AdminFlight implements Serializable
 {
     private String from;
     private String to;
@@ -14,7 +14,7 @@ public class adminFlight implements Serializable
     private int baggage_limit;
     private int price;
 
-    public adminFlight(String from, String to, String flightDate, int duration, String flightID, String airplaneType, int baggage_limit, int price)
+    public AdminFlight(String from, String to, String flightDate, int duration, String flightID, String airplaneType, int baggage_limit, int price)
     {
         this.from = from;
         this.to = to;
@@ -26,7 +26,7 @@ public class adminFlight implements Serializable
         this.baggage_limit = baggage_limit;
         this.price = price;
     }
-    public adminFlight() {
+    public AdminFlight() {
 
     }
     public String getFrom() {

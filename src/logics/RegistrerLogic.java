@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class registrerLogic {
+public class RegistrerLogic {
     dbUtilities db = new dbUtilities();
 
     public void addKunde(Registrer regi) throws SQLException {

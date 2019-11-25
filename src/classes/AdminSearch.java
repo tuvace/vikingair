@@ -1,15 +1,15 @@
 package classes;
 
-public class adminSearch {
+public class AdminSearch {
     private int flightID;
     private String customerID;
 
-    public adminSearch(int flightID, String customerID){
+    public AdminSearch(int flightID, String customerID){
         this.flightID = flightID;
         this.customerID = customerID;
     }
 
-    public adminSearch()
+    public AdminSearch()
     {
     }
     public String getCustomerID()
