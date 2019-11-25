@@ -72,20 +72,23 @@
   </form>
   <br><br><br>
 
+    <%-- Session blir tatt i bruk slik at Logg inn knappen ikke vises om man er logget inn --%>
     <c:if test="${sessionScope.customer == null}">
 
         <a href = "login.jsp" class = "button button3"> Logg inn </a>
 
     </c:if>
 
+    <%-- 'Velkommen + brukerens navn' vil vises om man er logget inn --%>
     <c:if test="${sessionScope.customer != null}">
 
-    <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+    <p id="skriftStørrelse"> Velkommen: <jsp:useBean id="customer" scope="session" type="classes.Customer"/>
         <c:out value="${customer.firstName}"> </c:out> <p>
 
     </c:if>
 
 
+        <%-- Knappen 'admin' vil kun vises om man er logget inn som admin. --%>
     <c:if test="${sessionScope.customer.userID == '1'}">
     <a href="adminHovedside.jsp" class="button"> Admin </a>
     </c:if>

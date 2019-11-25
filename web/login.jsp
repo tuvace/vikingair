@@ -60,6 +60,8 @@
                 <button class="button" type="submit" value="login"> Logg inn </button>
 
             </p>
+            <%-- Får opp feilmeldingen definert i LoginServlet hvis session feiler,
+                 at man prøver å logge inn med feil brukernavn eller passord. --%>
             <jsp:useBean id="errormsg" scope="request" class="java.lang.String"/>
             <c:if test="${requestScope.errormsg != null}">
                 <p style="color:#ff3300; text-shadow: 2px 2px 4px black;"> <c:out value="${errormsg}"/> </p>

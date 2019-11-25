@@ -61,7 +61,7 @@
 
             <div id = "customerInfo">
                 <br>
-                <jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+                <jsp:useBean id="customer" scope="session" type="classes.Customer"/>
                 Navn: <br>
                 <c:out value="${customer.firstName}"> </c:out>
                 <c:out value="${customer.middleName}"> </c:out>

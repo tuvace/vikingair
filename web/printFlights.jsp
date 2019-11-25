@@ -1,5 +1,5 @@
-<%@ page import="servlets.FlightSearch.FlightSearch" %>
-<%@ page import="servlets.FlightSearch.FlightDetailServlet" %>
+<%@ page import="classes.FlightSearch" %>
+<%@ page import="servlets.FlightDetailServlet" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 

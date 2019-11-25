@@ -57,13 +57,12 @@
 
 	</c:if>
 	<c:if test="${sessionScope.customer != null}">
-		<jsp:useBean id="customerID" scope="request" class="servlets.customers.Customer"/>
-
+		<jsp:useBean id="customerID" scope="request" class="classes.Customer"/>
 
 
 	<p id="profileBox">
 		<br>
-		<jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+		<jsp:useBean id="customer" scope="session" type="classes.Customer"/>
 		Navn: <br>
 		<c:out value="${customer.firstName}"> </c:out>
 		<c:out value="${customer.middleName}"> </c:out>
@@ -83,12 +82,13 @@
 	<br>
 
 		<form action="TicketServlet" method="get">
-			<jsp:useBean id="customerTic" scope="session" class="servlets.customers.Customer">
+			<jsp:useBean id="customerTic" scope="session" class="classes.Customer">
 			<input type = "hidden" name = "cus_id" value = <c:out value="${customer.customerID}"> </c:out>>
 			</jsp:useBean>
 			<button type="submit" class="button"> Billett </button>
 		</form>
 		<br>
+		<%-- Blir sendt til logg ut metoden i LogoutServlet når man trykker på Logg ut knappen --%>
 		<form action="${pageContext.request.contextPath}/logout" method="post">
 		<input type="submit" class="button" value="Logg ut" />
 	</form>

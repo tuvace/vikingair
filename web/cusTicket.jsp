@@ -49,7 +49,7 @@
                 <tr>
                 <td>
 
-<jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+<jsp:useBean id="customer" scope="session" type="classes.Customer"/>
             <c:out value="${customer.firstName}"/>
             <c:out value="${customer.lastName}"/>
 

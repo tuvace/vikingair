@@ -2,18 +2,11 @@ package dbcode;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 import javax.sql.DataSource;
-
-import servlets.customers.Customer;
-import servlets.flights.Flight;
 
 
 /**

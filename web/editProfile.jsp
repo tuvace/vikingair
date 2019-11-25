@@ -38,7 +38,7 @@
 <body bgcolor="#b8860b">
 <div style="text-align: center">
 <h1>Rediger profilinformasjon (én om gangen)</h1>
-<jsp:useBean id="customer" scope="session" type="servlets.customers.Customer"/>
+<jsp:useBean id="customer" scope="session" type="classes.Customer"/>
     Endre fornavn: <br>
 <form action="CustomerServlet" method="post">
     <input type="text" placeholder="Fornavn" name="firstName"/>
