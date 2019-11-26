@@ -10,6 +10,7 @@ public class AdminSearchLogic
     dbUtilities db = new dbUtilities();
     public ArrayList<AdminSearch> selectAll() throws SQLException
     {
+        //lager en arraylist som printer ut alle biletter og hvilke kunder som har booket til hvilken flyreise
         ArrayList<AdminSearch> searches = new ArrayList<>();
         try
         {
@@ -23,6 +24,7 @@ public class AdminSearchLogic
 
             while (rs.next())
             {
+                //itererer gjennom databasen for å finne alle billetter
                 AdminSearch search = new AdminSearch();
                 search.setFlightID(rs.getInt("flightID"));
                 search.setCustomerID(rs.getString("customerID"));
@@ -37,7 +39,7 @@ public class AdminSearchLogic
         return searches;
     }
     public int getFlightid(String flightID) throws SQLException {
-
+        //finner riktig flyID fra databasen i forhold til verdien på jsp-siden
         String sql = "select * from FlightDetails where flightID=?";
 
         Connection con = db.connect();
@@ -55,54 +57,50 @@ public class AdminSearchLogic
         return adminS.getFlightID();
 
     }
-    public void updateFlightID(int flightID) throws SQLException {
 
-        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
-        String query = "update FlightDetails set flightID = '"+flightID+"' where flightID = " + flightID;
-        Connection con = db.connect();
-        Statement ps = con.createStatement();
-        ps.executeUpdate(query); //Oppdaterer databasen.
-
-    }
     public void updateFrom(int flightID, String from) throws SQLException {
 
-        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        //Denne SQL kommandoen kjøres når avgangssted til flyet blir oppdatert.
         String query = "update FlightDetails set flightFrom = '"+from+"' where flightID = " + flightID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
 
     }
+
     public void updateTo(int flightID, String to) throws SQLException {
 
-        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        //Denne SQL kommandoen kjøres når reisedestinasjon til flyet blir oppdatert.
         String query = "update FlightDetails set flightTo = '"+to+"' where flightID = " + flightID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
 
     }
+
     public void updateGate(int flightID, String gate) throws SQLException {
 
-        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        //Denne SQL kommandoen kjøres når gate til fly blir oppdatert.
         String query = "update FlightDetails set gate = '"+gate+"' where flightID = " + flightID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
 
     }
+
     public void updateDuration(int flightID, String duration) throws SQLException {
 
-        //Denne SQL kommandoen kjøres når fornavn til kunde blir oppdatert.
+        //Denne SQL kommandoen kjøres når flytid til kunde blir oppdatert.
         String query = "update FlightDetails set duration = '"+duration+"' where flightID = " + flightID;
         Connection con = db.connect();
         Statement ps = con.createStatement();
         ps.executeUpdate(query); //Oppdaterer databasen.
 
     }
+
     public void deleteFlight(int id) throws SQLException {
 
-        //Denne SQL kommandoen kjøres for å slette billetten til kunden med riktig ID.
+        //Denne SQL kommandoen kjøres for å slette flyet fra databasen
         String query = "delete from FlightDetails where flightID = " + id;
 
         // Kboler til database

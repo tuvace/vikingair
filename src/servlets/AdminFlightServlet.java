@@ -18,7 +18,7 @@ public class AdminFlightServlet extends HttpServlet {
     AdminFlightLogic flightLogic = new AdminFlightLogic();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        // Denne metoden henter ut parameterene fra adminFlight.jsp og sender de videre til hjelpeklassen som legger de inn i databasen.
         ServletContext sc = this.getServletContext();
 
         String to = request.getParameter("flightTo");
@@ -29,7 +29,7 @@ public class AdminFlightServlet extends HttpServlet {
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
         int baggage_limit = Integer.parseInt(request.getParameter("baggage_limit"));
-        AdminFlight flight = new AdminFlight(to, from, flightDate, duration, flightID, airplaneType, price, baggage_limit);
+        AdminFlight flight = new AdminFlight(from, to, flightDate, duration, flightID, airplaneType, price, baggage_limit);
 
         try {
             flightLogic.addFlight(flight);

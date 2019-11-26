@@ -18,9 +18,11 @@ public class AdminSearchServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        // Her vurderer den verdien til "action" i forhold til hvilken knapp på jsp-siden som blir trykket, hver verdi utfører en unik handling
         String action = request.getParameter("action");
         if(action.equals("editFrom")){
             try {
+                //endrer avgangsdetinasjon
                 editFrom(request, response);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -28,6 +30,7 @@ public class AdminSearchServlet extends HttpServlet {
         }
         if(action.equals("editTo")){
             try {
+                //endrer reisested
                 editTo(request, response);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -35,6 +38,7 @@ public class AdminSearchServlet extends HttpServlet {
         }
         if(action.equals("editGate")){
             try {
+                //endrer gate
                 editGate(request, response);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -42,6 +46,7 @@ public class AdminSearchServlet extends HttpServlet {
         }
         if(action.equals("editDuration")){
             try {
+                //endrer reiselengde
                 editDuration(request, response);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -49,6 +54,7 @@ public class AdminSearchServlet extends HttpServlet {
         }
         if(action.equals("deleteFlight")){
             try {
+                // sletter fly fra databasen
                 deleteFlight(request, response);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -58,6 +64,7 @@ public class AdminSearchServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        //printer ut alle billetter som er booket
         ServletContext sc = this.getServletContext();
         try
         {
@@ -69,27 +76,9 @@ public class AdminSearchServlet extends HttpServlet {
         RequestDispatcher view = sc.getRequestDispatcher("/printTickets.jsp");
         view.forward(request, response);
     }
-    private void editFlightID(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
-        String flightID = request.getParameter("flightID");
-        ServletContext sc = this.getServletContext();
-        int flight = 0;
-        try {
-            flight = SL.getFlightid(flightID);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            SL.updateFlightID(flight);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        RequestDispatcher view = sc.getRequestDispatcher("/flyEndring.jsp");
-        view.forward(request, response);
-    }
 
     private void editFrom(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        // kaller på en funksjon som henter ut riktig flyID fra databasen for så å endrer på den ønskede verdien i databasen
         String flightID = request.getParameter("flightID");
         String from = request.getParameter("from");
         ServletContext sc = this.getServletContext();
@@ -110,6 +99,7 @@ public class AdminSearchServlet extends HttpServlet {
         view.forward(request, response);
     }
     private void editTo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        // kaller på en funksjon som henter ut riktig flyID fra databasen for så å endrer på den ønskede verdien i databasen
         String flightID = request.getParameter("flightID");
         String to = request.getParameter("to");
         ServletContext sc = this.getServletContext();
@@ -130,6 +120,7 @@ public class AdminSearchServlet extends HttpServlet {
         view.forward(request, response);
     }
     private void editGate(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        // kaller på en funksjon som henter ut riktig flyID fra databasen for så å endrer på den ønskede verdien i databasen
         String flightID = request.getParameter("flightID");
         String gate = request.getParameter("gate");
         ServletContext sc = this.getServletContext();
@@ -150,6 +141,7 @@ public class AdminSearchServlet extends HttpServlet {
         view.forward(request, response);
     }
     private void editDuration(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        // kaller på en funksjon som henter ut riktig flyID fra databasen for så å endrer på den ønskede verdien i databasen
         String flightID = request.getParameter("flightID");
         String duration = request.getParameter("duration");
         ServletContext sc = this.getServletContext();
@@ -170,6 +162,7 @@ public class AdminSearchServlet extends HttpServlet {
         view.forward(request, response);
     }
     private void deleteFlight(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+        // kaller på en funksjon som henter ut riktig flyID fra databasen for så å slette flyet
         String flightID = request.getParameter("flightID");
         ServletContext sc = this.getServletContext();
         int flight = 0;

@@ -13,13 +13,13 @@ public class AdminFlightLogic
     public void addFlight(AdminFlight adminFlight) throws SQLException {
 
         PreparedStatement myStmt;
-        // Step 1: create sql statement
+        // En insert setning som legger til parameterne i databsen
         String sql = "INSERT into Flightdetails(flightFrom, flightTo, flightDate, flightID, airplaneType, duration, price, baggage_limit)"+ "values (?,?,?,?,?,?,?,?)";
         Connection con = db.connect();
 
        try {
            myStmt = con.prepareStatement(sql);
-
+           // setter stringene til der de skal være i databasen
            myStmt.setString(1, adminFlight.getFrom());
            myStmt.setString(2, adminFlight.getTo());
            myStmt.setString(3, adminFlight.getFlightDate());
