@@ -40,35 +40,38 @@
             <thead>
             <tr>
 
-                <th>
-                    Informasjon
-                </th>
             </tr>
             </thead>
             <div id="CustomerInfo">
                 <tr>
-                <td>
+
 
 <jsp:useBean id="customer" scope="session" type="classes.Customer"/>
             <c:out value="${customer.firstName}"/>
             <c:out value="${customer.lastName}"/>
-
             <jsp:useBean id="tickets" scope="session" type="java.util.List"/>
+                <th> Gate</th>
+                <th> Destinasjon </th>
+                <th> Avgang </th>
                 <c:forEach items="${tickets}" var="tickets">
-                <c:out value="${tickets.gate}"/>
-                <c:out value="${tickets.flightTo}"/>
-                <c:out value="${tickets.flightFrom}"/>
-                </td>
+                <tr>
+                    <td> <c:out value="${tickets.gate}"/></td>
+
+                    <td><c:out value="${tickets.flightTo}"/></td>
+
+                    <td> <c:out value="${tickets.flightFrom}"/></td>
+
                 <td>
 
                     <form action="TicketServlet" method="post">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="cus_id" value="${customer.customerID}">
                         <input type="hidden" name="tic_id" value="${tickets.ticketID}">
-                        <button class="button" type="submit"> Slett </button>
+                        <button class="button" type="submit"> Avbestill </button>
                     </form>
 
                 </td>
+                </tr>
              </c:forEach>
     </div>
 

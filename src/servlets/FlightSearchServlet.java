@@ -12,20 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-//Denne servletten er en kontroller.
-@WebServlet(name = "FlightSearchServlet", urlPatterns = {"/FlightSearchServlet"})
-public class FlightSearchServlet extends HttpServlet {
+/**Dette er en Servlet, som skal fungere som en Controller i MVC-mønstre.
+ Den fungerer som et mellomledd mellom view og logikken.
+ Den skal vise informasjon om de flyvninger søkt etter.*/
 
-    FlightSearchLogic fls = new FlightSearchLogic();
+@WebServlet(name = "FlightSearchServlet", urlPatterns = {"/FlightSearchServlet"})
+public class FlightSearchServlet extends HttpServlet { //Klassen extends...
+
+    FlightSearchLogic fls = new FlightSearchLogic();//Oppretter logikken og kaller den fls. Dette gjør at man får en kobling til
+    //klassen FlightSerachLogic som blir opprettet.
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         ServletContext sc = this.getServletContext();
-        String flightFrom = request.getParameter("flightFrom");
-        String flightTo = request.getParameter("flightTo");
-        String flightDate = request.getParameter("flightDate");
+        String flightFrom = request.getParameter("flightFrom"); //Prøver å hente parametre som er satt inn av bruker.
+        String flightTo = request.getParameter("flightTo"); //Prøver å hente parametre som er satt inn av bruker.
+        String flightDate = request.getParameter("flightDate"); //Prøver å hente parametre som er satt inn av bruker.
+
+        //Prøver å sette parameterne over inn i arrayen showAllFlights.
         try {
             request.setAttribute("flsResults", fls.showAllFlights(flightFrom, flightTo, flightDate));
 
@@ -34,7 +39,7 @@ public class FlightSearchServlet extends HttpServlet {
 
 
         }
-
+        //Etter å ha gjort alt over vil bruker bli sendt videre til jsp siden under.
         RequestDispatcher view = sc.getRequestDispatcher("/printFlights.jsp");
         view.forward(request, response);
     }

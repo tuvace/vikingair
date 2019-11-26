@@ -24,7 +24,8 @@ public class TicketLogic {
         //Lager en resultSet variabel som vil iterere over alle radene senere i databasen.
         ResultSet results;
         // Queriem som ble lagd for å hente alle ønskede variabler fra db
-        String sql = "select * from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID  where Ticket.customerID = ? limit 1";
+        //String sql = "select * from ticket inner join customer on ticket.customerID = customer.customerID inner join flightDetails on ticket.flightID = flightdetails.flightID  where Ticket.customerID = ? ";
+            String sql = "select flightDetails.flightTo, flightDetails.flightFrom, ticket.ticketID, flightDetails.gate from customer inner join ticket on customer.customerid = ticket.customerID inner join flightDetails on ticket.flightID = flightDetails.flightID where customer.customerID = ? ";
         //Kobler til database
         Connection con = db.connect();
 

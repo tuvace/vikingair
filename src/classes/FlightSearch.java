@@ -1,6 +1,11 @@
 package classes;
 
 
+/**
+ Denne klassen definerer de parametre som trengs til den tilhørende logikken i FlightSearchLogic.
+ Klassen er en del av modellen i MVC-mønstre.*/
+/** Felte inneholder de ulike parameterne som trengs, og deres datatyper blir definert.*/
+
 public class FlightSearch {
     private int flightID;
     private String flightDate;
@@ -11,6 +16,7 @@ public class FlightSearch {
     private int bookedSeat;
     private  int totalSeat;
 
+    /**Constructoren forsikrer oss om at objektet blir satt opp riktig, når dte først blir lagd.*/
     public FlightSearch(int flightID, String flightDate, int price, String flightFrom, String flightTo, int duration, int bookedSeat, int totalSeat) {
         this.flightID = flightID;
         this.flightDate = flightDate;
@@ -22,6 +28,7 @@ public class FlightSearch {
         this.totalSeat = totalSeat;
     }
 
+    /** get og set for de ulike parametrene definert ovenfor. Set brukes for å sette en verdi, og get for å hente dem.*/
     public FlightSearch(){
 
     }

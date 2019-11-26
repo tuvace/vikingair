@@ -104,6 +104,17 @@
                 <tr>
                     <input type="submit" class="button" value="Bekreft bestilling"/>
                 </tr>
+                <tr>
+                    <td>Økonomi eller Business:</td>
+                    <td> <input type="radio"  value="Økonomi" name="flight_class" checked="checked"> Economy</td>
+                    <td> <input type="radio" value="Business" name="flight_class" > Business</td>
+                </tr>
+                <tr>
+                    <td>Bagasje mengde:</td>
+                    <td> <input type="radio" name = "baggage" value="10" checked="checked"> Håndbagasje(10kg)</td>
+                    <td><input type="radio" name = "baggage" value="15">  15kg</td>
+                    <td><input type="radio" name = "baggage" value="20"> 20kg</td>
+                </tr>
             </div>
             </form>
                 </table>
