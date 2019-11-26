@@ -49,7 +49,7 @@
     </form>
     <br>
     <form action="adminSearchServlet" method="get">
-        <input type="submit" class="button button3" value="Finn fly"/>
+        <input type="submit" class="button button3" value="Print ut alle billetter"/>
     </form>
     <br>
     <form action="flyEndring.jsp">

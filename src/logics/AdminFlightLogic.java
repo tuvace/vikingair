@@ -14,7 +14,7 @@ public class AdminFlightLogic
 
         PreparedStatement myStmt;
         // En insert setning som legger til parameterne i databsen
-        String sql = "INSERT into Flightdetails(flightFrom, flightTo, flightDate, flightID, airplaneType, duration, price, baggage_limit)"+ "values (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT into Flightdetails(flightFrom, flightTo, flightDate, flightID, gate, airplaneType, duration, seatamount, baggage_limit, price)"+ "values (?,?,?,?,?,?,?,?,?,?)";
         Connection con = db.connect();
 
        try {
@@ -24,10 +24,12 @@ public class AdminFlightLogic
            myStmt.setString(2, adminFlight.getTo());
            myStmt.setString(3, adminFlight.getFlightDate());
            myStmt.setString(4, adminFlight.getFlightID());
-           myStmt.setString(5, adminFlight.getAirplaneType());
-           myStmt.setInt(6, adminFlight.getDuration());
-           myStmt.setInt(7, adminFlight.getPrice());
-           myStmt.setInt(8, adminFlight.getBaggagelimit());
+           myStmt.setString(5, adminFlight.getGate());
+           myStmt.setString(6, adminFlight.getAirplaneType());
+           myStmt.setInt(7, adminFlight.getDuration());
+           myStmt.setInt(8, adminFlight.getSeatAmount());
+           myStmt.setInt(9, adminFlight.getBaggagelimit());
+           myStmt.setInt(10, adminFlight.getPrice());
            myStmt.execute();
 
        }

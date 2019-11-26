@@ -60,15 +60,16 @@ Avgangsdato:
 <br><br>
 Til:
       <input type="text" name="flightTo"><br><br>
-Duration (in minutes):
+Flytid (i minutter):
     <input type="number" name="duration"><br><br>
-
+Price
+<input type="number" name="price"><br><br>
 Sete mengde:
- <select name="price">
-  <option value="1000">50</option>
-  <option value="1500">75</option>
-  <option value="2000">100</option>
-  <option value="2500">200</option>
+ <select name="seatAmount">
+  <option value="50">50</option>
+  <option value="75">75</option>
+  <option value="100">100</option>
+  <option value="200">200</option>
 </select><br><br>
 Flymodell:
 <select name="airplaneType">

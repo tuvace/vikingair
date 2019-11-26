@@ -24,12 +24,14 @@ public class AdminFlightServlet extends HttpServlet {
         String to = request.getParameter("flightTo");
         String from = request.getParameter("flightFrom");
         String flightDate = request.getParameter("flightDate");
+        String gate = request.getParameter("gate");
         String flightID = request.getParameter("flightID");
         String airplaneType = request.getParameter("airplaneType");
         int duration = Integer.parseInt(request.getParameter("duration"));
-        int price = Integer.parseInt(request.getParameter("price"));
+        int seatAmount = Integer.parseInt(request.getParameter("seatAmount"));
         int baggage_limit = Integer.parseInt(request.getParameter("baggage_limit"));
-        AdminFlight flight = new AdminFlight(from, to, flightDate, duration, flightID, airplaneType, price, baggage_limit);
+        int price = Integer.parseInt(request.getParameter("price"));
+        AdminFlight flight = new AdminFlight(from, to, flightDate,  duration, gate, flightID, airplaneType, seatAmount, baggage_limit, price);
 
         try {
             flightLogic.addFlight(flight);

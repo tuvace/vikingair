@@ -19,7 +19,7 @@ import java.sql.SQLException;
 @WebServlet(name = "TicketBookingServlet", urlPatterns = {"/TicketBookingServlet"})
 public class TicketBookingServlet extends HttpServlet {
 
-    TicketBookingLogic ticBook = new TicketBookingLogic(); //Oppretter nytt objekt av klassen TicketBookingLogic.
+    private TicketBookingLogic ticBook = new TicketBookingLogic(); //Oppretter nytt objekt av klassen TicketBookingLogic.
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

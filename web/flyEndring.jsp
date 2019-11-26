@@ -69,7 +69,7 @@ Endre flyvningstid: <br>
 <form action="adminSearchServlet" method="post">
     <input type="text" placeholder="Legg inn FlyID" name="flightID"/>
     <input type="hidden" value="deleteFlight" name="action">
-    <button class="button" type="submit"> Endre </button>
+    <button class="button" type="submit"> Slett </button>
 </form>
 <a href="adminHovedside.jsp" class="button">Gå tilbake til Admin Hovedside</a>
 </div>

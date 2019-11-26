@@ -20,7 +20,7 @@ import java.sql.SQLException;
 public class FlightSearchServlet extends HttpServlet { //Klassen extends...
 
     //klassen FlightSerachLogic som blir opprettet.
-    FlightSearchLogic fls = new FlightSearchLogic();//Oppretter logikken og kaller den fls. Dette gjør at man får en kobling til
+    private FlightSearchLogic fls = new FlightSearchLogic();//Oppretter logikken og kaller den fls. Dette gjør at man får en kobling til
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
