@@ -16,7 +16,7 @@ import java.sql.SQLException;
 @WebServlet(name = "FlightDetailServlet", urlPatterns = {"/FlightDetailServlet"})
 public class FlightDetailServlet extends HttpServlet {
 
-    FlightSearchLogic fls = new FlightSearchLogic();
+    private FlightSearchLogic fls = new FlightSearchLogic();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

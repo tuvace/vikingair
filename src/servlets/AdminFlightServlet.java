@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 @WebServlet(name = "adminFlightServlet", urlPatterns = {"/adminFlight"})
 public class AdminFlightServlet extends HttpServlet {
-    AdminFlightLogic flightLogic = new AdminFlightLogic();
+    private AdminFlightLogic flightLogic = new AdminFlightLogic();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Denne metoden henter ut parameterene fra adminFlight.jsp og sender de videre til hjelpeklassen som legger de inn i databasen.

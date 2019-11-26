@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "registrerServlet", urlPatterns = {"/registrerServlet"})
 public class RegistrerServlet extends HttpServlet
 {
-    RegistrerLogic registrerLogic = new RegistrerLogic();
+    private RegistrerLogic registrerLogic = new RegistrerLogic();
     //CustomerLogic logic = new CustomerLogic();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

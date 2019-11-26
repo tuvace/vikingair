@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name="LoginServlet", urlPatterns ={"/LoginServlet"})
 
 public class LoginServlet extends HttpServlet {
-    CustomerLogic cuslo = new CustomerLogic();
+    private CustomerLogic cuslo = new CustomerLogic();
 
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {

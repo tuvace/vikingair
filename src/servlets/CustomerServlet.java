@@ -23,8 +23,8 @@ import java.sql.SQLException;
 public class CustomerServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    logics.CustomerLogic CustomerLogic = new CustomerLogic();
-    classes.Customer Customer = new Customer();
+    private logics.CustomerLogic CustomerLogic = new CustomerLogic();
+    private classes.Customer Customer = new Customer();
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

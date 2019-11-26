@@ -17,7 +17,7 @@ import javax.servlet.ServletContext;
 @WebServlet(name = "TicketServlet", urlPatterns = {"/TicketServlet"})
 public class TicketServlet extends HttpServlet {
     //Kjører en kopi av ticketLogic klassen
-        TicketLogic ticLog = new TicketLogic();
+        private TicketLogic ticLog = new TicketLogic();
 
     /**protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 @WebServlet(name = "adminSearchServlet", urlPatterns = {"/adminSearchServlet"})
 public class AdminSearchServlet extends HttpServlet {
-    AdminSearchLogic SL = new AdminSearchLogic();
+    private AdminSearchLogic SL = new AdminSearchLogic();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

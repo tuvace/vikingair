@@ -113,6 +113,7 @@ public class CustomerLogic {
         return customers; //Returnerer alle eksisterende kunder i ArrayListen.
     }
 
+    //Sjekker at brukernavn og passord stemmer med databasen, validerer om bruker får logget inn.
     public Customer login(String brukernavn, String passord) throws SQLException {
         Customer cus = new Customer();
         Connection con = db.connect();

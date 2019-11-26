@@ -19,8 +19,8 @@ import java.sql.SQLException;
 @WebServlet(name = "FlightSearchServlet", urlPatterns = {"/FlightSearchServlet"})
 public class FlightSearchServlet extends HttpServlet { //Klassen extends...
 
-    FlightSearchLogic fls = new FlightSearchLogic();//Oppretter logikken og kaller den fls. Dette gjør at man får en kobling til
     //klassen FlightSerachLogic som blir opprettet.
+    FlightSearchLogic fls = new FlightSearchLogic();//Oppretter logikken og kaller den fls. Dette gjør at man får en kobling til
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
